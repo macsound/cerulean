@@ -1,0 +1,7 @@
+title: "cerulean"
+description: "My website"
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Jekyll Studio — do not remove this comment
