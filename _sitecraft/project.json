@@ -1,0 +1,123 @@
+{
+  "id": "c1hkg2f5",
+  "name": "Cerulean",
+  "description": "",
+  "style": {
+    "headingFont": "Georgia",
+    "bodyFont": "System UI",
+    "accentColor": "#307FE2",
+    "bgColor": "#ffffff",
+    "textColor": "#111111",
+    "pageWidth": "medium",
+    "sidePadding": 24,
+    "canvasWidth": "wide"
+  },
+  "repoFullName": "macsound/cerulean",
+  "pagesUrl": "https://macsound.github.io/cerulean/",
+  "pages": [
+    {
+      "id": "qa2dk5o0",
+      "title": "Home",
+      "slug": "index",
+      "blocks": [
+        {
+          "id": "gseqzv61",
+          "cells": [
+            {
+              "id": "0f3b22w0",
+              "flex": 1,
+              "block": {
+                "id": "jc19hiq4",
+                "type": "heading",
+                "level": 2,
+                "text": "Cerulean",
+                "headingFont": "Georgia"
+              }
+            }
+          ]
+        },
+        {
+          "id": "jstkcej0",
+          "cells": [
+            {
+              "id": "8sc4yh6l",
+              "flex": 1,
+              "block": {
+                "id": "h3f7sg3o",
+                "type": "image",
+                "src": "",
+                "alt": "",
+                "caption": "",
+                "compress": true,
+                "lightbox": false,
+                "fullSrc": null
+              }
+            }
+          ]
+        }
+      ],
+      "_migrated": true,
+      "height": 650,
+      "elements": [
+        {
+          "id": "a28q909t",
+          "type": "heading",
+          "x": 180,
+          "y": 40,
+          "w": 370,
+          "h": 60,
+          "text": "Cerulean",
+          "level": 1,
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "headingFont": "Georgia"
+        },
+        {
+          "id": "7qbyla1j",
+          "type": "image",
+          "x": 350,
+          "y": 100,
+          "w": 300,
+          "h": 220,
+          "src": "",
+          "alt": "",
+          "caption": "",
+          "compress": true,
+          "lightbox": false,
+          "fullSrc": null,
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          }
+        }
+      ]
+    },
+    {
+      "id": "fmwbi569",
+      "title": "About",
+      "slug": "about",
+      "blocks": []
+    }
+  ],
+  "localPath": "/Users/danny/Documents/cerulean.sitecraft"
+}
