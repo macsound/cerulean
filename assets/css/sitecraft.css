@@ -1,8 +1,8 @@
 /* Sitecraft v0.2.0 */
-
-
-body{font-family:system-ui,sans-serif;color:#111111;background:#ffffff;margin:0}
-h1,h2,h3,h4,h5,h6{font-family:Georgia,serif}
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+body{font-family:'Nunito',sans-serif;color:#9ca3af;background:#686581;margin:0}
+h1,h2,h3,h4,h5,h6{font-family:'Merriweather',serif}
 a{color:#307FE2}
 .sc-page{position:relative;width:100%;max-width:960px;margin:0 auto}
 .sc-elem{position:absolute}
