@@ -89,7 +89,7 @@
           "x": 20,
           "y": 60,
           "w": 770,
-          "h": 40,
+          "h": 50,
           "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Times; color: rgb(0, 0, 0);\"><span class=\"s1\" style=\"font-kerning: none;\">Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</span></p>",
           "style": {
             "bg": "transparent",
@@ -112,7 +112,7 @@
           "type": "heading",
           "x": 60,
           "y": 480,
-          "w": 320,
+          "w": 810,
           "h": 56,
           "text": "Experiential Marketing",
           "level": 1,
@@ -454,8 +454,8 @@
   "siteHeader": {
     "logoType": "text",
     "logoText": "",
-    "logoSrc": "",
-    "logoRawUrl": "",
-    "logoOriginalFilename": ""
+    "logoSrc": "/assets/images/index-hero.jpg",
+    "logoRawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/index-hero.jpg",
+    "logoOriginalFilename": "IMG_9123.JPG"
   }
 }
