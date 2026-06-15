@@ -57,16 +57,64 @@
         }
       ],
       "_migrated": true,
-      "height": 650,
+      "height": 860,
       "elements": [
         {
           "id": "a28q909t",
           "type": "heading",
-          "x": 180,
-          "y": 40,
-          "w": 370,
-          "h": 60,
-          "text": "Cerulean",
+          "x": 20,
+          "y": 20,
+          "w": 350,
+          "h": 50,
+          "text": "Stephen Gozza",
+          "level": 1,
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#b0b0b0",
+            "borderWidth": 1,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "headingFont": "Georgia"
+        },
+        {
+          "id": "9wjhnzab",
+          "type": "text",
+          "x": 20,
+          "y": 60,
+          "w": 770,
+          "h": 40,
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Times; color: rgb(0, 0, 0);\"><span class=\"s1\" style=\"font-kerning: none;\">Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</span></p>",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "bodyFont": "System UI",
+          "fontSize": 16
+        },
+        {
+          "id": "5w9wxjam",
+          "type": "heading",
+          "x": 60,
+          "y": 480,
+          "w": 320,
+          "h": 56,
+          "text": "Experiential Marketing",
           "level": 1,
           "style": {
             "bg": "transparent",
@@ -84,18 +132,18 @@
           "headingFont": "Georgia"
         },
         {
-          "id": "7qbyla1j",
+          "id": "hkee7kxq",
           "type": "image",
-          "x": 350,
-          "y": 100,
+          "x": 60,
+          "y": 540,
           "w": 300,
           "h": 220,
-          "src": "",
+          "src": "/assets/images/marriott-experiential-marketing.jpg",
           "alt": "",
           "caption": "",
           "compress": true,
           "lightbox": false,
-          "fullSrc": null,
+          "fullSrc": "/assets/images/marriott-experiential-marketing.jpg",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -108,16 +156,27 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100
-          }
+          },
+          "originalFilename": "IMG_0971.jpeg",
+          "rawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/marriott-experiential-marketing.jpg"
         }
-      ]
+      ],
+      "includeInNav": false
     },
     {
       "id": "fmwbi569",
       "title": "About",
       "slug": "about",
-      "blocks": []
+      "blocks": [],
+      "includeInNav": false
     }
   ],
-  "localPath": "/Users/danny/Documents/cerulean.sitecraft"
+  "localPath": "/Users/danny/Documents/cerulean.sitecraft",
+  "siteHeader": {
+    "logoType": "text",
+    "logoText": "",
+    "logoSrc": "",
+    "logoRawUrl": "",
+    "logoOriginalFilename": ""
+  }
 }
