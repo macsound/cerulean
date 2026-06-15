@@ -3,18 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>About</title>
+<title>About — Cerulean</title>
 <link rel="stylesheet" href="/assets/css/sitecraft.css">
 
 <style>
+.sc-header{position:sticky;top:0;z-index:100;background:#ffffff;border-bottom:1px solid #e8e8e8}
+.sc-header-inner{max-width:960px;margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;gap:32px}
+.sc-logo{font-size:18px;font-weight:700;color:#111111;text-decoration:none;flex-shrink:0}
+.sc-nav{display:flex;gap:24px;margin-left:auto}
+.sc-nav a{font-size:13px;font-weight:500;color:#111111;text-decoration:none;padding:4px 0;border-bottom:2px solid transparent;transition:all .15s}
+.sc-nav a:hover{color:#307FE2;border-bottom-color:#307FE2}
 .sc-page{position:relative;min-height:600px;max-width:960px;margin:0 auto;overflow:hidden}
 @media(max-width:600px){
+  .sc-header-inner{padding:0 16px}
+  .sc-nav{gap:14px}
+  .sc-nav a{font-size:12px}
   .sc-page{overflow-x:hidden;min-height:auto}
   .sc-page>[style*="position:absolute"]{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:auto!important;margin-bottom:16px}
 }
 </style>
 </head>
-<body>
+<body style="margin:0;background:#ffffff">
+<header class="sc-header">
+  <div class="sc-header-inner" style="font-family:system-ui,sans-serif">
+    <a href="/" class="sc-logo" style="font-family:Georgia,serif">Cerulean</a>
+    <nav class="sc-nav">
+      
+    </nav>
+  </div>
+</header>
 <div class="sc-page">
 
 </div>
