@@ -3,11 +3,11 @@
   "name": "Cerulean",
   "description": "",
   "style": {
-    "headingFont": "Georgia",
-    "bodyFont": "System UI",
+    "headingFont": "Merriweather",
+    "bodyFont": "Nunito",
     "accentColor": "#307FE2",
-    "bgColor": "#ffffff",
-    "textColor": "#111111",
+    "bgColor": "#686581",
+    "textColor": "#9ca3af",
     "pageWidth": "medium",
     "sidePadding": 24,
     "canvasWidth": "wide"
@@ -391,6 +391,53 @@
           },
           "originalFilename": "IMG_1040.jpeg",
           "rawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/ice-index-left-image-9.jpg"
+        },
+        {
+          "id": "19jhmwm4",
+          "type": "text",
+          "x": 30,
+          "y": 130,
+          "w": 150,
+          "h": 80,
+          "html": "Resume<div>LinkedIn</div><div>Contact</div>",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "bodyFont": "System UI"
+        },
+        {
+          "id": "0h7zu1qw",
+          "type": "divider",
+          "x": 30,
+          "y": 100,
+          "w": 890,
+          "h": 20,
+          "lineColor": "#a3a3a3",
+          "lineWidth": 3,
+          "lineStyle": "solid",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          }
         }
       ],
       "includeInNav": false
