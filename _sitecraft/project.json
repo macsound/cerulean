@@ -419,7 +419,7 @@
           "y": 130,
           "w": 150,
           "h": 80,
-          "html": "<a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26c.pdf\" data-sc-file=\"assets/files/sgozza26c.pdf\" target=\"_blank\" rel=\"noopener\" style=\"\"><font color=\"#9ca3af\">Resume</font></a><div>LinkedIn</div><div>Contact</div>",
+          "html": "<a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26c.pdf\" data-sc-file=\"assets/files/sgozza26c.pdf\" target=\"_blank\" rel=\"noopener\" style=\"\"><font color=\"#9ca3af\">Resume</font></a><div><a href=\"https://www.linkedin.com/in/stephen-gozza\" target=\"_blank\" rel=\"noopener\"><font color=\"#9ca3af\">LinkedIn</font></a></div><div>Contact</div>",
           "style": {
             "bg": "transparent",
             "border": "none",
