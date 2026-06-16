@@ -365,7 +365,7 @@
           "alt": "",
           "caption": "",
           "compress": true,
-          "lightbox": false,
+          "lightbox": true,
           "fullSrc": "/assets/images/elasticon-index-center-image-8.jpg",
           "style": {
             "bg": "transparent",
@@ -394,7 +394,7 @@
           "alt": "",
           "caption": "",
           "compress": true,
-          "lightbox": false,
+          "lightbox": true,
           "fullSrc": "/assets/images/ice-index-left-image-9.jpg",
           "style": {
             "bg": "transparent",
@@ -486,8 +486,8 @@
         {
           "id": "rpiut8ac",
           "type": "text",
-          "x": 120,
-          "y": 210,
+          "x": 90,
+          "y": 200,
           "w": 280,
           "h": 40,
           "html": "<p>Vision Pro Guided Tour</p>",
@@ -533,10 +533,10 @@
           "id": "mezbrp36",
           "type": "text",
           "x": 580,
-          "y": 210,
+          "y": 200,
           "w": 280,
-          "h": 40,
-          "html": "<p>Dynamic Island Introduction Film</p>",
+          "h": 50,
+          "html": "<p>iPhone Dynamic Island&nbsp;</p><p>Introduction Film</p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -550,7 +550,8 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "align": "center"
+          "align": "center",
+          "bodyFont": "Nunito"
         }
       ],
       "includeInNav": false
