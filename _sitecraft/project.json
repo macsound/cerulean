@@ -419,7 +419,7 @@
           "y": 130,
           "w": 150,
           "h": 80,
-          "html": "<a href=\"https://assets/files/sgozza26c.pdf\" target=\"_blank\"><font color=\"#b5bac0\">Resume</font></a><div>LinkedIn</div><div>Contact</div>",
+          "html": "<a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26c.pdf\" data-sc-file=\"assets/files/sgozza26c.pdf\" target=\"_blank\" rel=\"noopener\" style=\"\"><font color=\"#9ca3af\">Resume</font></a><div>LinkedIn</div><div>Contact</div>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -433,7 +433,8 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "bodyFont": "Nunito"
+          "bodyFont": "Nunito",
+          "textColor": "#9ca3af"
         },
         {
           "id": "0h7zu1qw",
