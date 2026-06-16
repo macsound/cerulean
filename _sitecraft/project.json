@@ -6,11 +6,29 @@
     "headingFont": "Merriweather",
     "bodyFont": "Nunito",
     "accentColor": "#307FE2",
-    "bgColor": "#5c6d7a",
+    "bgColor": "#43484c",
     "textColor": "#9ca3af",
     "pageWidth": "medium",
     "sidePadding": 24,
-    "canvasWidth": "wide"
+    "canvasWidth": "wide",
+    "palette": {
+      "theme": [
+        "#307FE2",
+        "#5c6d7a",
+        "#9ca3af",
+        "#b7d2f5",
+        "#1a467c",
+        "#9ca3af"
+      ],
+      "custom": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
   },
   "repoFullName": "macsound/cerulean",
   "pagesUrl": "https://macsound.github.io/cerulean/",
@@ -90,7 +108,7 @@
           "y": 60,
           "w": 770,
           "h": 50,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Times;\"><span class=\"s1\" style=\"font-kerning: none;\"><font color=\"#c7b2b2\">Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</font></span></p>",
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Times;\"><span class=\"s1\" style=\"font-kerning: none;\"><b>Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</b></span></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -106,7 +124,8 @@
           },
           "fontSize": 17,
           "align": "center",
-          "bodyFont": "Nunito"
+          "bodyFont": "Nunito",
+          "textColor": "#9ca3af"
         },
         {
           "id": "5w9wxjam",
@@ -466,7 +485,7 @@
         {
           "id": "rpiut8ac",
           "type": "text",
-          "x": 90,
+          "x": 120,
           "y": 210,
           "w": 280,
           "h": 40,
