@@ -104,7 +104,9 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "fontSize": 16
+          "fontSize": 17,
+          "align": "center",
+          "textColor": "#9da3af"
         },
         {
           "id": "5w9wxjam",
@@ -646,13 +648,6 @@
           "align": "center"
         }
       ],
-      "includeInNav": false
-    },
-    {
-      "id": "fmwbi569",
-      "title": "About",
-      "slug": "about",
-      "blocks": [],
       "includeInNav": false
     }
   ],
