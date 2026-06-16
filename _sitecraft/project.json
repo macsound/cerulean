@@ -104,7 +104,6 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "bodyFont": "System UI",
           "fontSize": 16
         },
         {
@@ -412,8 +411,7 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100
-          },
-          "bodyFont": "System UI"
+          }
         },
         {
           "id": "0h7zu1qw",
@@ -599,7 +597,6 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "bodyFont": "Nunito",
           "align": "center"
         },
         {
@@ -646,7 +643,6 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "bodyFont": "Nunito",
           "align": "center"
         }
       ],
@@ -666,6 +662,7 @@
     "logoText": "",
     "logoSrc": "/assets/images/index-hero.jpg",
     "logoRawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/index-hero.jpg",
-    "logoOriginalFilename": "IMG_9123.JPG"
+    "logoOriginalFilename": "IMG_9123.JPG",
+    "showHeader": false
   }
 }
