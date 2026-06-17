@@ -98,8 +98,7 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100
-          },
-          "headingFont": "Georgia"
+          }
         },
         {
           "id": "9wjhnzab",
@@ -149,7 +148,6 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "headingFont": "Merriweather",
           "anchorId": "experoentialmarketing"
         },
         {
@@ -576,7 +574,6 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "headingFont": "Merriweather",
           "anchorId": "experoentialmarketing"
         }
       ],
