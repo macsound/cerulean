@@ -1108,6 +1108,13 @@
     <!-- CONNECT TAB -->
     <div id="tab-connect" class="tab-content">
 
+      <!-- FILE PROTOCOL WARNING -->
+      <div id="file-protocol-warning" style="display:none;background:#8f3920;color:white;padding:10px 12px;border-radius:2px;margin-bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:0.5px;line-height:1.6">
+        ⚠ <strong>Google Sheets won't connect</strong> when the app is opened as a local file.<br>
+        Open via Live Server, Python server, or GitHub Pages instead.
+        <a href="#" onclick="alert('Option 1: VS Code → install Live Server extension → right-click file → Open with Live Server\n\nOption 2: Terminal → cd ~/Downloads → python3 -m http.server 8000 → open http://localhost:8000/timeline-builder.html\n\nOption 3: Upload to GitHub Pages');return false" style="color:rgba(255,255,255,0.7);display:block;margin-top:4px">How to fix this →</a>
+      </div>
+
       <!-- CONNECTION STATUS -->
       <div class="form-section">
         <h3>Google Sheet</h3>
@@ -1139,37 +1146,21 @@
       <!-- COLUMN MAPPING -->
       <div class="form-section" id="c-mapping-section" style="display:none">
         <h3>Column Mapping</h3>
-        <div style="font-family:var(--mono);font-size:9px;opacity:0.5;margin-bottom:10px;line-height:1.5">Which column letter contains each field? Default is A–G in order.</div>
+        <div style="font-family:var(--mono);font-size:9px;opacity:0.5;margin-bottom:10px;line-height:1.5">Defaults match the Chronicle setup script exactly (A–K). Only change these if your sheet uses a different order.</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-          <div class="field" style="margin:0">
-            <label>Title</label>
-            <input type="text" id="cm-title" value="A" style="font-size:13px;text-transform:uppercase" maxlength="2" />
-          </div>
-          <div class="field" style="margin:0">
-            <label>Year / Date</label>
-            <input type="text" id="cm-year" value="B" style="font-size:13px;text-transform:uppercase" maxlength="2" />
-          </div>
-          <div class="field" style="margin:0">
-            <label>Sort Key</label>
-            <input type="text" id="cm-sort" value="C" style="font-size:13px;text-transform:uppercase" maxlength="2" />
-          </div>
-          <div class="field" style="margin:0">
-            <label>Description</label>
-            <input type="text" id="cm-desc" value="D" style="font-size:13px;text-transform:uppercase" maxlength="2" />
-          </div>
-          <div class="field" style="margin:0">
-            <label>Accent Color</label>
-            <input type="text" id="cm-color" value="E" style="font-size:13px;text-transform:uppercase" maxlength="2" />
-          </div>
-          <div class="field" style="margin:0">
-            <label>Image URL</label>
-            <input type="text" id="cm-img" value="F" style="font-size:13px;text-transform:uppercase" maxlength="2" />
-          </div>
-          <div class="field" style="margin:0;grid-column:1/-1">
-            <label>Media URL</label>
-            <input type="text" id="cm-media" value="G" style="font-size:13px;text-transform:uppercase" maxlength="2" />
-          </div>
+          <div class="field" style="margin:0"><label>Title</label><input type="text" id="cm-title" value="A" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Year / Date</label><input type="text" id="cm-year" value="B" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Sort Key</label><input type="text" id="cm-sort" value="C" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Description</label><input type="text" id="cm-desc" value="D" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Accent Color</label><input type="text" id="cm-color" value="E" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Image URL</label><input type="text" id="cm-img" value="F" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Media URL</label><input type="text" id="cm-media" value="G" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Category</label><input type="text" id="cm-category" value="H" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Importance</label><input type="text" id="cm-importance" value="I" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0"><label>Location</label><input type="text" id="cm-location" value="J" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
+          <div class="field" style="margin:0;grid-column:1/-1"><label>Citation</label><input type="text" id="cm-citation" value="K" style="font-size:13px;text-transform:uppercase" maxlength="2" /></div>
         </div>
+        <div style="font-family:var(--mono);font-size:9px;opacity:0.4;margin-top:8px;line-height:1.5">Admin columns L–Q (Added By, Date Added, Follow Up, Notes, Lock) are read from the sheet but not shown on the timeline.</div>
         <button class="btn btn-small" onclick="refreshFromSheet()" style="margin-top:10px;width:100%">Apply &amp; Reload</button>
       </div>
 
@@ -1646,7 +1637,7 @@
     <div id="status-bar">
       <span id="status-count">0 entries</span>
       <span id="status-dims">— px</span>
-      <span>Chronicle v1.0 · Build 10</span>
+      <span>Chronicle v1.0 · Build 12</span>
       <button onclick="openLog()" style="background:none;border:none;cursor:pointer;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,0.3);padding:0;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(245,240,232,0.7)'" onmouseout="this.style.color='rgba(245,240,232,0.3)'">📋 Log</button>
     </div>
   </div>
@@ -2754,7 +2745,8 @@ function loadImportanceColors() {
 // BUILD LOG
 // ══════════════════════════════════════════
 const BUILD_LOG = [
-  { build: 10, date: '2026-07', desc: 'Fixed Google Sheet connection to accept both regular sheet URLs (/edit) and publish URLs (/pub?…csv). App now handles either format automatically.' },
+  { build: 12, date: '2026-07', desc: 'Rewritten setup script v2: 17 columns (A–K sync to app, L–Q admin only). Added Category, Importance, Location, Citation as proper sheet columns H–K. Column mapping UI updated to match all 11 app fields. Empty sheet (headers only) now connects successfully instead of erroring.' },
+  { build: 11, date: '2026-07', desc: 'Improved connection error messages. Added file:// protocol warning banner in Connect tab explaining why Google Sheets won\'t load from a local file and how to fix it.' },
   { build: 9, date: '2026-07', desc: 'Author/byline field (default: Johnny Appleseed), importance-linked accent colors with stored palette, colored importance dropdowns, build log, status bar Log button, dynamic footer.' },
   { build: 8, date: '2026-07', desc: 'Background Builder (gradient, color wash, texture tile, image with size/repeat controls). Categories + filter bar with chips. Importance ranking (5 levels, visual node scaling). Era groupings. Multiple images per entry with thumbnail/inline/hover modes. Lightbox. Location + citation fields. Expanded Google Fonts (8 typefaces).' },
   { build: 7, date: '2026-07', desc: 'New Timeline OOBE wizard (3-step modal: name, sheet setup, connect). Auto-download of setup script. Theme picker in OOBE.' },
@@ -3868,7 +3860,12 @@ async function connectToSheet() {
     setConnectStatus('connected', 'Connected');
   } catch(err) {
     setConnectStatus('error', 'Error — see below');
-    alert('Could not load sheet data.\n\nMake sure you have published the sheet:\nFile → Share → Publish to web → select your tab → CSV → Publish\n\nError: ' + err.message);
+    const isFileProtocol = window.location.protocol === 'file:';
+    if (isFileProtocol) {
+      alert('Connection blocked by your browser.\n\nYou\'re opening this file directly from your computer (file://…). Browsers block external requests from local files for security reasons.\n\nFix: Open this file through a local server instead:\n\n• VS Code → install "Live Server" extension → right-click the file → "Open with Live Server"\n\n• Or: Terminal → cd ~/Downloads → python3 -m http.server 8000 → open http://localhost:8000/timeline-builder.html\n\n• Or: Upload to GitHub Pages and open from there.');
+    } else {
+      alert('Could not load sheet data.\n\nMake sure you have published the sheet:\nFile → Share → Publish to web → select your tab → CSV → Publish\n\nError: ' + err.message);
+    }
   }
 }
 
@@ -3885,24 +3882,34 @@ async function loadSheetData(sheetInfo, tabName) {
   const text = await response.text();
   const rows = parseCSV(text);
 
-  if (rows.length < 2) {
-    setConnectStatus('error', 'Sheet is empty');
+  if (rows.length < 1) {
+    setConnectStatus('error', 'Could not read sheet');
     return;
   }
 
-  // Get column mapping
+  // Connected with headers only (no data rows yet) — that's fine
+  if (rows.length < 2) {
+    setConnectStatus('connected', 'Connected — no entries yet');
+    entries = entries.filter(e => e.source === 'manual');
+    document.getElementById('c-last-sync').textContent = `Connected · 0 sheet entries · ${new Date().toLocaleTimeString()}`;
+    renderAll();
+    return;
+  }
+
+  // Get column mapping from UI inputs (all default to A-K)
+  const getCol = id => colLetterToIndex(document.getElementById(id) ? document.getElementById(id).value : 'A');
   const cm = {
-    title: colLetterToIndex(document.getElementById('cm-title').value),
-    year:  colLetterToIndex(document.getElementById('cm-year').value),
-    sort:  colLetterToIndex(document.getElementById('cm-sort').value),
-    desc:  colLetterToIndex(document.getElementById('cm-desc').value),
-    color: colLetterToIndex(document.getElementById('cm-color').value),
-    img:   colLetterToIndex(document.getElementById('cm-img').value),
-    media: colLetterToIndex(document.getElementById('cm-media').value),
-    category: colLetterToIndex('H'),   // Added By column doubles as category hint; actual category from sheet col if mapped
-    importance: 99,  // not mapped by default — falls back to 3
-    location: 99,
-    citation: 99,
+    title:      getCol('cm-title'),
+    year:       getCol('cm-year'),
+    sort:       getCol('cm-sort'),
+    desc:       getCol('cm-desc'),
+    color:      getCol('cm-color'),
+    img:        getCol('cm-img'),
+    media:      getCol('cm-media'),
+    category:   getCol('cm-category'),
+    importance: getCol('cm-importance'),
+    location:   getCol('cm-location'),
+    citation:   getCol('cm-citation'),
   };
 
   // Skip header row (row 0), parse remaining rows
@@ -4982,6 +4989,12 @@ function showToast(msg) {
   const yearEl = document.getElementById('s-year');
   if (yearEl) yearEl.value = '2026';
 })();
+
+// Show file:// protocol warning if needed
+if (window.location.protocol === 'file:') {
+  const w = document.getElementById('file-protocol-warning');
+  if (w) w.style.display = '';
+}
 
 loadImportanceColors();
 renderAll();
