@@ -1637,7 +1637,7 @@
     <div id="status-bar">
       <span id="status-count">0 entries</span>
       <span id="status-dims">— px</span>
-      <span>Chronicle v1.0 · Build 12</span>
+      <span>Chronicle v1.0 · Build 13</span>
       <button onclick="openLog()" style="background:none;border:none;cursor:pointer;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,0.3);padding:0;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(245,240,232,0.7)'" onmouseout="this.style.color='rgba(245,240,232,0.3)'">📋 Log</button>
     </div>
   </div>
@@ -2086,6 +2086,12 @@
 </div>
 
 <script>
+// ══════════════════════════════════════════
+// VERSION
+// ══════════════════════════════════════════
+const BUILD = 13;
+const VERSION = `v1.0-build${BUILD}`;
+
 // ══════════════════════════════════════════
 // STATE
 // ══════════════════════════════════════════
@@ -2745,6 +2751,7 @@ function loadImportanceColors() {
 // BUILD LOG
 // ══════════════════════════════════════════
 const BUILD_LOG = [
+  { build: 13, date: '2026-07', desc: 'Fixed Export Viewer button — was crashing due to a stale variable name (sheetInfoExp) left over from a prior refactor. Viewer now downloads correctly.' },
   { build: 12, date: '2026-07', desc: 'Rewritten setup script v2: 17 columns (A–K sync to app, L–Q admin only). Added Category, Importance, Location, Citation as proper sheet columns H–K. Column mapping UI updated to match all 11 app fields. Empty sheet (headers only) now connects successfully instead of erroring.' },
   { build: 11, date: '2026-07', desc: 'Improved connection error messages. Added file:// protocol warning banner in Connect tab explaining why Google Sheets won\'t load from a local file and how to fix it.' },
   { build: 9, date: '2026-07', desc: 'Author/byline field (default: Johnny Appleseed), importance-linked accent colors with stored palette, colored importance dropdowns, build log, status bar Log button, dynamic footer.' },
@@ -3417,7 +3424,7 @@ function startVideoRecording() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${settings.title.replace(/[^a-z0-9]/gi,'_')}_timeline.webm`;
+      a.download = `${settings.title.replace(/[^a-z0-9]/gi,'_')}_timeline_${VERSION}.webm`;
       a.click();
       URL.revokeObjectURL(url);
       statusEl.textContent = '✓ Saved!';
@@ -3578,7 +3585,7 @@ function saveProject() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   const safeName = (settings.title || 'timeline').replace(/[^a-z0-9]/gi,'_').toLowerCase();
-  a.download = safeName + '_chronicle.json';
+  a.download = `${safeName}_chronicle_${VERSION}.json`;
   a.href = url;
   a.click();
   URL.revokeObjectURL(url);
@@ -4176,14 +4183,14 @@ function downloadSetupScript() {
   const blob = new Blob([note], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.download = 'chronicle-sheet-setup-README.txt';
+  a.download = `chronicle-sheet-setup_${VERSION}.txt`;
   a.href = url;
   a.click();
   URL.revokeObjectURL(url);
 
   // Also try to download the actual .gs file if it's in the same directory
   const gsLink = document.createElement('a');
-  gsLink.download = 'chronicle-sheet-setup.gs';
+  gsLink.download = `chronicle-sheet-setup_${VERSION}.gs`;
   gsLink.href = 'chronicle-sheet-setup.gs';
   gsLink.click();
 }
@@ -4289,7 +4296,7 @@ function savePreset() {
   const blob = new Blob([JSON.stringify(preset, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.download = name.replace(/[^a-z0-9]/gi,'_').toLowerCase() + '_preset.json';
+  a.download = name.replace(/[^a-z0-9]/gi,'_').toLowerCase() + `_preset_${VERSION}.json`;
   a.href = url; a.click();
   URL.revokeObjectURL(url);
 }
@@ -4657,8 +4664,8 @@ body {
 <script>
 // ── CONFIG (baked in at export time) ──
 const SHEET_ID = '${sheetId}';
-const PUB_BASE = '${(sheetInfoExp && sheetInfoExp.type === 'pub') ? sheetInfoExp.rawUrl.split('?')[0] : ''}';
-const IS_PUB_URL = ${(sheetInfoExp && sheetInfoExp.type === 'pub') ? 'true' : 'false'};
+const PUB_BASE = '${(sheetInfo && sheetInfo.type === 'pub') ? sheetInfo.rawUrl.split('?')[0] : ''}';
+const IS_PUB_URL = ${(sheetInfo && sheetInfo.type === 'pub') ? 'true' : 'false'};
 const TAB_NAME = '${tabName.replace(/'/g,"\\'")}';
 const REFRESH_MS = ${refreshInterval};
 const IMP_COLORS = ${JSON.stringify(s.importanceColors || {1:'#999999',2:'#7a9e7a',3:'#b84c2e',4:'#c9923a',5:'#7c3aed'})};
@@ -4955,7 +4962,7 @@ if(REFRESH_MS > 0) setInterval(loadData, REFRESH_MS);
   const blob = new Blob([viewerHTML], { type: 'text/html' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.download = 'timeline-viewer.html';
+  a.download = `timeline-viewer_${VERSION}.html`;
   a.href = url;
   a.click();
   URL.revokeObjectURL(url);
@@ -4963,7 +4970,7 @@ if(REFRESH_MS > 0) setInterval(loadData, REFRESH_MS);
   closeModal('export-viewer-modal');
 
   // Show success toast
-  showToast('✓ timeline-viewer.html saved to your Downloads folder');
+  showToast(`✓ timeline-viewer_${VERSION}.html saved to your Downloads folder`);
 }
 
 function escapeHtml(str) {
