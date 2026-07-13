@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Timeline — Chronicle Viewer</title>
+<title>Throughout Time — Chronicle Viewer</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --ink: #1a1208;
-  --parchment: #f5f0e8;
+  --parchment: #ffffff;
   --rust: #b84c2e;
   --gold: #c9923a;
   --line: rgba(26,18,8,0.15);
-  --serif: 'Playfair Display', Georgia, serif;
+  --serif: 'EB Garamond', Georgia, serif;
   --body-font: 'Crimson Pro', Georgia, serif;
   --mono: 'DM Mono', monospace;
 }
 html { scroll-behavior: smooth; }
 body {
-  background: #f5f0e8;
+  background: #ffffff;
   background-attachment: fixed;
   font-family: var(--body-font);
   color: var(--ink);
@@ -72,7 +72,7 @@ body {
   width: 900px;
   max-width: 100%;
   margin: 0 auto;
-  background: #f5f0e8;
+  background: #ffffff;
   position: relative;
   padding-bottom: 40px;
 }
@@ -90,8 +90,8 @@ body {
 .tl-subtitle { font-family:var(--body-font);font-style:italic;color:var(--ink);opacity:0.6;margin-top:8px;font-size:17px; }
 .tl-header-rule { width:60px;height:3px;background:#b84c2e;margin:16px auto 0; }
 .tl-body { position:relative;padding:20px 0 60px;z-index:1; }
-.tl-spine { position:absolute;left:50%;top:0;bottom:0;width:2px;background:#1a1208;transform:translateX(-50%); }
-.tl-spine::before,.tl-spine::after { content:'';position:absolute;left:50%;transform:translateX(-50%);width:10px;height:10px;background:#1a1208;border-radius:50%; }
+.tl-spine { position:absolute;left:50%;top:0;bottom:0;width:2px;background:#0a3d5c;transform:translateX(-50%); }
+.tl-spine::before,.tl-spine::after { content:'';position:absolute;left:50%;transform:translateX(-50%);width:10px;height:10px;background:#0a3d5c;border-radius:50%; }
 .tl-spine::before { top:0; }
 .tl-spine::after { bottom:0; }
 .tl-entry { display:flex;align-items:flex-start;position:relative;min-height:80px; }
@@ -171,8 +171,8 @@ body {
 <!-- Viewer top bar -->
 <div class="viewer-topbar">
   <div>
-    <div class="viewer-topbar-title">My Timeline</div>
-    <div class="viewer-topbar-sub">by Johnny Appleseed · Chronicle Viewer</div>
+    <div class="viewer-topbar-title">Throughout Time</div>
+    <div class="viewer-topbar-sub">by Graceway Church · Chronicle Viewer</div>
   </div>
   <div id="viewer-sync-status" style="font-family:var(--mono);font-size:9px;letter-spacing:1px;color:rgba(245,240,232,0.3);text-transform:uppercase"></div>
 </div>
@@ -194,18 +194,18 @@ body {
 <!-- Timeline canvas -->
 <div id="timeline-canvas" class="">
   <div class="tl-header">
-    <div class="tl-title">My Timeline</div>
-    <div class="tl-byline">by Johnny Appleseed</div>
+    <div class="tl-title">Throughout Time</div>
+    <div class="tl-byline">by Graceway Church</div>
     
     <div class="tl-header-rule"></div>
   </div>
   <div class="tl-body">
-    <div class="tl-spine" style="background:#1a1208"></div>
+    <div class="tl-spine" style="background:#0a3d5c"></div>
     <div id="tl-entries-container">
       <div id="loading-state">⟳ Loading timeline…</div>
     </div>
   </div>
-  <div class="tl-footer">© 2026 Johnny Appleseed</div>
+  <div class="tl-footer">© 2026 Graceway Church</div>
 </div>
 <div class="viewer-timestamp" id="viewer-timestamp"></div>
 
@@ -238,8 +238,8 @@ const IS_PUB_URL = false;
 const TAB_NAME = '';
 const REFRESH_MS = 300000;
 const IMP_COLORS = {"1":"#999999","2":"#7a9e7a","3":"#b84c2e","4":"#c9923a","5":"#7c3aed"};
-const CAT_COLORS = {};
-const SETTINGS = {"titleSize":42,"entryTitleSize":18,"descSize":14,"spacing":20,"layout":"alternating","spineColor":"#1a1208","overrideColors":false,"overrideColor":"#b84c2e","displayFont":"'Playfair Display', Georgia, serif","bodyFont":"'Crimson Pro', Georgia, serif","eras":"","showEras":true,"bg":"#f5f0e8"};
+const CAT_COLORS = {"Church":"#b84c2e"};
+const SETTINGS = {"titleSize":42,"entryTitleSize":18,"descSize":14,"spacing":20,"layout":"alternating","spineColor":"#0a3d5c","overrideColors":false,"overrideColor":"#0a6fa8","displayFont":"'EB Garamond', Georgia, serif","bodyFont":"'Crimson Pro', Georgia, serif","eras":"","showEras":true,"bg":"#ffffff"};
 
 // ── STATE ──
 let allEntries = [];
