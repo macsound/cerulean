@@ -75,7 +75,7 @@
         }
       ],
       "_migrated": true,
-      "height": 1290,
+      "height": 1600,
       "elements": [
         {
           "id": "a28q909t",
@@ -508,11 +508,11 @@
         {
           "id": "p4bpcvri",
           "type": "video",
-          "x": 550,
+          "x": 500,
           "y": 250,
           "w": 340,
           "h": 190,
-          "youtube": "https://docs.google.com/https://doc-08-2o-docstext.googleusercontent.com/export/v6dcdgbdgvsvpjl8rtqcgh8b70/k5j01olkvvls5vrf7n7g9nr1q0/1780628640000/110754729749055847786/110754729749055847786/1thl62o7FadsKRW3DfniT-H0x6wDOSUy-vN_g0CNF3sE?format=pdf&id=1thl62o7FadsKRW3DfniT-H0x6wDOSUy-vN_g0CNF3sE&token=ABg6iWT6ttRo4G3x1Q1D8gdqNLth:1780628373145&ouid=110754729749055847786&includes_info_params=true&usp=docs_home&cros_files=false&nded=false&tab=t.0&inspectorResult=%7B%22pc%22:2,%22lplc%22:58%7D&dat=AP8AcFoMnpsyhe6hhSIh4lxF92fuEtP38dqes36DmYifHY_23OY20nM9gfG0vXnngD_6h5AUOgE7kC2Tw2mlgJiZPcDZDG_6VgsBgWgslY-3YL_P91tMo9bIrD6JQ2WGNrNtZNzMlE4gUwXB6djzZ6VqBG5y4k9rZiQiZzSb07LEuZOXQ2LvCsa1kdEcuCup9sFtRxNqtTxz7xUhDov9AYdpefH3RC6b3e2tKlNLWpzaxIzFnxKmUhpl5g-FVWS6fvUgTURB6HA5wrBQ9SmrhqK5KsMu6UsAJx8WTKJPa2QwvcLvFbI9ItGoItQxZ6ETCi13c5RyMkFMNf8uts2TSZDFBJaLnst4RY0hy2Ezxe-KExWH_Uu-7DYeZHN5LTAB49kEOXtfqIvVElrDcoVbXVYk7BWtpcOzl9zO6FyDVVoYae-I6snfLTRotbJ7_u4rTxZ3dR-W-G_fAXA_2w-VbbzbWvlL6NoMZZ8KEEIZ4gqkdNQclosZz6jvi0XzRTAb7ftrbyjCJSKvTJBkm0u91N_me82YoVyfEi_i-xkh0J77-LaQy9PM6p8No_SYgOcWJuz9xyAO8Jy1STYb9G4ByyLLqsXYhNDAn2BL3cVwmjYZ-2-52tUBV7Qyz4-xZO64yXjYWpscfYhFCTQvSnNr-A2oJjjp9Tz3W9OK3Pz-q68-L-TGpHz2CnGjg_cKR742gXfq-PQy1MnGEARo15SSonOyLhZl7hcidljQF8sk6GOScRaqTNDqXF79xtbFAo3qcNgLfrkeV_ntGWzEhCzGjpHaAX-GZ70jJYAoy85T4DpXlU0qLZac_GCPnVn6YLZF9j0vTxEt159rJsT05bg-9R3T0HFVk0r6UFq1XT_co3VJTATn5aacz8C3aadIX9OKC1NdkKysj7I8R8rk5Le8raItDzWdyTo-oyLQAa-ZoL-9kw",
+          "youtube": "https://drive.google.com/file/d/1PDPzgmZT5WIEMRuxsXiqLri2sXQShuRl/view?usp=sharing",
           "src": "",
           "style": {
             "bg": "transparent",
@@ -526,7 +526,8 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100
-          }
+          },
+          "videoMode": "inline"
         },
         {
           "id": "mezbrp36",
@@ -584,6 +585,30 @@
           "w": 640,
           "h": 56,
           "text": "Custom Consumer Packaged Product Production",
+          "level": 1,
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "headingFont": "Merriweather"
+        },
+        {
+          "id": "hzpjs6i3",
+          "type": "heading",
+          "x": 70,
+          "y": 1260,
+          "w": 640,
+          "h": 56,
+          "text": "Apps",
           "level": 1,
           "style": {
             "bg": "transparent",
