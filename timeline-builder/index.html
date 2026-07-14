@@ -1701,14 +1701,14 @@
         <!-- Orientation -->
         <div class="field">
           <label>Orientation</label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px">
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border:1.5px solid var(--line);border-radius:2px;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1" id="orient-v-label">
-              <input type="radio" name="s-orientation" id="s-orientation-v" value="vertical" checked onchange="updateSettings()" style="accent-color:var(--rust)" />
-              ↕ Vertical
+              <input type="radio" name="s-orientation" id="s-orientation-v" value="vertical" checked onchange="updateSettings()" style="accent-color:var(--rust);flex-shrink:0" />
+              <span style="white-space:nowrap">↕ Vertical</span>
             </label>
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border:1.5px solid var(--line);border-radius:2px;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1" id="orient-h-label">
-              <input type="radio" name="s-orientation" id="s-orientation-h" value="horizontal" onchange="updateSettings()" style="accent-color:var(--rust)" />
-              ↔ Horizontal
+              <input type="radio" name="s-orientation" id="s-orientation-h" value="horizontal" onchange="updateSettings()" style="accent-color:var(--rust);flex-shrink:0" />
+              <span style="white-space:nowrap">↔ Horizontal</span>
             </label>
           </div>
         </div>
@@ -1716,14 +1716,14 @@
         <!-- Mobile orientation -->
         <div class="field">
           <label>On Mobile <span style="opacity:0.4;font-size:9px">(screens under 768px)</span></label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px">
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border:1.5px solid var(--line);border-radius:2px;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1">
-              <input type="radio" name="s-mobile-orientation" id="s-mobile-v" value="vertical" checked onchange="updateSettings()" style="accent-color:var(--rust)" />
-              ↕ Vertical
+              <input type="radio" name="s-mobile-orientation" id="s-mobile-v" value="vertical" checked onchange="updateSettings()" style="accent-color:var(--rust);flex-shrink:0" />
+              <span style="white-space:nowrap">↕ Vertical</span>
             </label>
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border:1.5px solid var(--line);border-radius:2px;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1">
-              <input type="radio" name="s-mobile-orientation" id="s-mobile-h" value="horizontal" onchange="updateSettings()" style="accent-color:var(--rust)" />
-              ↔ Horizontal
+              <input type="radio" name="s-mobile-orientation" id="s-mobile-h" value="horizontal" onchange="updateSettings()" style="accent-color:var(--rust);flex-shrink:0" />
+              <span style="white-space:nowrap">↔ Horizontal</span>
             </label>
           </div>
         </div>
@@ -1867,7 +1867,7 @@
     <div id="status-bar">
       <span id="status-count">0 entries</span>
       <span id="status-dims">— px</span>
-      <span>Chronicle v1.0 · Build 16</span>
+      <span>Chronicle v1.0 · Build 17</span>
       <button onclick="openLog()" style="background:none;border:none;cursor:pointer;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,0.3);padding:0;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(245,240,232,0.7)'" onmouseout="this.style.color='rgba(245,240,232,0.3)'">📋 Log</button>
     </div>
   </div>
@@ -2276,10 +2276,11 @@
 
       <div class="settings-group" style="margin-bottom:16px">
         <h3>After Downloading</h3>
+        <div id="ev-hosting-note" style="font-family:var(--mono);font-size:10px;line-height:1.6;margin-bottom:10px;padding:8px 10px;background:var(--aged);border-radius:2px;border:1px solid var(--line)"></div>
         <ol style="font-family:var(--body);font-size:14px;line-height:2;padding-left:18px;margin:0;opacity:0.85">
-          <li>Upload <strong>timeline-viewer.html</strong> to your GitHub repository</li>
-          <li>Go to GitHub → Settings → Pages → enable GitHub Pages</li>
-          <li>Your viewer URL will be:<br>
+          <li>Upload <strong>timeline-viewer.html</strong> to your GitHub repository (same folder as this builder, unless you plan to move it)</li>
+          <li>If GitHub Pages isn't already enabled, go to GitHub → Settings → Pages → enable it</li>
+          <li>Your viewer URL:<br>
             <code id="ev-url-preview" style="font-family:var(--mono);font-size:11px;background:var(--aged);padding:3px 6px;border-radius:2px;display:inline-block;margin-top:2px">https://yourusername.github.io/timeline-viewer.html</code>
           </li>
           <li>In Squarespace, add a <strong>Code Block</strong> and paste:</li>
@@ -2319,7 +2320,7 @@
 // ══════════════════════════════════════════
 // VERSION
 // ══════════════════════════════════════════
-const BUILD = 16;
+const BUILD = 17;
 const VERSION = `v1.0-build${BUILD}`;
 
 // ══════════════════════════════════════════
@@ -2394,38 +2395,46 @@ function switchTab(name) {
 // ══════════════════════════════════════════
 // ADD ENTRY
 // ══════════════════════════════════════════
-function guessSortKey(yearStr, explicitSort) {
-  // If user typed a number in the Sort Key field, use it
-  const explicit = document.getElementById(explicitSort || 'f-sort').value.trim();
-  if (explicit !== '') return parseFloat(explicit);
-  // Otherwise try to parse the year display field
-  if (!yearStr) return entries.length;
+function parseSortKeyFromYear(yearStr) {
+  // Returns a numeric sort key parsed from the year text, or null if unparseable
+  if (!yearStr) return null;
   const s = yearStr.replace(/,/g,'').trim();
-  // BCE / BC
   const bce = s.match(/(-?\d+\.?\d*)\s*(bce|bc|b\.c\.?e?\.?)/i);
   if (bce) return -Math.abs(parseFloat(bce[1]));
-  // "Bya" = billion years ago, "Mya" = million years ago, "Kya" = thousand years ago
   const bya = s.match(/(-?\d+\.?\d*)\s*bya/i);
   if (bya) return -parseFloat(bya[1]) * 1e9;
   const mya = s.match(/(-?\d+\.?\d*)\s*mya/i);
   if (mya) return -parseFloat(mya[1]) * 1e6;
   const kya = s.match(/(-?\d+\.?\d*)\s*kya/i);
   if (kya) return -parseFloat(kya[1]) * 1e3;
-  // plain number or year like "1969" or "2001"
   const plain = s.match(/^-?\d+\.?\d*/);
   if (plain) return parseFloat(plain[0]);
-  return entries.length;
+  return null;
+}
+
+function guessSortKey(yearStr, explicitSort) {
+  // If user typed a number in the Sort Key field, use it
+  const explicit = document.getElementById(explicitSort || 'f-sort').value.trim();
+  if (explicit !== '') return { key: parseFloat(explicit), guessed: false };
+  // Otherwise try to parse the year display field
+  const parsed = parseSortKeyFromYear(yearStr);
+  if (parsed !== null) return { key: parsed, guessed: false };
+  // Unparseable/blank year — inherit from the most recently added entry rather than
+  // injecting a fake value like 0 or an entry count, which would corrupt time-proportional spacing
+  return { key: entries.length ? entries[entries.length - 1].sortKey : 0, guessed: true };
 }
 
 function addEntry() {
   const title = document.getElementById('f-title').value.trim();
   if (!title) { document.getElementById('f-title').focus(); return; }
   const yearVal = document.getElementById('f-year').value.trim();
+  const sortResult = guessSortKey(yearVal, 'f-sort');
   const entry = {
     id: nextId++,
     title,
     year: yearVal,
-    sortKey: guessSortKey(yearVal, 'f-sort'),
+    sortKey: sortResult.key,
+    sortKeyGuessed: sortResult.guessed,
     desc: document.getElementById('f-desc').value.trim(),
     color: document.getElementById('f-color').value,
     category: document.getElementById('f-category').value.trim(),
@@ -2610,7 +2619,23 @@ function saveEdit() {
   if (!e) return;
   e.title = document.getElementById('e-title').value.trim();
   e.year = document.getElementById('e-year').value.trim();
-  e.sortKey = parseFloat(document.getElementById('e-sort').value) || 0;
+
+  const explicitSort = document.getElementById('e-sort').value.trim();
+  if (explicitSort !== '') {
+    e.sortKey = parseFloat(explicitSort);
+    e.sortKeyGuessed = false;
+  } else {
+    const parsed = parseSortKeyFromYear(e.year);
+    if (parsed !== null) {
+      e.sortKey = parsed;
+      e.sortKeyGuessed = false;
+    } else {
+      // Both sort key and year are blank/unparseable — keep whatever sortKey this entry
+      // already had rather than resetting it to 0, which would corrupt proportional spacing
+      e.sortKeyGuessed = true;
+    }
+  }
+
   e.desc = document.getElementById('e-desc').value.trim();
   e.color = document.getElementById('e-color').value;
   e.category = document.getElementById('e-category').value.trim();
@@ -2949,6 +2974,7 @@ function loadImportanceColors() {
 // BUILD LOG
 // ══════════════════════════════════════════
 const BUILD_LOG = [
+  { build: 17, date: '2026-07', desc: 'Fixed the proportional-spacing "long empty spline" bug — entries with a blank Year and blank Sort Key were being assigned fake sort values (0, or an entry count) that landed far outside the real date range, stretching the timeline\'s scale and crushing real entries together. These entries now inherit their neighbor\'s date context instead, so they sit naturally within the timeline rather than distorting it. Fixed cramped Orientation and Mobile Orientation radio buttons in the Style tab that were wrapping/clipping — now stack vertically like Spacing Mode. Export Viewer now auto-detects when the builder itself is hosted online and pre-fills the iframe code with the real URL instead of a generic placeholder.' },
   { build: 16, date: '2026-07', desc: 'Full code audit: validated JS syntax (both the builder and the inner exported-viewer script) with a real parser rather than guesswork, confirmed brace/paren/bracket balance, verified every getElementById() call resolves, checked for duplicate IDs and duplicate function definitions, confirmed the sheet column mapping is consistent across the setup script, the app, and the viewer. Fixed two real bugs found: (1) the Minimum Gap field showed on page load even though spacing mode defaults to Equal — now correctly hidden until Proportional is selected; (2) the exported viewer could end up with both "single-col" and "horizontal" CSS classes active at once if both settings were chosen together, causing conflicting layout rules — viewer now re-evaluates this every render just like the builder does.' },
   { build: 15, date: '2026-07', desc: 'Connector lines — thin L-shaped lines from each entry\'s content block to its node on the spine. Content boxes have a background color buffer so the line never appears behind text. Year grouping — events sharing the same year share a vertical connector segment near the spine that grows thicker with density (1px for 1 event, up to 6.5px for 5+). Each event\'s individual branch is drawn in its accent color. Works in both equal and proportional spacing modes.' },
   { build: 14, date: '2026-07', desc: 'Horizontal layout (↔) with alternating above/below entries. Time-proportional spacing. Compact mode. Mobile orientation override. All baked into exported viewer.' },
@@ -4024,6 +4050,7 @@ function saveProject() {
       title: e.title,
       year: e.year,
       sortKey: e.sortKey,
+      sortKeyGuessed: e.sortKeyGuessed || false,
       desc: e.desc,
       color: e.color,
       category: e.category || '',
@@ -4377,8 +4404,13 @@ async function loadSheetData(sheetInfo, tabName) {
     citation:   getCol('cm-citation'),
   };
 
-  // Skip header row (row 0), parse remaining rows
+  // Skip header row (row 0), parse remaining rows in sheet order.
+  // Track the last successfully-resolved sort key so that rows lacking both a
+  // Sort Key and a parseable Year can inherit a contextually reasonable value
+  // (their neighbor's era) instead of defaulting to 0, which would corrupt
+  // time-proportional spacing by anchoring the timeline's minimum at year 0.
   const sheetEntries = [];
+  let lastResolvedKey = null;
   rows.slice(1).forEach((row, i) => {
     const title = (row[cm.title] || '').trim();
     if (!title) return; // skip empty rows
@@ -4389,11 +4421,29 @@ async function loadSheetData(sheetInfo, tabName) {
     const mediaUrl = (row[cm.media] || '').trim();
     const color = (row[cm.color] || '').trim();
 
+    let sortKey, sortKeyGuessed;
+    if (!isNaN(sortRaw)) {
+      sortKey = sortRaw;
+      sortKeyGuessed = false;
+    } else {
+      const parsed = parseSortKeyFromYear(yearVal);
+      if (parsed !== null) {
+        sortKey = parsed;
+        sortKeyGuessed = false;
+      } else {
+        // No usable date info — inherit from the nearest preceding row that had one
+        sortKey = lastResolvedKey !== null ? lastResolvedKey : 0;
+        sortKeyGuessed = true;
+      }
+    }
+    if (!sortKeyGuessed) lastResolvedKey = sortKey;
+
     sheetEntries.push({
       id: nextId++,
       title,
       year: yearVal,
-      sortKey: isNaN(sortRaw) ? guessSortKeyFromYear(yearVal) : sortRaw,
+      sortKey,
+      sortKeyGuessed,
       desc: (row[cm.desc] || '').trim(),
       color: color.startsWith('#') ? color : '#b84c2e',
       category: (row[cm.category] || '').trim(),
@@ -4408,6 +4458,18 @@ async function loadSheetData(sheetInfo, tabName) {
       source: 'sheet'
     });
   });
+
+  // Second pass: any entries at the very TOP of the sheet that had no preceding
+  // resolved key (lastResolvedKey was still null when they were processed) should
+  // inherit forward from the first entry that DID resolve, rather than sitting at 0.
+  const firstResolved = sheetEntries.find(e => !e.sortKeyGuessed);
+  if (firstResolved) {
+    for (const e of sheetEntries) {
+      if (e.sortKeyGuessed && e.sortKey === 0 && sheetEntries.indexOf(e) < sheetEntries.indexOf(firstResolved)) {
+        e.sortKey = firstResolved.sortKey;
+      } else break;
+    }
+  }
 
   // Replace sheet-sourced entries, keep manual ones
   const manualEntries = entries.filter(e => e.source === 'manual');
@@ -4837,6 +4899,20 @@ function renderPresetsList() {
 // ══════════════════════════════════════════
 // EXPORT VIEWER
 // ══════════════════════════════════════════
+function guessViewerHostingUrl() {
+  // If the builder itself is hosted on the web (e.g. GitHub Pages), guess where a
+  // sibling timeline-viewer.html would live — same directory as the current page.
+  // Returns null if running from a local file, since no real URL can be guessed there.
+  if (window.location.protocol === 'file:') return null;
+  const path = window.location.pathname;
+  const lastSlash = path.lastIndexOf('/');
+  const lastSegment = path.slice(lastSlash + 1);
+  // If the last segment looks like a filename (has a dot, e.g. index.html), treat
+  // everything before it as the directory. Otherwise the whole path is a directory.
+  const dir = lastSegment.includes('.') ? path.slice(0, lastSlash + 1) : (path.endsWith('/') ? path : path + '/');
+  return window.location.origin + dir + 'timeline-viewer.html';
+}
+
 function openExportViewerModal() {
   // Show current sheet connection status
   const statusEl = document.getElementById('ev-sheet-status');
@@ -4849,6 +4925,30 @@ function openExportViewerModal() {
     statusEl.textContent = '⚠ No sheet connected yet. Go to the Connect tab first, or the viewer will show an empty timeline.';
     statusEl.style.color = '#8f3920';
   }
+
+  // Auto-detect and pre-fill the hosting URL if this builder itself is hosted on the web
+  const guessedUrl = guessViewerHostingUrl();
+  const urlPreviewEl = document.getElementById('ev-url-preview');
+  const iframeCodeEl = document.getElementById('ev-iframe-code');
+  const finalUrl = guessedUrl || 'https://yourusername.github.io/timeline-viewer.html';
+
+  if (urlPreviewEl) urlPreviewEl.textContent = finalUrl;
+  if (iframeCodeEl) {
+    iframeCodeEl.textContent = `<iframe src="${finalUrl}" width="100%" height="900px" frameborder="0" style="border:none"></iframe>`;
+  }
+
+  // Update the instructions to reflect whether we detected real hosting or are showing a placeholder
+  const stepsEl = document.getElementById('ev-hosting-note');
+  if (stepsEl) {
+    if (guessedUrl) {
+      stepsEl.textContent = `Detected — this builder is hosted at ${window.location.origin}${window.location.pathname}, so the viewer URL below has been pre-filled assuming you'll upload timeline-viewer.html to the same folder. Adjust it if you plan to put it somewhere else.`;
+      stepsEl.style.color = '#2d4a1e';
+    } else {
+      stepsEl.textContent = 'This builder is currently open as a local file, so the URL below is a placeholder — replace "yourusername" with your actual GitHub username once you\'ve uploaded the file.';
+      stepsEl.style.color = '#8f3920';
+    }
+  }
+
   document.getElementById('export-viewer-modal').classList.remove('hidden');
 }
 
