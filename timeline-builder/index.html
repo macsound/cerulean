@@ -988,6 +988,172 @@
   }
   .bg-layer-del:hover { opacity: 1; color: var(--rust); }
 
+  /* ── HORIZONTAL TIMELINE ── */
+  #timeline-canvas.horizontal {
+    display: flex;
+    flex-direction: column;
+    width: auto !important;
+    min-width: max-content;
+    overflow-x: auto;
+  }
+  #timeline-canvas.horizontal .tl-header {
+    padding: 30px 40px 20px;
+    flex-shrink: 0;
+  }
+  #timeline-canvas.horizontal .tl-body {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 0 60px 0;
+    min-height: 420px;
+    position: relative;
+  }
+  #timeline-canvas.horizontal .tl-spine {
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    bottom: auto;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+  }
+  #timeline-canvas.horizontal .tl-spine::before {
+    top: 50%; left: 0;
+    transform: translateY(-50%);
+    width: 10px; height: 10px;
+  }
+  #timeline-canvas.horizontal .tl-spine::after {
+    top: 50%; right: 0; left: auto;
+    transform: translateY(-50%);
+    width: 10px; height: 10px;
+  }
+  #timeline-canvas.horizontal .tl-entry {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    position: relative;
+    min-height: unset;
+    flex-shrink: 0;
+  }
+  #timeline-canvas.horizontal .tl-entry-above {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 28px;
+    text-align: center;
+  }
+  #timeline-canvas.horizontal .tl-entry-below {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 28px;
+    text-align: center;
+  }
+  #timeline-canvas.horizontal .tl-entry-node {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+  #timeline-canvas.horizontal .tl-entry-spacer { display: none; }
+  #timeline-canvas.horizontal .tl-entry-year { text-align: center; }
+  #timeline-canvas.horizontal .tl-entry-title { text-align: center; }
+  #timeline-canvas.horizontal .tl-entry-desc { text-align: center; font-size: 11px !important; }
+  #timeline-canvas.horizontal .tl-era-divider {
+    flex-direction: column;
+    width: 20px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #timeline-canvas.horizontal .tl-era-line {
+    width: 1px;
+    height: 40px;
+    flex: unset;
+  }
+  #timeline-canvas.horizontal .tl-era-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 2px;
+    font-size: 9px;
+    margin: 4px 0;
+  }
+
+  /* ── CONNECTOR LINES ── */
+  .tl-entry-connector {
+    position: absolute;
+    top: 16px; /* aligns with node center */
+    z-index: 1;
+    pointer-events: none;
+  }
+  /* Left-side connector: runs from content edge rightward to spine */
+  .tl-entry:nth-child(odd):not(.single-col-entry) .tl-entry-connector {
+    right: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  /* Right-side connector */
+  .tl-entry:nth-child(even):not(.single-col-entry) .tl-entry-connector {
+    left: 0;
+  }
+  .connector-h {
+    /* horizontal leg — goes from content to near spine */
+    height: 1.5px;
+    background: currentColor;
+    opacity: 0.35;
+    flex-shrink: 0;
+  }
+  .connector-v {
+    /* vertical shared leg — runs along spine side, thickens with density */
+    width: 2px;
+    background: currentColor;
+    opacity: 0.55;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+  /* Content box background clip — prevents line showing through text */
+  .tl-entry-content {
+    position: relative;
+  }
+  .tl-entry-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .tl-entry-content > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── COMPACT MODE ── */
+  #timeline-canvas.compact .tl-entry-desc { display: none; }
+  #timeline-canvas.compact .tl-entry-citation { display: none; }
+  #timeline-canvas.compact .tl-img-inline { display: none; }
+  #timeline-canvas.compact .tl-img-gallery { display: none; }
+  #timeline-canvas.compact .tl-img-hover-wrap { display: none; }
+  #timeline-canvas.compact .tl-entry-title { font-size: 13px !important; margin-bottom: 2px; }
+  #timeline-canvas.compact .tl-entry-year { font-size: 10px !important; margin-bottom: 1px; }
+  #timeline-canvas.compact .imp-badge { display: none; }
+
+  /* ── PROPORTIONAL SPACING — entries are absolutely positioned ── */
+  #timeline-canvas .tl-body.proportional {
+    padding: 0 0 60px;
+  }
+  #timeline-canvas .tl-body.proportional .tl-entry {
+    position: absolute;
+    width: 100%;
+  }
+
   /* ── SORT HIGHLIGHT ── */
   .sort-btn.active-sort { background: var(--rust) !important; border-color: var(--rust) !important; }
 
@@ -1528,11 +1694,82 @@
         </div>
       </div>
 
-      <!-- CANVAS SIZE -->
+      <!-- CANVAS SIZE & SPACING -->
       <div class="settings-group">
         <h3>Canvas &amp; Spacing</h3>
+
+        <!-- Orientation -->
         <div class="field">
-          <label>Width</label>
+          <label>Orientation</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border:1.5px solid var(--line);border-radius:2px;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1" id="orient-v-label">
+              <input type="radio" name="s-orientation" id="s-orientation-v" value="vertical" checked onchange="updateSettings()" style="accent-color:var(--rust)" />
+              ↕ Vertical
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border:1.5px solid var(--line);border-radius:2px;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1" id="orient-h-label">
+              <input type="radio" name="s-orientation" id="s-orientation-h" value="horizontal" onchange="updateSettings()" style="accent-color:var(--rust)" />
+              ↔ Horizontal
+            </label>
+          </div>
+        </div>
+
+        <!-- Mobile orientation -->
+        <div class="field">
+          <label>On Mobile <span style="opacity:0.4;font-size:9px">(screens under 768px)</span></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border:1.5px solid var(--line);border-radius:2px;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1">
+              <input type="radio" name="s-mobile-orientation" id="s-mobile-v" value="vertical" checked onchange="updateSettings()" style="accent-color:var(--rust)" />
+              ↕ Vertical
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border:1.5px solid var(--line);border-radius:2px;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1">
+              <input type="radio" name="s-mobile-orientation" id="s-mobile-h" value="horizontal" onchange="updateSettings()" style="accent-color:var(--rust)" />
+              ↔ Horizontal
+            </label>
+          </div>
+        </div>
+
+        <!-- Spacing mode -->
+        <div class="field">
+          <label>Entry Spacing Mode</label>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1">
+              <input type="radio" name="s-spacing-mode" id="s-spacing-equal" value="equal" checked onchange="updateSettings()" style="accent-color:var(--rust)" />
+              Equal spacing — every entry same height
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-family:var(--body);font-size:13px;text-transform:none;letter-spacing:0;margin:0;opacity:1">
+              <input type="radio" name="s-spacing-mode" id="s-spacing-proportional" value="proportional" onchange="updateSettings()" style="accent-color:var(--rust)" />
+              Time-proportional — gaps reflect real time
+            </label>
+          </div>
+        </div>
+
+        <!-- Min gap (shown when proportional) -->
+        <div class="field" id="s-mingap-field">
+          <label>Minimum gap between entries</label>
+          <div class="range-row">
+            <input type="range" id="s-min-gap" min="20" max="120" value="40" oninput="updateSettings(); this.nextElementSibling.textContent=this.value+'px'" />
+            <span class="range-val">40px</span>
+          </div>
+          <div style="font-family:var(--mono);font-size:9px;opacity:0.4;margin-top:3px">Prevents entries from overlapping even when they're close in time</div>
+        </div>
+
+        <!-- Equal spacing slider (shown when equal) -->
+        <div class="field" id="s-spacing-field">
+          <label>Entry Spacing</label>
+          <div class="range-row">
+            <input type="range" id="s-spacing" min="0" max="80" value="20" oninput="updateSettings(); this.nextElementSibling.textContent=this.value+'px'" />
+            <span class="range-val">20px</span>
+          </div>
+        </div>
+
+        <!-- Compact mode -->
+        <div class="field" style="display:flex;align-items:center;gap:10px;margin-top:4px">
+          <input type="checkbox" id="s-compact" style="accent-color:var(--rust);width:16px;height:16px" onchange="updateSettings()" />
+          <label style="margin:0;opacity:1;font-family:var(--body);font-size:14px;text-transform:none;letter-spacing:0">Compact mode — hide descriptions, show only year + title</label>
+        </div>
+
+        <div class="field">
+          <label>Canvas Width</label>
           <div class="range-row">
             <input type="range" id="s-width" min="600" max="2400" step="50" value="900" oninput="updateSettings(); this.nextElementSibling.textContent=this.value+'px'" />
             <span class="range-val">900px</span>
@@ -1543,13 +1780,6 @@
           <div class="range-row">
             <input type="range" id="s-zoom" min="25" max="150" value="100" oninput="applyZoom(); this.nextElementSibling.textContent=this.value+'%'" />
             <span class="range-val">100%</span>
-          </div>
-        </div>
-        <div class="field">
-          <label>Entry Spacing</label>
-          <div class="range-row">
-            <input type="range" id="s-spacing" min="0" max="80" value="20" oninput="updateSettings(); this.nextElementSibling.textContent=this.value+'px'" />
-            <span class="range-val">20px</span>
           </div>
         </div>
       </div>
@@ -1637,7 +1867,7 @@
     <div id="status-bar">
       <span id="status-count">0 entries</span>
       <span id="status-dims">— px</span>
-      <span>Chronicle v1.0 · Build 13</span>
+      <span>Chronicle v1.0 · Build 16</span>
       <button onclick="openLog()" style="background:none;border:none;cursor:pointer;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,0.3);padding:0;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(245,240,232,0.7)'" onmouseout="this.style.color='rgba(245,240,232,0.3)'">📋 Log</button>
     </div>
   </div>
@@ -2089,7 +2319,7 @@
 // ══════════════════════════════════════════
 // VERSION
 // ══════════════════════════════════════════
-const BUILD = 13;
+const BUILD = 16;
 const VERSION = `v1.0-build${BUILD}`;
 
 // ══════════════════════════════════════════
@@ -2127,6 +2357,11 @@ const settings = {
   textureUrl: '',
   textureOpacity: 0.15,
   layout: 'alternating',
+  orientation: 'vertical',
+  mobileOrientation: 'vertical',
+  spacingMode: 'equal',
+  minGap: 40,
+  compactMode: false,
   titleSize: 42,
   entryTitleSize: 18,
   descSize: 14,
@@ -2489,7 +2724,9 @@ function renderTimeline() {
     textureOverlay.remove();
   }
 
-  canvas.classList.toggle('single-col', settings.layout === 'single');
+  canvas.classList.toggle('single-col', settings.layout === 'single' && settings.orientation === 'vertical');
+  canvas.classList.toggle('horizontal', settings.orientation === 'horizontal');
+  canvas.classList.toggle('compact', settings.compactMode);
 
   // Dark theme detection
   const bgRgb = hexToRgb(settings.bg).split(',').map(Number);
@@ -2503,108 +2740,55 @@ function renderTimeline() {
   const swatch = document.getElementById('bg-preview-swatch');
   if (swatch) swatch.style.background = bgCSS;
 
-  // Filter entries
   const visibleEntries = getVisibleEntries();
+  const eras = parseEras();
+  const importanceLabels = ['','Blip','Moment','Event','Milestone','Landmark'];
 
   if (!visibleEntries.length) {
     container.innerHTML = entries.length
       ? '<div class="empty-state"><div class="icon">🔍</div><p>No entries match the current filters</p></div>'
       : '<div class="empty-state"><div class="icon">📜</div><p>Add your first event to begin the chronicle…</p></div>';
+    if (settings.orientation === 'horizontal') {
+      document.getElementById('tl-body').style.cssText = '';
+    }
     return;
   }
 
-  // Parse eras
-  const eras = parseEras();
+  // ── PROPORTIONAL SPACING MATH ──
+  let positionMap = null; // entry id → position (px from top or left)
+  if (settings.spacingMode === 'proportional' && visibleEntries.length > 1) {
+    const sortKeys = visibleEntries.map(e => e.sortKey);
+    const minKey = Math.min(...sortKeys);
+    const maxKey = Math.max(...sortKeys);
+    const span = maxKey - minKey || 1;
+    const minGap = settings.minGap || 40;
 
-  // Build entries HTML with era dividers interspersed
-  const importanceLabels = ['','Blip','Moment','Event','Milestone','Landmark'];
-  let html = '';
-  let lastEraInserted = -1;
+    // First pass: ideal proportional positions
+    const totalSize = Math.max(600, visibleEntries.length * minGap * 2);
+    let positions = visibleEntries.map(e => ((e.sortKey - minKey) / span) * totalSize);
 
-  visibleEntries.forEach((e, i) => {
-    // Insert era divider if an era starts before or at this entry's sort key
-    if (eras.length && settings.showEras) {
-      eras.forEach((era, ei) => {
-        if (ei > lastEraInserted && e.sortKey >= era.year) {
-          html += `<div class="tl-era-divider" style="z-index:1;position:relative">
-            <div class="tl-era-line"></div>
-            <div class="tl-era-label" style="font-family:${displayFont}">${era.label}</div>
-            <div class="tl-era-line"></div>
-          </div>`;
-          lastEraInserted = ei;
-        }
-      });
-    }
-
-    const color = settings.overrideColors ? settings.overrideColor
-      : (settings.categoryColors && settings.categoryColors[e.category] ? settings.categoryColors[e.category] : e.color);
-    const imp = e.importance || 3;
-    const mediaType = detectMediaType(e.mediaUrl);
-    const safeMedia = (e.mediaUrl || '').replace(/'/g, "\\'");
-
-    const mediaBadge = mediaType ? `
-      <div class="media-badge" style="color:${color}"
-        onmouseenter="showMediaPopup(event,'${safeMedia}','${mediaType}')"
-        onmouseleave="scheduleHidePopup()"
-        onclick="showMediaPopup(event,'${safeMedia}','${mediaType}')">
-        ${mediaType === 'youtube' || mediaType === 'vimeo' || mediaType === 'video' ? '▶' : '⊞'}
-      </div>` : '';
-
-    // Images HTML based on display mode
-    const imgs = e.images && e.images.length ? e.images : (e.img ? [e.img] : []);
-    const imgDisplay = e.imageDisplay || 'inline';
-    let imagesHtml = '';
-    if (imgs.length) {
-      const entryId = e.id;
-      if (imgDisplay === 'inline') {
-        imagesHtml = imgs.map((src, idx) => `
-          <img class="tl-img-inline" src="${src}" alt="${e.title}"
-            onclick="openLightbox(${entryId},${idx})"
-            title="Click to enlarge" />`).join('');
-      } else if (imgDisplay === 'thumbnail') {
-        imagesHtml = `<div class="tl-img-gallery">${imgs.map((src, idx) => `
-          <img class="tl-img-thumb" src="${src}" alt="${e.title} photo ${idx+1}"
-            onclick="openLightbox(${entryId},${idx})"
-            title="Click to enlarge" />`).join('')}</div>`;
-      } else if (imgDisplay === 'hover') {
-        imagesHtml = `<div class="tl-img-hover-wrap">
-          <div class="tl-img-hidden-badge" onclick="openLightbox(${entryId},0)">
-            📷 ${imgs.length} photo${imgs.length > 1 ? 's' : ''} — hover to preview
-          </div>
-          <div class="tl-img-hover-preview">
-            <img src="${imgs[0]}" alt="${e.title}" />
-          </div>
-        </div>`;
+    // Second pass: enforce minimum gap
+    for (let i = 1; i < positions.length; i++) {
+      if (positions[i] - positions[i-1] < minGap) {
+        positions[i] = positions[i-1] + minGap;
       }
     }
 
-    const impScale = [0, 0.8, 0.9, 1, 1.12, 1.28][imp] || 1;
-    const titleSize = Math.round(settings.entryTitleSize * impScale);
+    // Add header offset
+    const headerOffset = 120;
+    positions = positions.map(p => p + headerOffset);
+    const totalCanvas = positions[positions.length - 1] + 120;
 
-    const locationHtml = e.location ? `<div style="font-family:var(--mono);font-size:${settings.descSize - 3}px;opacity:0.4;margin-top:3px">📍 ${e.location}</div>` : '';
-    const citationHtml = e.citation ? `<div class="tl-entry-citation">Source: ${e.citation}</div>` : '';
-    const impHtml = imp !== 3 ? `<div class="imp-badge" style="color:${color}">${importanceLabels[imp].toUpperCase()}</div>` : '';
+    positionMap = {};
+    visibleEntries.forEach((e, i) => { positionMap[e.id] = { pos: positions[i], total: totalCanvas }; });
+  }
 
-    html += `
-    <div class="tl-entry imp-${imp}" style="padding-bottom:${settings.spacing + 20}px" data-id="${e.id}">
-      ${settings.layout !== 'single' ? `<div class="tl-entry-spacer"></div>` : ''}
-      <div class="tl-entry-node">
-        <div class="tl-node-dot" style="border-color:${color};background:${color}"></div>
-      </div>
-      <div class="tl-entry-content" style="position:relative">
-        ${impHtml}
-        <div class="tl-entry-year" style="font-size:${settings.descSize - 2}px;font-family:var(--mono)">${e.year}</div>
-        <div class="tl-entry-title" style="font-size:${titleSize}px;color:${color};font-family:${displayFont}">${e.title}</div>
-        ${locationHtml}
-        ${e.desc ? `<div class="tl-entry-desc" style="font-size:${settings.descSize}px;font-family:${bodyFont}">${e.desc}</div>` : ''}
-        ${citationHtml}
-        ${imagesHtml}
-        ${mediaBadge}
-      </div>
-    </div>`;
-  });
-
-  container.innerHTML = html;
+  // ── BUILD HTML ──
+  if (settings.orientation === 'horizontal') {
+    renderHorizontalTimeline(container, visibleEntries, eras, importanceLabels, displayFont, bodyFont);
+  } else {
+    renderVerticalTimeline(container, visibleEntries, eras, importanceLabels, displayFont, bodyFont, positionMap);
+  }
 }
 
 // ══════════════════════════════════════════
@@ -2631,6 +2815,20 @@ function updateSettings() {
   settings.textureUrl = document.getElementById('s-texture-url').value;
   settings.textureOpacity = parseFloat(document.getElementById('s-texture-opacity').value);
   settings.layout = document.getElementById('s-layout').value;
+  const orientV = document.getElementById('s-orientation-v');
+  settings.orientation = (orientV && orientV.checked) ? 'vertical' : 'horizontal';
+  const mobileV = document.getElementById('s-mobile-v');
+  settings.mobileOrientation = (mobileV && mobileV.checked) ? 'vertical' : 'horizontal';
+  const spacingEqual = document.getElementById('s-spacing-equal');
+  settings.spacingMode = (spacingEqual && spacingEqual.checked) ? 'equal' : 'proportional';
+  settings.minGap = parseInt(document.getElementById('s-min-gap') ? document.getElementById('s-min-gap').value : 40);
+  settings.compactMode = document.getElementById('s-compact') ? document.getElementById('s-compact').checked : false;
+
+  // Show/hide relevant spacing controls
+  const mingapField = document.getElementById('s-mingap-field');
+  const spacingField = document.getElementById('s-spacing-field');
+  if (mingapField) mingapField.style.display = settings.spacingMode === 'proportional' ? '' : 'none';
+  if (spacingField) spacingField.style.display = settings.spacingMode === 'equal' ? '' : 'none';
   settings.titleSize = parseInt(document.getElementById('s-title-size').value);
   settings.entryTitleSize = parseInt(document.getElementById('s-entry-title-size').value);
   settings.descSize = parseInt(document.getElementById('s-desc-size').value);
@@ -2751,6 +2949,9 @@ function loadImportanceColors() {
 // BUILD LOG
 // ══════════════════════════════════════════
 const BUILD_LOG = [
+  { build: 16, date: '2026-07', desc: 'Full code audit: validated JS syntax (both the builder and the inner exported-viewer script) with a real parser rather than guesswork, confirmed brace/paren/bracket balance, verified every getElementById() call resolves, checked for duplicate IDs and duplicate function definitions, confirmed the sheet column mapping is consistent across the setup script, the app, and the viewer. Fixed two real bugs found: (1) the Minimum Gap field showed on page load even though spacing mode defaults to Equal — now correctly hidden until Proportional is selected; (2) the exported viewer could end up with both "single-col" and "horizontal" CSS classes active at once if both settings were chosen together, causing conflicting layout rules — viewer now re-evaluates this every render just like the builder does.' },
+  { build: 15, date: '2026-07', desc: 'Connector lines — thin L-shaped lines from each entry\'s content block to its node on the spine. Content boxes have a background color buffer so the line never appears behind text. Year grouping — events sharing the same year share a vertical connector segment near the spine that grows thicker with density (1px for 1 event, up to 6.5px for 5+). Each event\'s individual branch is drawn in its accent color. Works in both equal and proportional spacing modes.' },
+  { build: 14, date: '2026-07', desc: 'Horizontal layout (↔) with alternating above/below entries. Time-proportional spacing. Compact mode. Mobile orientation override. All baked into exported viewer.' },
   { build: 13, date: '2026-07', desc: 'Fixed Export Viewer button — was crashing due to a stale variable name (sheetInfoExp) left over from a prior refactor. Viewer now downloads correctly.' },
   { build: 12, date: '2026-07', desc: 'Rewritten setup script v2: 17 columns (A–K sync to app, L–Q admin only). Added Category, Importance, Location, Citation as proper sheet columns H–K. Column mapping UI updated to match all 11 app fields. Empty sheet (headers only) now connects successfully instead of erroring.' },
   { build: 11, date: '2026-07', desc: 'Improved connection error messages. Added file:// protocol warning banner in Connect tab explaining why Google Sheets won\'t load from a local file and how to fix it.' },
@@ -2779,8 +2980,265 @@ function openLog() {
   document.getElementById('log-modal').classList.remove('hidden');
 }
 
-// ══════════════════════════════════════════
-// FILTER SYSTEM
+// ── SHARED ENTRY HTML BUILDER ──
+function buildEntryContentHtml(e, displayFont, bodyFont, extraStyle) {
+  const color = settings.overrideColors ? settings.overrideColor
+    : (settings.categoryColors && settings.categoryColors[e.category] ? settings.categoryColors[e.category] : e.color);
+  const imp = e.importance || 3;
+  const impScale = [0, 0.8, 0.9, 1, 1.12, 1.28][imp] || 1;
+  const titleSize = Math.round(settings.entryTitleSize * impScale);
+  const importanceLabels = ['','Blip','Moment','Event','Milestone','Landmark'];
+  const mediaType = detectMediaType(e.mediaUrl);
+  const safeMedia = (e.mediaUrl || '').replace(/'/g, "\\'");
+
+  const mediaBadge = mediaType ? `<div class="media-badge" style="color:${color}"
+    onmouseenter="showMediaPopup(event,'${safeMedia}','${mediaType}')"
+    onmouseleave="scheduleHidePopup()"
+    onclick="showMediaPopup(event,'${safeMedia}','${mediaType}')">
+    ${mediaType === 'youtube' || mediaType === 'vimeo' || mediaType === 'video' ? '▶' : '⊞'}
+  </div>` : '';
+
+  const imgs = e.images && e.images.length ? e.images : (e.img ? [e.img] : []);
+  const imgDisplay = e.imageDisplay || 'inline';
+  let imagesHtml = '';
+  if (imgs.length) {
+    if (imgDisplay === 'inline') {
+      imagesHtml = imgs.map((src, idx) => `<img class="tl-img-inline" src="${src}" alt="${e.title}" onclick="openLightbox(${e.id},${idx})" title="Click to enlarge" />`).join('');
+    } else if (imgDisplay === 'thumbnail') {
+      imagesHtml = `<div class="tl-img-gallery">${imgs.map((src, idx) => `<img class="tl-img-thumb" src="${src}" alt="${e.title} photo ${idx+1}" onclick="openLightbox(${e.id},${idx})" title="Click to enlarge" />`).join('')}</div>`;
+    } else if (imgDisplay === 'hover') {
+      imagesHtml = `<div class="tl-img-hover-wrap"><div class="tl-img-hidden-badge" onclick="openLightbox(${e.id},0)">📷 ${imgs.length} photo${imgs.length > 1 ? 's' : ''} — hover</div><div class="tl-img-hover-preview"><img src="${imgs[0]}" alt="${e.title}" /></div></div>`;
+    }
+  }
+
+  const locationHtml = e.location ? `<div style="font-family:var(--mono);font-size:${settings.descSize-3}px;opacity:0.4;margin-top:3px">📍 ${e.location}</div>` : '';
+  const citationHtml = e.citation ? `<div class="tl-entry-citation">Source: ${e.citation}</div>` : '';
+  const impHtml = imp !== 3 ? `<div class="imp-badge" style="color:${color}">${importanceLabels[imp].toUpperCase()}</div>` : '';
+
+  return { color, imp, titleSize, contentHtml: `
+    ${impHtml}
+    <div class="tl-entry-year" style="font-size:${settings.descSize-2}px;font-family:var(--mono)">${e.year}</div>
+    <div class="tl-entry-title" style="font-size:${titleSize}px;color:${color};font-family:${displayFont}">${e.title}</div>
+    ${locationHtml}
+    ${e.desc ? `<div class="tl-entry-desc" style="font-size:${settings.descSize}px;font-family:${bodyFont}">${e.desc}</div>` : ''}
+    ${citationHtml}
+    ${imagesHtml}
+    ${mediaBadge}
+  `};
+}
+
+// ── YEAR GROUPING FOR CONNECTOR THICKNESS ──
+function buildYearGroups(visibleEntries) {
+  const groups = new Map();
+  visibleEntries.forEach(e => {
+    const key = Math.round(e.sortKey);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(e);
+  });
+  const groupSize = new Map();
+  const groupIndex = new Map();
+  groups.forEach(members => {
+    members.forEach((e, i) => {
+      groupSize.set(e.id, members.length);
+      groupIndex.set(e.id, i);
+    });
+  });
+  return { groupSize, groupIndex };
+}
+
+function connectorThickness(count) {
+  return Math.min(6.5, 1.5 + (count - 1) * 1.2);
+}
+
+// ── VERTICAL TIMELINE RENDERER ──
+function renderVerticalTimeline(container, visibleEntries, eras, importanceLabels, displayFont, bodyFont, positionMap) {
+  const body = document.getElementById('tl-body');
+  const isSingle = settings.layout === 'single';
+  const bgColor = settings.bg || '#f5f0e8';
+  let html = '';
+  let lastEraInserted = -1;
+
+  const { groupSize, groupIndex } = buildYearGroups(visibleEntries);
+
+  function makeConnector(e, color, isLeft) {
+    const count = groupSize.get(e.id) || 1;
+    const thick = connectorThickness(count);
+    const gIdx = groupIndex.get(e.id) || 0;
+    const totalVHeight = (count - 1) * 20;
+    const myVOffset = gIdx * 20 - totalVHeight / 2;
+    const hLen = 22;
+
+    if (count === 1) {
+      // Simple horizontal connector
+      const borderR = isLeft ? '1px 0 0 1px' : '0 1px 1px 0';
+      const side = isLeft ? 'right:calc(50% - 38px)' : 'left:calc(50% - 38px)';
+      return `<div style="position:absolute;${side};top:14px;display:flex;align-items:center;pointer-events:none;z-index:1">
+        <div style="height:${thick * 0.55}px;width:${hLen}px;background:${color};opacity:0.38;border-radius:${borderR}"></div>
+      </div>`;
+    }
+
+    // Multi-event: L-shape connector
+    // Vertical shared leg rendered only by first entry in group (gIdx===0)
+    const side = isLeft ? `right:calc(50% - 38px)` : `left:calc(50% - 38px)`;
+    const flexDir = isLeft ? 'row' : 'row-reverse';
+    const hBorderR = isLeft ? '1px 0 0 1px' : '0 1px 1px 0';
+    return `<div style="position:absolute;${side};top:${14 + myVOffset}px;display:flex;flex-direction:${flexDir};align-items:flex-start;pointer-events:none;z-index:1">
+      ${gIdx === 0 ? `<div style="width:${thick}px;height:${totalVHeight + thick * 0.8}px;background:${color};opacity:0.55;border-radius:${thick / 2}px;flex-shrink:0;align-self:flex-start"></div>` : `<div style="width:${thick}px;flex-shrink:0"></div>`}
+      <div style="height:${thick * 0.55}px;width:${hLen}px;background:${color};opacity:0.38;align-self:center;border-radius:${hBorderR};flex-shrink:0"></div>
+    </div>`;
+  }
+
+  function makeSingleColConnector(e, color) {
+    const count = groupSize.get(e.id) || 1;
+    const thick = connectorThickness(count);
+    const gIdx = groupIndex.get(e.id) || 0;
+    const totalVHeight = (count - 1) * 20;
+    const myVOffset = gIdx * 20 - totalVHeight / 2;
+    return `<div style="position:absolute;left:40px;top:${14 + myVOffset}px;display:flex;flex-direction:row;align-items:flex-start;pointer-events:none;z-index:1">
+      ${gIdx === 0 && count > 1 ? `<div style="width:${thick}px;height:${totalVHeight + thick * 0.8}px;background:${color};opacity:0.55;border-radius:${thick / 2}px;flex-shrink:0"></div>` : `<div style="width:${thick}px;flex-shrink:0"></div>`}
+      <div style="height:${thick * 0.55}px;width:22px;background:${color};opacity:0.38;align-self:center;border-radius:0 1px 1px 0;flex-shrink:0"></div>
+    </div>`;
+  }
+
+  if (positionMap) {
+    const lastEntry = visibleEntries[visibleEntries.length - 1];
+    body.style.height = positionMap[lastEntry.id].total + 'px';
+    body.classList.add('proportional');
+
+    visibleEntries.forEach((e, i) => {
+      const { color, imp, contentHtml } = buildEntryContentHtml(e, displayFont, bodyFont);
+      const pos = positionMap[e.id].pos;
+      const isLeft = isSingle ? false : (i % 2 === 0);
+      const connector = isSingle ? makeSingleColConnector(e, color) : makeConnector(e, color, isLeft);
+
+      if (eras.length && settings.showEras) {
+        eras.forEach((era, ei) => {
+          if (ei > lastEraInserted && e.sortKey >= era.year) {
+            html += `<div class="tl-era-divider" style="position:absolute;top:${pos - 30}px;left:0;right:0;z-index:1">
+              <div class="tl-era-line"></div>
+              <div class="tl-era-label" style="font-family:${displayFont}">${era.label}</div>
+              <div class="tl-era-line"></div>
+            </div>`;
+            lastEraInserted = ei;
+          }
+        });
+      }
+
+      html += `<div class="tl-entry imp-${imp}" style="position:absolute;top:${pos}px;width:100%" data-id="${e.id}">
+        ${isSingle ? '' : `<div class="tl-entry-spacer"></div>`}
+        <div class="tl-entry-node" ${isSingle ? 'style="left:40px"' : ''}>
+          <div class="tl-node-dot" style="border-color:${color};background:${color}"></div>
+        </div>
+        <div class="tl-entry-content" style="background:${bgColor}">
+          ${contentHtml}
+        </div>
+        ${connector}
+      </div>`;
+    });
+
+  } else {
+    body.style.height = '';
+    body.classList.remove('proportional');
+
+    visibleEntries.forEach((e, i) => {
+      const { color, imp, contentHtml } = buildEntryContentHtml(e, displayFont, bodyFont);
+      const pb = settings.spacing + 20;
+      const isLeft = isSingle ? false : (i % 2 === 0);
+      const connector = isSingle ? makeSingleColConnector(e, color) : makeConnector(e, color, isLeft);
+
+      if (eras.length && settings.showEras) {
+        eras.forEach((era, ei) => {
+          if (ei > lastEraInserted && e.sortKey >= era.year) {
+            html += `<div class="tl-era-divider" style="z-index:1;position:relative">
+              <div class="tl-era-line"></div>
+              <div class="tl-era-label" style="font-family:${displayFont}">${era.label}</div>
+              <div class="tl-era-line"></div>
+            </div>`;
+            lastEraInserted = ei;
+          }
+        });
+      }
+
+      html += `<div class="tl-entry imp-${imp}" style="padding-bottom:${pb}px;position:relative" data-id="${e.id}">
+        ${isSingle ? '' : `<div class="tl-entry-spacer"></div>`}
+        <div class="tl-entry-node">
+          <div class="tl-node-dot" style="border-color:${color};background:${color}"></div>
+        </div>
+        <div class="tl-entry-content" style="background:${bgColor}">
+          ${contentHtml}
+        </div>
+        ${connector}
+      </div>`;
+    });
+  }
+
+  container.innerHTML = html;
+}
+
+// ── HORIZONTAL TIMELINE RENDERER ──
+function renderHorizontalTimeline(container, visibleEntries, eras, importanceLabels, displayFont, bodyFont) {
+  const body = document.getElementById('tl-body');
+  body.style.height = '';
+  body.classList.remove('proportional');
+
+  // For horizontal, calculate proportional widths if in proportional mode
+  let widthMap = null;
+  if (settings.spacingMode === 'proportional' && visibleEntries.length > 1) {
+    const sortKeys = visibleEntries.map(e => e.sortKey);
+    const minKey = Math.min(...sortKeys);
+    const maxKey = Math.max(...sortKeys);
+    const span = maxKey - minKey || 1;
+    const minGap = settings.minGap || 40;
+    const entryWidth = Math.max(140, minGap * 2);
+    const totalWidth = Math.max(visibleEntries.length * entryWidth, 800);
+
+    let positions = visibleEntries.map(e => ((e.sortKey - minKey) / span) * (totalWidth - entryWidth));
+    for (let i = 1; i < positions.length; i++) {
+      if (positions[i] - positions[i-1] < minGap) positions[i] = positions[i-1] + minGap;
+    }
+    widthMap = visibleEntries.map((e, i) => ({
+      marginLeft: i === 0 ? positions[0] : positions[i] - positions[i-1] - entryWidth,
+      width: entryWidth
+    }));
+  }
+
+  let html = '';
+  let lastEraInserted = -1;
+
+  visibleEntries.forEach((e, i) => {
+    const { color, imp, contentHtml } = buildEntryContentHtml(e, displayFont, bodyFont);
+    const isAbove = i % 2 === 0;
+    const entryWidth = widthMap ? widthMap[i].width : Math.max(120, settings.entryTitleSize * 8);
+    const marginLeft = widthMap ? widthMap[i].marginLeft : settings.spacing + 8;
+
+    // Era divider (vertical label in horizontal mode)
+    if (eras.length && settings.showEras) {
+      eras.forEach((era, ei) => {
+        if (ei > lastEraInserted && e.sortKey >= era.year) {
+          html += `<div class="tl-era-divider">
+            <div class="tl-era-line"></div>
+            <div class="tl-era-label" style="font-family:${displayFont}">${era.label}</div>
+            <div class="tl-era-line"></div>
+          </div>`;
+          lastEraInserted = ei;
+        }
+      });
+    }
+
+    const aboveContent = isAbove ? `<div class="tl-entry-above" style="font-family:${displayFont}">${contentHtml}</div>` : `<div class="tl-entry-above"></div>`;
+    const belowContent = isAbove ? `<div class="tl-entry-below"></div>` : `<div class="tl-entry-below" style="font-family:${displayFont}">${contentHtml}</div>`;
+
+    html += `<div class="tl-entry imp-${imp}" style="width:${entryWidth}px;margin-left:${marginLeft}px;flex-shrink:0" data-id="${e.id}">
+      ${aboveContent}
+      <div class="tl-entry-node">
+        <div class="tl-node-dot" style="border-color:${color};background:${color}"></div>
+      </div>
+      ${belowContent}
+    </div>`;
+  });
+
+  container.innerHTML = html;
+}
 // ══════════════════════════════════════════
 function getVisibleEntries() {
   return entries.filter(e => {
@@ -4584,6 +5042,38 @@ body {
 .viewer-timestamp { text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(26,18,8,0.3);padding:8px;${showTimestamp ? '' : 'display:none;'} }
 /* Dark theme */
 .theme-dark .tl-title,.theme-dark .tl-subtitle,.theme-dark .tl-byline,.theme-dark .tl-entry-year,.theme-dark .tl-entry-desc,.theme-dark .tl-entry-citation { color:rgba(245,240,232,0.85)!important; }
+/* Compact mode */
+.compact .tl-entry-desc,.compact .tl-entry-citation,.compact .tl-img-inline,.compact .tl-img-gallery,.compact .tl-img-hover-wrap { display:none!important; }
+.compact .tl-entry-title { font-size:13px!important;margin-bottom:2px; }
+.compact .tl-entry-year { font-size:10px!important;margin-bottom:1px; }
+.compact .imp-badge { display:none; }
+/* Horizontal timeline */
+#timeline-canvas.horizontal { display:flex;flex-direction:column;width:auto!important;min-width:max-content;overflow-x:auto; }
+#timeline-canvas.horizontal .tl-body { display:flex;flex-direction:row;align-items:stretch;padding:0 60px;min-height:420px;position:relative; }
+#timeline-canvas.horizontal .tl-spine { position:absolute;left:0;right:0;top:50%;bottom:auto;width:100%;height:2px;transform:translateY(-50%); }
+#timeline-canvas.horizontal .tl-spine::before { top:50%;left:0;transform:translateY(-50%);width:10px;height:10px; }
+#timeline-canvas.horizontal .tl-spine::after { top:50%;right:0;left:auto;transform:translateY(-50%);width:10px;height:10px; }
+#timeline-canvas.horizontal .tl-entry { display:flex;flex-direction:column!important;align-items:center;position:relative;min-height:unset;flex-shrink:0; }
+#timeline-canvas.horizontal .tl-entry-above { flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:28px;text-align:center; }
+#timeline-canvas.horizontal .tl-entry-below { flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:28px;text-align:center; }
+#timeline-canvas.horizontal .tl-entry-node { position:relative;left:auto;top:auto;transform:none;flex-shrink:0;z-index:2; }
+#timeline-canvas.horizontal .tl-entry-spacer { display:none; }
+#timeline-canvas.horizontal .tl-era-divider { flex-direction:column;width:20px;padding:0;align-items:center;justify-content:center;flex-shrink:0; }
+#timeline-canvas.horizontal .tl-era-line { width:1px;height:40px;flex:unset; }
+#timeline-canvas.horizontal .tl-era-label { writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:2px;font-size:9px;margin:4px 0; }
+/* Proportional vertical */
+.tl-body.proportional .tl-entry { position:absolute;width:100%; }
+/* Mobile override */
+@media (max-width: 768px) {
+  #timeline-canvas.mobile-vertical { display:block!important; }
+  #timeline-canvas.mobile-vertical .tl-body { display:block!important;min-height:unset!important; }
+  #timeline-canvas.mobile-vertical .tl-spine { position:absolute;left:50%;top:0;bottom:0;width:2px;height:auto;transform:translateX(-50%)!important; }
+  #timeline-canvas.mobile-vertical .tl-entry { flex-direction:row!important;min-height:80px; }
+  #timeline-canvas.mobile-vertical .tl-entry:nth-child(even) { flex-direction:row-reverse!important; }
+  #timeline-canvas.mobile-vertical .tl-entry-node { position:absolute;left:50%;top:8px;transform:translateX(-50%); }
+  #timeline-canvas.mobile-vertical .tl-entry-above,.tl-entry-below { display:none; }
+  #timeline-canvas.mobile-vertical .tl-entry-content { display:block;width:calc(50% - 40px);padding:0 20px 30px; }
+}
 /* Single col */
 #timeline-canvas.single-col .tl-spine { left:40px; }
 #timeline-canvas.single-col .tl-entry { flex-direction:row!important; }
@@ -4623,7 +5113,7 @@ body {
 </div>
 
 <!-- Timeline canvas -->
-<div id="timeline-canvas" class="${s.layout === 'single' ? 'single-col' : ''}${s.spineColor !== '#1a1208' ? '' : ''}">
+<div id="timeline-canvas">
   <div class="tl-header">
     <div class="tl-title">${escapeHtml(s.title)}</div>
     ${s.author ? `<div class="tl-byline">by ${escapeHtml(s.author)}</div>` : ''}
@@ -4676,6 +5166,11 @@ const SETTINGS = ${JSON.stringify({
   descSize: s.descSize,
   spacing: s.spacing,
   layout: s.layout,
+  orientation: s.orientation || 'vertical',
+  mobileOrientation: s.mobileOrientation || 'vertical',
+  spacingMode: s.spacingMode || 'equal',
+  minGap: s.minGap || 40,
+  compactMode: s.compactMode || false,
   spineColor: s.spineColor,
   overrideColors: s.overrideColors,
   overrideColor: s.overrideColor,
@@ -4803,69 +5298,138 @@ function parseEras() {
 
 function renderTimeline() {
   const container = document.getElementById('tl-entries-container');
+  const canvas = document.getElementById('timeline-canvas');
+  const body = document.getElementById('tl-body') || canvas.querySelector('.tl-body');
   const visible = getVisible();
-  const eras = parseEras();
-  const impLabels = ['','Blip','Moment','Event','Milestone','Landmark'];
   const dFont = SETTINGS.displayFont||"'Playfair Display',Georgia,serif";
   const bFont = SETTINGS.bodyFont||"'Crimson Pro',Georgia,serif";
+  const isMobile = window.innerWidth <= 768;
+  const orientation = isMobile ? SETTINGS.mobileOrientation : SETTINGS.orientation;
+
+  // Apply classes
+  canvas.classList.toggle('horizontal', orientation === 'horizontal');
+  canvas.classList.toggle('single-col', SETTINGS.layout === 'single' && orientation === 'vertical');
+  canvas.classList.toggle('compact', SETTINGS.compactMode);
+  canvas.classList.toggle('mobile-vertical', isMobile && SETTINGS.mobileOrientation === 'vertical' && SETTINGS.orientation === 'horizontal');
+
+  // Dark theme
+  const bgHex = SETTINGS.bg || '#f5f0e8';
+  const r=parseInt(bgHex.slice(1,3),16),g=parseInt(bgHex.slice(3,5),16),b=parseInt(bgHex.slice(5,7),16);
+  canvas.classList.toggle('theme-dark', (r*299+g*587+b*114)/1000 < 128);
 
   if(!visible.length) {
     container.innerHTML = '<div id="loading-state">No entries match the current filters.</div>';
     return;
   }
 
-  let html = '';
-  let lastEra = -1;
-
-  visible.forEach((e,i) => {
-    if(eras.length) {
-      eras.forEach((era,ei) => {
-        if(ei>lastEra && e.sortKey>=era.year) {
-          html += \`<div class="tl-era-divider"><div class="tl-era-line"></div><div class="tl-era-label" style="font-family:\${dFont}">\${era.label}</div><div class="tl-era-line"></div></div>\`;
-          lastEra=ei;
-        }
-      });
+  // Proportional spacing
+  let posMap = null, widthMap = null;
+  const minGap = SETTINGS.minGap || 40;
+  if (SETTINGS.spacingMode === 'proportional' && visible.length > 1) {
+    const keys = visible.map(e=>e.sortKey);
+    const minK = Math.min(...keys), maxK = Math.max(...keys), span = maxK-minK||1;
+    if (orientation === 'vertical') {
+      const totalSize = Math.max(600, visible.length*minGap*2);
+      let pos = visible.map(e=>((e.sortKey-minK)/span)*totalSize);
+      for(let i=1;i<pos.length;i++) if(pos[i]-pos[i-1]<minGap) pos[i]=pos[i-1]+minGap;
+      const hdr=120, tot=pos[pos.length-1]+120;
+      posMap={};
+      visible.forEach((e,i)=>{posMap[e.id]={pos:pos[i]+hdr,total:tot};});
+      if(body){body.style.height=tot+'px';body.classList.add('proportional');}
+    } else {
+      const ew=Math.max(140,minGap*2), tw=Math.max(visible.length*ew,800);
+      let pos=visible.map(e=>((e.sortKey-minK)/span)*(tw-ew));
+      for(let i=1;i<pos.length;i++) if(pos[i]-pos[i-1]<minGap) pos[i]=pos[i-1]+minGap;
+      widthMap=visible.map((e,i)=>({ml:i===0?pos[0]:pos[i]-pos[i-1]-ew,w:ew}));
+      if(body){body.style.height='';body.classList.remove('proportional');}
     }
+  } else {
+    if(body){body.style.height='';body.classList.remove('proportional');}
+  }
 
+  const eras = parseEras();
+  let html='', lastEra=-1;
+
+  // Year grouping for connector thickness
+  const grpMap = new Map();
+  visible.forEach(e => {
+    const k = Math.round(e.sortKey);
+    if (!grpMap.has(k)) grpMap.set(k, []);
+    grpMap.get(k).push(e.id);
+  });
+  const grpSize = new Map(), grpIdx = new Map();
+  grpMap.forEach(ids => ids.forEach((id,i) => { grpSize.set(id,ids.length); grpIdx.set(id,i); }));
+  function vThick(n) { return Math.min(6.5, 1.5 + (n-1)*1.2); }
+
+  function makeVConn(e, color, isLeft) {
+    const cnt = grpSize.get(e.id)||1, thick = vThick(cnt);
+    const gi = grpIdx.get(e.id)||0, tvh = (cnt-1)*20, vOff = gi*20 - tvh/2;
+    const side = isLeft ? \`right:calc(50% - 38px)\` : \`left:calc(50% - 38px)\`;
+    const fd = isLeft ? 'row' : 'row-reverse';
+    const hbr = isLeft ? '1px 0 0 1px' : '0 1px 1px 0';
+    if (cnt===1) return \`<div style="position:absolute;\${side};top:14px;display:flex;align-items:center;pointer-events:none;z-index:1"><div style="height:\${thick*0.55}px;width:22px;background:\${color};opacity:0.38;border-radius:\${hbr}"></div></div>\`;
+    return \`<div style="position:absolute;\${side};top:\${14+vOff}px;display:flex;flex-direction:\${fd};align-items:flex-start;pointer-events:none;z-index:1">
+      \${gi===0?\`<div style="width:\${thick}px;height:\${tvh+thick*0.8}px;background:\${color};opacity:0.55;border-radius:\${thick/2}px;flex-shrink:0"></div>\`:\`<div style="width:\${thick}px;flex-shrink:0"></div>\`}
+      <div style="height:\${thick*0.55}px;width:22px;background:\${color};opacity:0.38;align-self:center;border-radius:\${hbr};flex-shrink:0"></div>
+    </div>\`;
+  }
+
+  visible.forEach((e,i)=>{
     const color = SETTINGS.overrideColors ? SETTINGS.overrideColor
       : (CAT_COLORS[e.category]||e.color||'#b84c2e');
-    const imp = e.importance||3;
-    const impScale = [0,0.8,0.9,1,1.12,1.28][imp]||1;
-    const titleSize = Math.round(SETTINGS.entryTitleSize*impScale);
-    const safeMedia = (e.mediaUrl||'').replace(/'/g,"\\\\'");
-    const mType = detectMediaType(e.mediaUrl);
-
-    const mediaBadge = mType ? \`<div class="media-badge" style="color:\${color}" onmouseenter="showMediaPopup(event,'\${safeMedia}','\${mType}')" onmouseleave="scheduleHidePopup()" onclick="showMediaPopup(event,'\${safeMedia}','\${mType}')">\${mType==='youtube'||mType==='vimeo'||mType==='video'?'▶':'⊞'}</div>\` : '';
-
-    const imgs = e.images&&e.images.length ? e.images : [];
-    let imgsHtml = '';
-    if(imgs.length) {
-      if(e.imageDisplay==='thumbnail'||e.imageDisplay==='inline') {
-        imgsHtml = e.imageDisplay==='thumbnail'
-          ? \`<div class="tl-img-gallery">\${imgs.map((src,idx)=>\`<img class="tl-img-thumb" src="\${src}" onclick="openLightbox(\${e.id},\${idx})" />\`).join('')}</div>\`
-          : \`<img class="tl-img-inline" src="\${imgs[0]}" onclick="openLightbox(\${e.id},0)" />\`;
-      } else {
-        imgsHtml = \`<div class="tl-img-hover-wrap"><div class="tl-img-hidden-badge" onclick="openLightbox(\${e.id},0)">📷 \${imgs.length} photo\${imgs.length>1?'s':''} — hover</div><div class="tl-img-hover-preview"><img src="\${imgs[0]}" /></div></div>\`;
-      }
+    const imp=e.importance||3;
+    const impScale=[0,0.8,0.9,1,1.12,1.28][imp]||1;
+    const titleSize=Math.round(SETTINGS.entryTitleSize*impScale);
+    const impLabels=['','BLIP','MOMENT','EVENT','MILESTONE','LANDMARK'];
+    const safeMedia=(e.mediaUrl||'').replace(/'/g,"\\'");
+    const mType=detectMediaType(e.mediaUrl);
+    const mediaBadge=mType?\`<div class="media-badge" style="color:\${color}" onmouseenter="showMediaPopup(event,'\${safeMedia}','\${mType}')" onmouseleave="scheduleHidePopup()" onclick="showMediaPopup(event,'\${safeMedia}','\${mType}')">\${mType==='youtube'||mType==='vimeo'||mType==='video'?'▶':'⊞'}</div>\`:'';
+    const imgs=e.images&&e.images.length?e.images:[];
+    let imgsHtml='';
+    if(imgs.length){
+      if(e.imageDisplay==='thumbnail') imgsHtml=\`<div class="tl-img-gallery">\${imgs.map((src,idx)=>\`<img class="tl-img-thumb" src="\${src}" onclick="openLightbox(\${e.id},\${idx})" />\`).join('')}</div>\`;
+      else imgsHtml=\`<img class="tl-img-inline" src="\${imgs[0]}" onclick="openLightbox(\${e.id},0)" />\`;
     }
+    const contentInner=\`
+      \${imp!==3?\`<div class="imp-badge" style="color:\${color}">\${impLabels[imp]}</div>\`:''}
+      <div class="tl-entry-year">\${e.year}</div>
+      <div class="tl-entry-title" style="font-size:\${titleSize}px;color:\${color};font-family:\${dFont}">\${e.title}</div>
+      \${e.location?\`<div style="font-family:var(--mono);font-size:\${SETTINGS.descSize-3}px;opacity:0.4;margin-top:3px">📍 \${e.location}</div>\`:''}
+      \${e.desc?\`<div class="tl-entry-desc">\${e.desc}</div>\`:''}
+      \${e.citation?\`<div class="tl-entry-citation">Source: \${e.citation}</div>\`:''}
+      \${imgsHtml}\${mediaBadge}\`;
 
-    html += \`<div class="tl-entry imp-\${imp}" style="padding-bottom:\${SETTINGS.spacing+20}px">
-      \${SETTINGS.layout!=='single' ? '<div class="tl-entry-spacer"></div>' : ''}
-      <div class="tl-entry-node"><div class="tl-node-dot" style="width:14px;height:14px;border-color:\${color};background:\${color}"></div></div>
-      <div class="tl-entry-content">
-        \${imp!==3?\`<div class="imp-badge" style="color:\${color}">\${impLabels[imp].toUpperCase()}</div>\`:''}
-        <div class="tl-entry-year">\${e.year}</div>
-        <div class="tl-entry-title" style="font-size:\${titleSize}px;color:\${color};font-family:\${dFont}">\${e.title}</div>
-        \${e.location?\`<div style="font-family:var(--mono);font-size:\${SETTINGS.descSize-3}px;opacity:0.4;margin-top:3px">📍 \${e.location}</div>\`:''}
-        \${e.desc?\`<div class="tl-entry-desc">\${e.desc}</div>\`:''}
-        \${e.citation?\`<div class="tl-entry-citation">Source: \${e.citation}</div>\`:''}
-        \${imgsHtml}
-        \${mediaBadge}
-      </div>
-    </div>\`;
+    // Era dividers
+    if(eras.length) eras.forEach((era,ei)=>{
+      if(ei>lastEra&&e.sortKey>=era.year){
+        if(orientation==='horizontal') html+=\`<div class="tl-era-divider"><div class="tl-era-line"></div><div class="tl-era-label" style="font-family:\${dFont}">\${era.label}</div><div class="tl-era-line"></div></div>\`;
+        else html+=\`<div class="tl-era-divider" style="position:\${posMap?'absolute;top:'+(posMap[e.id].pos-30)+'px;left:0;right:0':'relative'};z-index:1"><div class="tl-era-line"></div><div class="tl-era-label" style="font-family:\${dFont}">\${era.label}</div><div class="tl-era-line"></div></div>\`;
+        lastEra=ei;
+      }
+    });
+
+    if(orientation==='horizontal'){
+      const isAbove=i%2===0;
+      const ew=widthMap?widthMap[i].w:Math.max(120,SETTINGS.entryTitleSize*8);
+      const ml=widthMap?widthMap[i].ml:SETTINGS.spacing+8;
+      html+=\`<div class="tl-entry imp-\${imp}" style="width:\${ew}px;margin-left:\${ml}px;flex-shrink:0">
+        \${isAbove?\`<div class="tl-entry-above" style="font-family:\${dFont}">\${contentInner}</div><div class="tl-entry-node"><div class="tl-node-dot" style="width:14px;height:14px;border-color:\${color};background:\${color}"></div></div><div class="tl-entry-below"></div>\`
+        :\`<div class="tl-entry-above"></div><div class="tl-entry-node"><div class="tl-node-dot" style="width:14px;height:14px;border-color:\${color};background:\${color}"></div></div><div class="tl-entry-below" style="font-family:\${dFont}">\${contentInner}</div>\`}
+      </div>\`;
+    } else {
+      const posStyle=posMap?\`position:absolute;top:\${posMap[e.id].pos}px;width:100%\`:\`padding-bottom:\${SETTINGS.spacing+20}px\`;
+      const isLeft = SETTINGS.layout !== 'single' && i % 2 === 0;
+      const conn = orientation !== 'horizontal' ? makeVConn(e, color, isLeft) : '';
+      html+=\`<div class="tl-entry imp-\${imp}" style="\${posStyle};position:relative">
+        \${SETTINGS.layout!=='single'?'<div class="tl-entry-spacer"></div>':''}
+        <div class="tl-entry-node"><div class="tl-node-dot" style="width:14px;height:14px;border-color:\${color};background:\${color}"></div></div>
+        <div class="tl-entry-content" style="background:\${SETTINGS.bg||'#f5f0e8'}">\${contentInner}</div>
+        \${conn}
+      </div>\`;
+    }
   });
 
-  container.innerHTML = html;
+  container.innerHTML=html;
 }
 
 // ── FILTERS ──
@@ -5004,6 +5568,15 @@ if (window.location.protocol === 'file:') {
 }
 
 loadImportanceColors();
+
+// Initialize conditional field visibility (spacing mode fields) before first render
+(function initFieldVisibility() {
+  const mingapField = document.getElementById('s-mingap-field');
+  const spacingField = document.getElementById('s-spacing-field');
+  if (mingapField) mingapField.style.display = 'none'; // default spacingMode is 'equal'
+  if (spacingField) spacingField.style.display = '';
+})();
+
 renderAll();
 renderPresetsList();
 </script>
