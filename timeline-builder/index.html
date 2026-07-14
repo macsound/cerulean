@@ -1867,7 +1867,7 @@
     <div id="status-bar">
       <span id="status-count">0 entries</span>
       <span id="status-dims">— px</span>
-      <span>Chronicle v1.0 · Build 17</span>
+      <span>Chronicle v1.0 · Build 18</span>
       <button onclick="openLog()" style="background:none;border:none;cursor:pointer;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,0.3);padding:0;margin-left:4px;transition:color 0.15s" onmouseover="this.style.color='rgba(245,240,232,0.7)'" onmouseout="this.style.color='rgba(245,240,232,0.3)'">📋 Log</button>
     </div>
   </div>
@@ -2320,7 +2320,7 @@
 // ══════════════════════════════════════════
 // VERSION
 // ══════════════════════════════════════════
-const BUILD = 17;
+const BUILD = 18;
 const VERSION = `v1.0-build${BUILD}`;
 
 // ══════════════════════════════════════════
@@ -2974,6 +2974,7 @@ function loadImportanceColors() {
 // BUILD LOG
 // ══════════════════════════════════════════
 const BUILD_LOG = [
+  { build: 18, date: '2026-07', desc: 'Fixed "FALSE" appearing as a location pin — added a defensive filter so boolean-looking junk values (true/false/null/undefined) never display as real Location or Citation text, which happens when a sheet\'s columns are misaligned with an older layout. Fixed the year-grouping connector bars — the "thicker line for same-year events" system was estimating vertical spacing using a fixed guess that didn\'t match how far apart entries actually render (which varies with content length, spacing mode, and gap settings), leaving grouped entries visually disconnected. Density bars are now measured after the real layout is drawn and sized to exactly match the true distance between grouped nodes, so they connect correctly regardless of spacing mode. Applied to vertical, horizontal, single-column, and the exported viewer alike.' },
   { build: 17, date: '2026-07', desc: 'Fixed the proportional-spacing "long empty spline" bug — entries with a blank Year and blank Sort Key were being assigned fake sort values (0, or an entry count) that landed far outside the real date range, stretching the timeline\'s scale and crushing real entries together. These entries now inherit their neighbor\'s date context instead, so they sit naturally within the timeline rather than distorting it. Fixed cramped Orientation and Mobile Orientation radio buttons in the Style tab that were wrapping/clipping — now stack vertically like Spacing Mode. Export Viewer now auto-detects when the builder itself is hosted online and pre-fills the iframe code with the real URL instead of a generic placeholder.' },
   { build: 16, date: '2026-07', desc: 'Full code audit: validated JS syntax (both the builder and the inner exported-viewer script) with a real parser rather than guesswork, confirmed brace/paren/bracket balance, verified every getElementById() call resolves, checked for duplicate IDs and duplicate function definitions, confirmed the sheet column mapping is consistent across the setup script, the app, and the viewer. Fixed two real bugs found: (1) the Minimum Gap field showed on page load even though spacing mode defaults to Equal — now correctly hidden until Proportional is selected; (2) the exported viewer could end up with both "single-col" and "horizontal" CSS classes active at once if both settings were chosen together, causing conflicting layout rules — viewer now re-evaluates this every render just like the builder does.' },
   { build: 15, date: '2026-07', desc: 'Connector lines — thin L-shaped lines from each entry\'s content block to its node on the spine. Content boxes have a background color buffer so the line never appears behind text. Year grouping — events sharing the same year share a vertical connector segment near the spine that grows thicker with density (1px for 1 event, up to 6.5px for 5+). Each event\'s individual branch is drawn in its accent color. Works in both equal and proportional spacing modes.' },
@@ -3004,6 +3005,15 @@ function openLog() {
     </div>
   `).join('');
   document.getElementById('log-modal').classList.remove('hidden');
+}
+
+function isJunkFieldValue(val) {
+  // Guards against column-misalignment artifacts — e.g. a sheet whose Location or
+  // Citation column actually contains a checkbox's TRUE/FALSE text because the
+  // sheet still uses an older column layout. Never show these as real content.
+  if (!val) return true;
+  const v = String(val).trim().toLowerCase();
+  return v === 'true' || v === 'false' || v === 'null' || v === 'undefined' || v === 'nan';
 }
 
 // ── SHARED ENTRY HTML BUILDER ──
@@ -3037,8 +3047,8 @@ function buildEntryContentHtml(e, displayFont, bodyFont, extraStyle) {
     }
   }
 
-  const locationHtml = e.location ? `<div style="font-family:var(--mono);font-size:${settings.descSize-3}px;opacity:0.4;margin-top:3px">📍 ${e.location}</div>` : '';
-  const citationHtml = e.citation ? `<div class="tl-entry-citation">Source: ${e.citation}</div>` : '';
+  const locationHtml = !isJunkFieldValue(e.location) ? `<div style="font-family:var(--mono);font-size:${settings.descSize-3}px;opacity:0.4;margin-top:3px">📍 ${e.location}</div>` : '';
+  const citationHtml = !isJunkFieldValue(e.citation) ? `<div class="tl-entry-citation">Source: ${e.citation}</div>` : '';
   const impHtml = imp !== 3 ? `<div class="imp-badge" style="color:${color}">${importanceLabels[imp].toUpperCase()}</div>` : '';
 
   return { color, imp, titleSize, contentHtml: `
@@ -3076,6 +3086,55 @@ function connectorThickness(count) {
   return Math.min(6.5, 1.5 + (count - 1) * 1.2);
 }
 
+// Draws a properly-sized "density bar" on the spine for each group of same-year
+// entries, AFTER the DOM has laid out real content — this avoids guessing pixel
+// distances between entries (which vary with content height, spacing mode, etc.)
+// and instead measures actual node positions to span the bar correctly.
+function drawYearGroupBars(visibleEntries, isSingle, isHorizontal) {
+  const body = document.getElementById('tl-body');
+  if (!body) return;
+  body.querySelectorAll('.year-group-bar').forEach(el => el.remove());
+
+  const groups = new Map();
+  visibleEntries.forEach(e => {
+    const key = Math.round(e.sortKey);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(e);
+  });
+
+  const bodyRect = body.getBoundingClientRect();
+
+  groups.forEach(members => {
+    if (members.length < 2) return;
+    const thick = connectorThickness(members.length);
+    const color = members[0].color || '#1a1208';
+    let minPos = Infinity, maxPos = -Infinity;
+
+    members.forEach(e => {
+      const nodeEl = body.querySelector(`.tl-entry[data-id="${e.id}"] .tl-node-dot`);
+      if (!nodeEl) return;
+      const r = nodeEl.getBoundingClientRect();
+      const center = isHorizontal
+        ? (r.left - bodyRect.left + r.width / 2)
+        : (r.top - bodyRect.top + r.height / 2);
+      minPos = Math.min(minPos, center);
+      maxPos = Math.max(maxPos, center);
+    });
+    if (minPos === Infinity || maxPos - minPos < 1) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'year-group-bar';
+    if (isHorizontal) {
+      bar.style.cssText = `position:absolute;left:${minPos}px;width:${maxPos - minPos}px;height:${thick}px;top:calc(50% - ${thick/2}px);background:${color};opacity:0.4;border-radius:${thick/2}px;z-index:1;pointer-events:none`;
+    } else {
+      const leftPos = isSingle ? '40px' : '50%';
+      const transform = isSingle ? '' : 'transform:translateX(-50%)';
+      bar.style.cssText = `position:absolute;top:${minPos}px;height:${maxPos - minPos}px;width:${thick}px;left:${leftPos};${transform};background:${color};opacity:0.4;border-radius:${thick/2}px;z-index:1;pointer-events:none`;
+    }
+    body.appendChild(bar);
+  });
+}
+
 // ── VERTICAL TIMELINE RENDERER ──
 function renderVerticalTimeline(container, visibleEntries, eras, importanceLabels, displayFont, bodyFont, positionMap) {
   const body = document.getElementById('tl-body');
@@ -3087,42 +3146,25 @@ function renderVerticalTimeline(container, visibleEntries, eras, importanceLabel
   const { groupSize, groupIndex } = buildYearGroups(visibleEntries);
 
   function makeConnector(e, color, isLeft) {
+    // Draws only this entry's own horizontal leg from its content to near the spine.
+    // Thickness reflects how many entries share this entry's year — the shared
+    // vertical "density bar" connecting grouped entries is drawn separately in a
+    // post-render pass (drawYearGroupBars) once real positions are known.
     const count = groupSize.get(e.id) || 1;
     const thick = connectorThickness(count);
-    const gIdx = groupIndex.get(e.id) || 0;
-    const totalVHeight = (count - 1) * 20;
-    const myVOffset = gIdx * 20 - totalVHeight / 2;
     const hLen = 22;
-
-    if (count === 1) {
-      // Simple horizontal connector
-      const borderR = isLeft ? '1px 0 0 1px' : '0 1px 1px 0';
-      const side = isLeft ? 'right:calc(50% - 38px)' : 'left:calc(50% - 38px)';
-      return `<div style="position:absolute;${side};top:14px;display:flex;align-items:center;pointer-events:none;z-index:1">
-        <div style="height:${thick * 0.55}px;width:${hLen}px;background:${color};opacity:0.38;border-radius:${borderR}"></div>
-      </div>`;
-    }
-
-    // Multi-event: L-shape connector
-    // Vertical shared leg rendered only by first entry in group (gIdx===0)
-    const side = isLeft ? `right:calc(50% - 38px)` : `left:calc(50% - 38px)`;
-    const flexDir = isLeft ? 'row' : 'row-reverse';
-    const hBorderR = isLeft ? '1px 0 0 1px' : '0 1px 1px 0';
-    return `<div style="position:absolute;${side};top:${14 + myVOffset}px;display:flex;flex-direction:${flexDir};align-items:flex-start;pointer-events:none;z-index:1">
-      ${gIdx === 0 ? `<div style="width:${thick}px;height:${totalVHeight + thick * 0.8}px;background:${color};opacity:0.55;border-radius:${thick / 2}px;flex-shrink:0;align-self:flex-start"></div>` : `<div style="width:${thick}px;flex-shrink:0"></div>`}
-      <div style="height:${thick * 0.55}px;width:${hLen}px;background:${color};opacity:0.38;align-self:center;border-radius:${hBorderR};flex-shrink:0"></div>
+    const borderR = isLeft ? '1px 0 0 1px' : '0 1px 1px 0';
+    const side = isLeft ? 'right:calc(50% - 38px)' : 'left:calc(50% - 38px)';
+    return `<div style="position:absolute;${side};top:14px;display:flex;align-items:center;pointer-events:none;z-index:1">
+      <div style="height:${thick * 0.55}px;width:${hLen}px;background:${color};opacity:0.38;border-radius:${borderR}"></div>
     </div>`;
   }
 
   function makeSingleColConnector(e, color) {
     const count = groupSize.get(e.id) || 1;
     const thick = connectorThickness(count);
-    const gIdx = groupIndex.get(e.id) || 0;
-    const totalVHeight = (count - 1) * 20;
-    const myVOffset = gIdx * 20 - totalVHeight / 2;
-    return `<div style="position:absolute;left:40px;top:${14 + myVOffset}px;display:flex;flex-direction:row;align-items:flex-start;pointer-events:none;z-index:1">
-      ${gIdx === 0 && count > 1 ? `<div style="width:${thick}px;height:${totalVHeight + thick * 0.8}px;background:${color};opacity:0.55;border-radius:${thick / 2}px;flex-shrink:0"></div>` : `<div style="width:${thick}px;flex-shrink:0"></div>`}
-      <div style="height:${thick * 0.55}px;width:22px;background:${color};opacity:0.38;align-self:center;border-radius:0 1px 1px 0;flex-shrink:0"></div>
+    return `<div style="position:absolute;left:40px;top:14px;display:flex;align-items:center;pointer-events:none;z-index:1">
+      <div style="height:${thick * 0.55}px;width:22px;background:${color};opacity:0.38;border-radius:0 1px 1px 0"></div>
     </div>`;
   }
 
@@ -3199,6 +3241,7 @@ function renderVerticalTimeline(container, visibleEntries, eras, importanceLabel
   }
 
   container.innerHTML = html;
+  drawYearGroupBars(visibleEntries, isSingle, false);
 }
 
 // ── HORIZONTAL TIMELINE RENDERER ──
@@ -3264,6 +3307,7 @@ function renderHorizontalTimeline(container, visibleEntries, eras, importanceLab
   });
 
   container.innerHTML = html;
+  drawYearGroupBars(visibleEntries, false, true);
 }
 // ══════════════════════════════════════════
 function getVisibleEntries() {
@@ -5463,15 +5507,9 @@ function renderTimeline() {
 
   function makeVConn(e, color, isLeft) {
     const cnt = grpSize.get(e.id)||1, thick = vThick(cnt);
-    const gi = grpIdx.get(e.id)||0, tvh = (cnt-1)*20, vOff = gi*20 - tvh/2;
     const side = isLeft ? \`right:calc(50% - 38px)\` : \`left:calc(50% - 38px)\`;
-    const fd = isLeft ? 'row' : 'row-reverse';
     const hbr = isLeft ? '1px 0 0 1px' : '0 1px 1px 0';
-    if (cnt===1) return \`<div style="position:absolute;\${side};top:14px;display:flex;align-items:center;pointer-events:none;z-index:1"><div style="height:\${thick*0.55}px;width:22px;background:\${color};opacity:0.38;border-radius:\${hbr}"></div></div>\`;
-    return \`<div style="position:absolute;\${side};top:\${14+vOff}px;display:flex;flex-direction:\${fd};align-items:flex-start;pointer-events:none;z-index:1">
-      \${gi===0?\`<div style="width:\${thick}px;height:\${tvh+thick*0.8}px;background:\${color};opacity:0.55;border-radius:\${thick/2}px;flex-shrink:0"></div>\`:\`<div style="width:\${thick}px;flex-shrink:0"></div>\`}
-      <div style="height:\${thick*0.55}px;width:22px;background:\${color};opacity:0.38;align-self:center;border-radius:\${hbr};flex-shrink:0"></div>
-    </div>\`;
+    return \`<div style="position:absolute;\${side};top:14px;display:flex;align-items:center;pointer-events:none;z-index:1"><div style="height:\${thick*0.55}px;width:22px;background:\${color};opacity:0.38;border-radius:\${hbr}"></div></div>\`;
   }
 
   visible.forEach((e,i)=>{
@@ -5490,13 +5528,14 @@ function renderTimeline() {
       if(e.imageDisplay==='thumbnail') imgsHtml=\`<div class="tl-img-gallery">\${imgs.map((src,idx)=>\`<img class="tl-img-thumb" src="\${src}" onclick="openLightbox(\${e.id},\${idx})" />\`).join('')}</div>\`;
       else imgsHtml=\`<img class="tl-img-inline" src="\${imgs[0]}" onclick="openLightbox(\${e.id},0)" />\`;
     }
+    const isJunk = v => { if(!v) return true; const s=String(v).trim().toLowerCase(); return s==='true'||s==='false'||s==='null'||s==='undefined'||s==='nan'; };
     const contentInner=\`
       \${imp!==3?\`<div class="imp-badge" style="color:\${color}">\${impLabels[imp]}</div>\`:''}
       <div class="tl-entry-year">\${e.year}</div>
       <div class="tl-entry-title" style="font-size:\${titleSize}px;color:\${color};font-family:\${dFont}">\${e.title}</div>
-      \${e.location?\`<div style="font-family:var(--mono);font-size:\${SETTINGS.descSize-3}px;opacity:0.4;margin-top:3px">📍 \${e.location}</div>\`:''}
+      \${!isJunk(e.location)?\`<div style="font-family:var(--mono);font-size:\${SETTINGS.descSize-3}px;opacity:0.4;margin-top:3px">📍 \${e.location}</div>\`:''}
       \${e.desc?\`<div class="tl-entry-desc">\${e.desc}</div>\`:''}
-      \${e.citation?\`<div class="tl-entry-citation">Source: \${e.citation}</div>\`:''}
+      \${!isJunk(e.citation)?\`<div class="tl-entry-citation">Source: \${e.citation}</div>\`:''}
       \${imgsHtml}\${mediaBadge}\`;
 
     // Era dividers
@@ -5512,7 +5551,7 @@ function renderTimeline() {
       const isAbove=i%2===0;
       const ew=widthMap?widthMap[i].w:Math.max(120,SETTINGS.entryTitleSize*8);
       const ml=widthMap?widthMap[i].ml:SETTINGS.spacing+8;
-      html+=\`<div class="tl-entry imp-\${imp}" style="width:\${ew}px;margin-left:\${ml}px;flex-shrink:0">
+      html+=\`<div class="tl-entry imp-\${imp}" style="width:\${ew}px;margin-left:\${ml}px;flex-shrink:0" data-id="\${e.id}">
         \${isAbove?\`<div class="tl-entry-above" style="font-family:\${dFont}">\${contentInner}</div><div class="tl-entry-node"><div class="tl-node-dot" style="width:14px;height:14px;border-color:\${color};background:\${color}"></div></div><div class="tl-entry-below"></div>\`
         :\`<div class="tl-entry-above"></div><div class="tl-entry-node"><div class="tl-node-dot" style="width:14px;height:14px;border-color:\${color};background:\${color}"></div></div><div class="tl-entry-below" style="font-family:\${dFont}">\${contentInner}</div>\`}
       </div>\`;
@@ -5520,7 +5559,7 @@ function renderTimeline() {
       const posStyle=posMap?\`position:absolute;top:\${posMap[e.id].pos}px;width:100%\`:\`padding-bottom:\${SETTINGS.spacing+20}px\`;
       const isLeft = SETTINGS.layout !== 'single' && i % 2 === 0;
       const conn = orientation !== 'horizontal' ? makeVConn(e, color, isLeft) : '';
-      html+=\`<div class="tl-entry imp-\${imp}" style="\${posStyle};position:relative">
+      html+=\`<div class="tl-entry imp-\${imp}" style="\${posStyle};position:relative" data-id="\${e.id}">
         \${SETTINGS.layout!=='single'?'<div class="tl-entry-spacer"></div>':''}
         <div class="tl-entry-node"><div class="tl-node-dot" style="width:14px;height:14px;border-color:\${color};background:\${color}"></div></div>
         <div class="tl-entry-content" style="background:\${SETTINGS.bg||'#f5f0e8'}">\${contentInner}</div>
@@ -5530,6 +5569,52 @@ function renderTimeline() {
   });
 
   container.innerHTML=html;
+  drawYearGroupBars(visible, SETTINGS.layout==='single', orientation==='horizontal');
+}
+
+function drawYearGroupBars(visibleList, isSingle, isHorizontal) {
+  const body = document.getElementById('tl-body') || document.querySelector('.tl-body');
+  if (!body) return;
+  body.querySelectorAll('.year-group-bar').forEach(el => el.remove());
+
+  const groups = new Map();
+  visibleList.forEach(e => {
+    const k = Math.round(e.sortKey);
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(e);
+  });
+
+  const bodyRect = body.getBoundingClientRect();
+
+  groups.forEach(members => {
+    if (members.length < 2) return;
+    const thick = vThick(members.length);
+    const color = members[0].color || '#1a1208';
+    let minPos = Infinity, maxPos = -Infinity;
+
+    members.forEach(e => {
+      const nodeEl = body.querySelector(\`.tl-entry[data-id="\${e.id}"] .tl-node-dot\`);
+      if (!nodeEl) return;
+      const r = nodeEl.getBoundingClientRect();
+      const center = isHorizontal
+        ? (r.left - bodyRect.left + r.width / 2)
+        : (r.top - bodyRect.top + r.height / 2);
+      minPos = Math.min(minPos, center);
+      maxPos = Math.max(maxPos, center);
+    });
+    if (minPos === Infinity || maxPos - minPos < 1) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'year-group-bar';
+    if (isHorizontal) {
+      bar.style.cssText = \`position:absolute;left:\${minPos}px;width:\${maxPos-minPos}px;height:\${thick}px;top:calc(50% - \${thick/2}px);background:\${color};opacity:0.4;border-radius:\${thick/2}px;z-index:1;pointer-events:none\`;
+    } else {
+      const leftPos = isSingle ? '40px' : '50%';
+      const transform = isSingle ? '' : 'transform:translateX(-50%)';
+      bar.style.cssText = \`position:absolute;top:\${minPos}px;height:\${maxPos-minPos}px;width:\${thick}px;left:\${leftPos};\${transform};background:\${color};opacity:0.4;border-radius:\${thick/2}px;z-index:1;pointer-events:none\`;
+    }
+    body.appendChild(bar);
+  });
 }
 
 // ── FILTERS ──
