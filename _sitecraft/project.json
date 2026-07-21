@@ -85,9 +85,9 @@
           "w": 270,
           "h": 50,
           "shapeType": "rect",
-          "fillColor": "#307FE2",
+          "fillColor": "#cce3ff",
           "style": {
-            "bg": "rgba(255,255,255,0.10)",
+            "bg": "transparent",
             "border": "solid",
             "borderColor": "rgba(255,255,255,0.18)",
             "borderWidth": 1,
@@ -98,10 +98,10 @@
             "shadowX": 0,
             "shadowY": 8,
             "opacity": 100,
-            "liquidGlass": true,
+            "liquidGlass": false,
             "innerShadow": true,
             "innerStrength": 35,
-            "backdropBlur": 4
+            "backdropBlur": 0
           }
         },
         {
@@ -112,9 +112,9 @@
           "w": 320,
           "h": 50,
           "shapeType": "rect",
-          "fillColor": "#307FE2",
+          "fillColor": "#f0f7ff",
           "style": {
-            "bg": "rgba(255,255,255,0.10)",
+            "bg": "transparent",
             "border": "solid",
             "borderColor": "rgba(255,255,255,0.18)",
             "borderWidth": 1,
@@ -125,10 +125,10 @@
             "shadowX": 0,
             "shadowY": 8,
             "opacity": 100,
-            "liquidGlass": true,
+            "liquidGlass": false,
             "innerShadow": true,
             "innerStrength": 35,
-            "backdropBlur": 4
+            "backdropBlur": 0
           }
         },
         {
