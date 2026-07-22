@@ -630,7 +630,7 @@
           "x": 70,
           "y": 1640,
           "w": 280,
-          "h": 100,
+          "h": 180,
           "html": "<p>Sitecraft - GitHub Website Builder</p><p>This website made in Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
           "style": {
             "bg": "transparent",
