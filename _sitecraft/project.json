@@ -3,9 +3,9 @@
   "name": "Cerulean",
   "description": "",
   "style": {
-    "headingFont": "Merriweather",
-    "bodyFont": "Nunito",
-    "accentColor": "#307FE2",
+    "headingFont": "Space Grotesk",
+    "bodyFont": "Inter",
+    "accentColor": "#0891b2",
     "bgColor": "#43484c",
     "textColor": "#9ca3af",
     "pageWidth": "medium",
@@ -82,8 +82,8 @@
           "type": "heading",
           "x": 20,
           "y": 20,
-          "w": 350,
-          "h": 50,
+          "w": 360,
+          "h": 60,
           "text": "Stephen Gozza",
           "level": 1,
           "style": {
@@ -104,10 +104,10 @@
           "id": "9wjhnzab",
           "type": "text",
           "x": 20,
-          "y": 60,
+          "y": 90,
           "w": 900,
           "h": 50,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Times;\"><span class=\"s1\" style=\"font-kerning: none;\"><b>Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</b></span></p>",
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\"><span class=\"s1\" style=\"font-kerning: none;\">Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</span></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -121,16 +121,14 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "fontSize": 17,
-          "align": "center",
-          "bodyFont": "Nunito",
-          "textColor": "#9ca3af"
+          "fontSize": 15,
+          "align": "center"
         },
         {
           "id": "hkee7kxq",
           "type": "image",
-          "x": 60,
-          "y": 850,
+          "x": 90,
+          "y": 1100,
           "w": 240,
           "h": 120,
           "src": "/assets/images/marriott-experiential-marketing.jpg",
@@ -158,8 +156,8 @@
         {
           "id": "80c8hx0h",
           "type": "image",
-          "x": 350,
-          "y": 850,
+          "x": 380,
+          "y": 1100,
           "w": 240,
           "h": 120,
           "src": "/assets/images/blue-experiential-marketing.jpg",
@@ -187,8 +185,8 @@
         {
           "id": "2dvxp8b6",
           "type": "image",
-          "x": 630,
-          "y": 850,
+          "x": 660,
+          "y": 1100,
           "w": 240,
           "h": 120,
           "src": "/assets/images/elasticonsetup-stephen-gozza.jpg",
@@ -216,8 +214,8 @@
         {
           "id": "rmuusn50",
           "type": "image",
-          "x": 60,
-          "y": 1000,
+          "x": 90,
+          "y": 1250,
           "w": 240,
           "h": 120,
           "src": "/assets/images/conf-index-left-image-4.jpg",
@@ -245,8 +243,8 @@
         {
           "id": "opgdu6pa",
           "type": "image",
-          "x": 350,
-          "y": 1000,
+          "x": 380,
+          "y": 1250,
           "w": 240,
           "h": 120,
           "src": "/assets/images/projmap-index-center-image-5.jpg",
@@ -274,8 +272,8 @@
         {
           "id": "s32jug4r",
           "type": "image",
-          "x": 630,
-          "y": 1000,
+          "x": 660,
+          "y": 1250,
           "w": 240,
           "h": 120,
           "src": "/assets/images/reddissetup-index-right-image-6.jpg",
@@ -303,8 +301,8 @@
         {
           "id": "4qmwvqrt",
           "type": "image",
-          "x": 630,
-          "y": 1150,
+          "x": 660,
+          "y": 1400,
           "w": 240,
           "h": 120,
           "src": "/assets/images/reddis-index-right-image-7.jpg",
@@ -332,8 +330,8 @@
         {
           "id": "8io68ojx",
           "type": "image",
-          "x": 350,
-          "y": 1150,
+          "x": 380,
+          "y": 1400,
           "w": 240,
           "h": 120,
           "src": "/assets/images/elasticon-index-center-image-8.jpg",
@@ -361,8 +359,8 @@
         {
           "id": "3tqoqtp1",
           "type": "image",
-          "x": 60,
-          "y": 1150,
+          "x": 90,
+          "y": 1400,
           "w": 240,
           "h": 120,
           "src": "/assets/images/ice-index-left-image-9.jpg",
@@ -391,31 +389,34 @@
           "id": "19jhmwm4",
           "type": "text",
           "x": 30,
-          "y": 110,
+          "y": 190,
           "w": 770,
           "h": 40,
           "html": "<a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26c.pdf\" data-sc-file=\"assets/files/sgozza26c.pdf\" target=\"_blank\" rel=\"noopener\" style=\"\"><font color=\"#9ca3af\">Resume</font></a>&nbsp;&nbsp;&nbsp;<a href=\"https://www.linkedin.com/in/stephen-gozza\" target=\"_blank\" rel=\"noopener\" style=\"background-color: transparent;\"><font color=\"#9ca3af\">LinkedIn</font></a>&nbsp; &nbsp;<span style=\"background-color: transparent;\">Contact&nbsp; &nbsp;</span><a href=\"#experoentialmarketing\" target=\"_self\" style=\"background-color: transparent;\"><font color=\"#9ca3af\">Experiential Marketing&nbsp;</font></a>&nbsp; Custom Consumer Packaging<div><br></div>",
           "style": {
             "bg": "transparent",
             "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
+            "borderColor": "rgba(255,255,255,0.18)",
+            "borderWidth": 1,
+            "radius": 16,
             "shadow": false,
             "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
+            "shadowBlur": 32,
             "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100
+            "shadowY": 8,
+            "opacity": 100,
+            "liquidGlass": false,
+            "innerShadow": false,
+            "innerStrength": 35,
+            "backdropBlur": 0
           },
-          "bodyFont": "Nunito",
           "textColor": "#9ca3af"
         },
         {
           "id": "0h7zu1qw",
           "type": "divider",
           "x": 30,
-          "y": 100,
+          "y": 220,
           "w": 890,
           "h": 20,
           "lineColor": "#a3a3a3",
@@ -438,8 +439,8 @@
         {
           "id": "vh7dobl0",
           "type": "video",
-          "x": 50,
-          "y": 290,
+          "x": 100,
+          "y": 480,
           "w": 340,
           "h": 180,
           "youtube": "https://drive.google.com/file/d/1mFCZXZGKZVnz0kKfemeeF1eMk-IBBR1a/view?usp=sharing",
@@ -461,8 +462,8 @@
         {
           "id": "rpiut8ac",
           "type": "text",
-          "x": 50,
-          "y": 230,
+          "x": 100,
+          "y": 420,
           "w": 340,
           "h": 60,
           "html": "<p>Vision Pro Guided Tour</p><p><b>All Device UI</b></p>",
@@ -479,14 +480,13 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "align": "center",
-          "bodyFont": "Nunito"
+          "align": "center"
         },
         {
           "id": "p4bpcvri",
           "type": "video",
-          "x": 500,
-          "y": 290,
+          "x": 550,
+          "y": 480,
           "w": 340,
           "h": 180,
           "youtube": "https://drive.google.com/file/d/1PDPzgmZT5WIEMRuxsXiqLri2sXQShuRl/view?usp=sharing",
@@ -509,8 +509,8 @@
         {
           "id": "mezbrp36",
           "type": "text",
-          "x": 500,
-          "y": 230,
+          "x": 550,
+          "y": 420,
           "w": 340,
           "h": 60,
           "html": "<p>iPhone Dynamic Island&nbsp;<span style=\"color: var(--st); background-color: transparent;\">Introduction Film</span></p><p><span style=\"color: var(--st); background-color: transparent;\"><b>All Device UI</b></span></p>",
@@ -527,14 +527,13 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "align": "center",
-          "bodyFont": "Nunito"
+          "align": "center"
         },
         {
           "id": "28ttu7ee",
           "type": "video",
-          "x": 60,
-          "y": 550,
+          "x": 110,
+          "y": 740,
           "w": 340,
           "h": 180,
           "youtube": "https://drive.google.com/file/d/1EIJ0gzATG6lrnXzNK-p-phFfagt2dccL/view?usp=drive_link",
@@ -556,8 +555,8 @@
         {
           "id": "3z1b8kkd",
           "type": "video",
-          "x": 500,
-          "y": 550,
+          "x": 550,
+          "y": 740,
           "w": 340,
           "h": 180,
           "youtube": "https://drive.google.com/file/d/1KyKFvlesrR9_ygH01JMPeL40IFJpL6Hh/view?usp=drive_link",
@@ -579,8 +578,8 @@
         {
           "id": "3e1avips",
           "type": "text",
-          "x": 500,
-          "y": 490,
+          "x": 550,
+          "y": 680,
           "w": 340,
           "h": 60,
           "html": "<p>Yoga Cutaway Scene<br><b>WWDC 2025</b></p>",
@@ -597,14 +596,13 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "bodyFont": "Nunito",
           "align": "center"
         },
         {
           "id": "8aef89mi",
           "type": "text",
-          "x": 60,
-          "y": 490,
+          "x": 110,
+          "y": 680,
           "w": 340,
           "h": 60,
           "html": "<p>Underdogs Episode 6</p><p><b>Pre-Production Visuals</b></p>",
@@ -621,7 +619,6 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "bodyFont": "Nunito",
           "align": "center"
         },
         {
@@ -644,14 +641,13 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100
-          },
-          "bodyFont": "Nunito"
+          }
         },
         {
           "id": "qm7c2w1h",
           "type": "badge",
-          "x": 20,
-          "y": 160,
+          "x": 70,
+          "y": 350,
           "w": 160,
           "h": 28,
           "text": "Video Production",
@@ -678,13 +674,14 @@
             "innerStrength": 100,
             "backdropBlur": 18
           },
-          "shineEffect": true
+          "shineEffect": true,
+          "shineMode": "scroll"
         },
         {
           "id": "q23tnq69",
           "type": "badge",
-          "x": 20,
-          "y": 770,
+          "x": 50,
+          "y": 1020,
           "w": 207,
           "h": 28,
           "text": "Experiential Marketing ",
@@ -711,7 +708,8 @@
             "innerStrength": 27,
             "backdropBlur": 20
           },
-          "shineEffect": true
+          "shineEffect": true,
+          "shineMode": "scroll"
         },
         {
           "id": "arc7hx9r",
@@ -744,7 +742,8 @@
             "innerStrength": 27,
             "backdropBlur": 20
           },
-          "shineEffect": true
+          "shineEffect": true,
+          "shineMode": "scroll"
         }
       ],
       "includeInNav": false
