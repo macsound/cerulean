@@ -98,7 +98,8 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100
-          }
+          },
+          "fontSize": 47
         },
         {
           "id": "9wjhnzab",
