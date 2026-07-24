@@ -97,14 +97,17 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "innerShadow": false,
+            "liquidGlass": false,
+            "backdropBlur": 0
           },
           "fontSize": 47
         },
         {
           "id": "9wjhnzab",
           "type": "text",
-          "x": 30,
+          "x": 35,
           "y": 90,
           "w": 890,
           "h": 70,
@@ -389,7 +392,7 @@
         {
           "id": "19jhmwm4",
           "type": "text",
-          "x": 30,
+          "x": 95,
           "y": 170,
           "w": 770,
           "h": 30,
@@ -418,12 +421,12 @@
         {
           "id": "0h7zu1qw",
           "type": "divider",
-          "x": 70,
+          "x": 125,
           "y": 200,
           "w": 710,
           "h": 20,
           "lineColor": "#a3a3a3",
-          "lineWidth": 3,
+          "lineWidth": 12,
           "lineStyle": "solid",
           "style": {
             "bg": "transparent",
@@ -693,7 +696,8 @@
             }
           },
           "shineEffect": true,
-          "shineMode": "scroll"
+          "shineMode": "scroll",
+          "bgOpacity": 37
         },
         {
           "id": "q23tnq69",
