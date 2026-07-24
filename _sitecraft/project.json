@@ -393,7 +393,7 @@
           "y": 190,
           "w": 770,
           "h": 40,
-          "html": "<a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26c.pdf\" data-sc-file=\"assets/files/sgozza26c.pdf\" target=\"_blank\" rel=\"noopener\" style=\"\"><font color=\"#9ca3af\">Resume</font></a>&nbsp;&nbsp;&nbsp;<a href=\"https://www.linkedin.com/in/stephen-gozza\" target=\"_blank\" rel=\"noopener\" style=\"background-color: transparent;\"><font color=\"#9ca3af\">LinkedIn</font></a>&nbsp; &nbsp;<span style=\"background-color: transparent;\">Contact&nbsp; &nbsp;</span><a href=\"#experoentialmarketing\" target=\"_self\" style=\"background-color: transparent;\"><font color=\"#9ca3af\">Experiential Marketing&nbsp;</font></a>&nbsp; Custom Consumer Packaging<div><br></div>",
+          "html": "<b><i><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26c.pdf\" data-sc-file=\"assets/files/sgozza26c.pdf\" target=\"_blank\" rel=\"noopener\" style=\"\"><font color=\"#9ca3af\">Resume</font></a>&nbsp;&nbsp;&nbsp;<a href=\"https://www.linkedin.com/in/stephen-gozza\" target=\"_blank\" rel=\"noopener\" style=\"background-color: transparent;\"><font color=\"#9ca3af\">LinkedIn</font></a>&nbsp; &nbsp;<span style=\"background-color: transparent;\">Contact&nbsp; &nbsp;</span><a href=\"#experoentialmarketing\" target=\"_self\" style=\"background-color: transparent;\"><font color=\"#9ca3af\">Experiential Marketing&nbsp;</font></a>&nbsp; Custom Consumer Packaging</i></b><div><br></div>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -411,7 +411,9 @@
             "innerStrength": 35,
             "backdropBlur": 0
           },
-          "textColor": "#9ca3af"
+          "textColor": "#9ca3af",
+          "bodyFont": "Inter",
+          "align": "left"
         },
         {
           "id": "0h7zu1qw",
@@ -659,21 +661,35 @@
           "padX": 10,
           "padY": 2,
           "style": {
-            "bg": "transparent",
+            "bg": "rgba(255,255,255,0.10)",
             "border": "none",
             "borderColor": "rgba(255,255,255,0.18)",
             "borderWidth": 1,
             "radius": 16,
             "shadow": true,
             "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 0,
+            "shadowBlur": 32,
             "shadowX": 0,
-            "shadowY": 5,
+            "shadowY": 8,
             "opacity": 100,
-            "innerShadow": true,
+            "innerShadow": false,
             "liquidGlass": true,
-            "innerStrength": 100,
-            "backdropBlur": 18
+            "innerStrength": 35,
+            "backdropBlur": 20,
+            "_preGlass": {
+              "bg": "transparent",
+              "shadow": true,
+              "shadowBlur": 0,
+              "shadowY": 5,
+              "shadowX": 0,
+              "shadowColor": "rgba(0,0,0,.25)",
+              "innerShadow": true,
+              "innerStrength": 100,
+              "border": "none",
+              "borderWidth": 1,
+              "borderColor": "rgba(255,255,255,0.18)",
+              "radius": 16
+            }
           },
           "shineEffect": true,
           "shineMode": "scroll"
