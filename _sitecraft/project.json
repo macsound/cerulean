@@ -631,7 +631,7 @@
           "y": 1640,
           "w": 280,
           "h": 180,
-          "html": "<p>Sitecraft - GitHub Website Builder</p><p>This website made in Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
+          "html": "<p><b>Sitecraft</b> - GitHub Website Builder</p><p>This website made in Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -644,7 +644,8 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100
-          }
+          },
+          "bodyFont": "Inter"
         },
         {
           "id": "qm7c2w1h",
