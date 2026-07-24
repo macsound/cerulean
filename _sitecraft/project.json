@@ -78,6 +78,54 @@
       "height": 1860,
       "elements": [
         {
+          "id": "z6tsvlan",
+          "type": "shape",
+          "x": 0,
+          "y": 260,
+          "w": 960,
+          "h": 700,
+          "shapeType": "rect",
+          "fillColor": "#307FE2",
+          "style": {
+            "bg": "#374148",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100,
+            "liquidGlass": false,
+            "backdropBlur": 0
+          }
+        },
+        {
+          "id": "bpoa7v8g",
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "w": 960,
+          "h": 260,
+          "shapeType": "rect",
+          "fillColor": "#307FE2",
+          "style": {
+            "bg": "#1b2831",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          }
+        },
+        {
           "id": "a28q909t",
           "type": "heading",
           "x": 20,
