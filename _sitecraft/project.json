@@ -78,6 +78,45 @@
       "height": 1860,
       "elements": [
         {
+          "id": "bpoa7v8g",
+          "type": "shape",
+          "x": 0,
+          "y": 0,
+          "w": 960,
+          "h": 260,
+          "shapeType": "rect",
+          "fillColor": "#ff52f9",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "locked": false,
+          "fillType": "solid",
+          "gradientColor1": "#374148",
+          "gradientColor2": "#018df9",
+          "gradientAngle": 233,
+          "gradientType": "linear",
+          "gradientStops": [
+            {
+              "color": "#ff42b0",
+              "pos": 60
+            },
+            {
+              "color": "#52b4ff",
+              "pos": 86
+            }
+          ]
+        },
+        {
           "id": "z6tsvlan",
           "type": "shape",
           "x": 0,
@@ -114,45 +153,6 @@
           ]
         },
         {
-          "id": "bpoa7v8g",
-          "type": "shape",
-          "x": 0,
-          "y": 0,
-          "w": 960,
-          "h": 260,
-          "shapeType": "rect",
-          "fillColor": "#1b2831",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100
-          },
-          "locked": false,
-          "fillType": "gradient",
-          "gradientColor1": "#374148",
-          "gradientColor2": "#018df9",
-          "gradientAngle": 233,
-          "gradientType": "linear",
-          "gradientStops": [
-            {
-              "color": "#ff42b0",
-              "pos": 60
-            },
-            {
-              "color": "#52b4ff",
-              "pos": 86
-            }
-          ]
-        },
-        {
           "id": "a28q909t",
           "type": "heading",
           "x": 20,
@@ -166,8 +166,8 @@
             "border": "none",
             "borderColor": "rgba(255,255,255,0.18)",
             "borderWidth": 1,
-            "radius": 3,
-            "shadow": true,
+            "radius": 16,
+            "shadow": false,
             "shadowColor": "rgba(0,0,0,.25)",
             "shadowBlur": 32,
             "shadowX": 0,
