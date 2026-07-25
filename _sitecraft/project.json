@@ -131,14 +131,14 @@
         {
           "id": "a28q909t",
           "type": "heading",
-          "x": 290,
+          "x": 240,
           "y": 10,
-          "w": 470,
+          "w": 520,
           "h": 100,
           "text": "Stephen Gozza",
           "level": 1,
           "style": {
-            "bg": "rgba(255,255,255,0.10)",
+            "bg": "transparent",
             "border": "solid",
             "borderColor": "rgba(255,255,255,0.18)",
             "borderWidth": 1,
@@ -152,7 +152,7 @@
             "innerShadow": true,
             "liquidGlass": true,
             "backdropBlur": 6,
-            "innerStrength": 31,
+            "innerStrength": 12,
             "_preGlass": {
               "bg": "transparent",
               "shadow": false,
