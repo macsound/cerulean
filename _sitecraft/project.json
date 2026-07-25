@@ -3,10 +3,10 @@
   "name": "Cerulean",
   "description": "",
   "style": {
-    "headingFont": "Space Grotesk",
+    "headingFont": "DM Serif Display",
     "bodyFont": "Inter",
-    "accentColor": "#0891b2",
-    "bgColor": "#43484c",
+    "accentColor": "#9e99a8",
+    "bgColor": "#826f61",
     "textColor": "#9ca3af",
     "pageWidth": "medium",
     "sidePadding": 24,
@@ -83,7 +83,7 @@
           "x": 0,
           "y": 0,
           "w": 960,
-          "h": 260,
+          "h": 1750,
           "shapeType": "rect",
           "fillColor": "#ff52f9",
           "style": {
@@ -100,54 +100,30 @@
             "opacity": 100
           },
           "locked": false,
-          "fillType": "solid",
+          "fillType": "gradient",
           "gradientColor1": "#374148",
           "gradientColor2": "#018df9",
-          "gradientAngle": 233,
+          "gradientAngle": 106,
           "gradientType": "linear",
           "gradientStops": [
             {
-              "color": "#ff42b0",
-              "pos": 60
-            },
-            {
-              "color": "#52b4ff",
-              "pos": 86
-            }
-          ]
-        },
-        {
-          "id": "z6tsvlan",
-          "type": "shape",
-          "x": 0,
-          "y": 260,
-          "w": 960,
-          "h": 700,
-          "shapeType": "rect",
-          "fillColor": "#307FE2",
-          "style": {
-            "bg": "#374148",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "liquidGlass": false,
-            "backdropBlur": 0
-          },
-          "fillType": "solid",
-          "gradientStops": [
-            {
-              "color": "#307FE2",
+              "color": "#785c44",
               "pos": 0
             },
             {
-              "color": "#1a6bc7",
+              "color": "#b7a693",
+              "pos": 35
+            },
+            {
+              "color": "#8c7d73",
+              "pos": 37
+            },
+            {
+              "color": "#625042",
+              "pos": 33
+            },
+            {
+              "color": "#c5c2bb",
               "pos": 100
             }
           ]
@@ -157,26 +133,26 @@
           "type": "heading",
           "x": 20,
           "y": 20,
-          "w": 360,
-          "h": 60,
+          "w": 550,
+          "h": 100,
           "text": "Stephen Gozza",
           "level": 1,
           "style": {
-            "bg": "rgba(255,255,255,0.10)",
-            "border": "none",
-            "borderColor": "rgba(255,255,255,0.18)",
+            "bg": "transparent",
+            "border": "solid",
+            "borderColor": "#64585a",
             "borderWidth": 1,
             "radius": 16,
-            "shadow": false,
+            "shadow": true,
             "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 32,
+            "shadowBlur": 30,
             "shadowX": 0,
             "shadowY": 8,
             "opacity": 100,
             "innerShadow": true,
             "liquidGlass": true,
-            "backdropBlur": 20,
-            "innerStrength": 35,
+            "backdropBlur": 6,
+            "innerStrength": 100,
             "_preGlass": {
               "bg": "transparent",
               "shadow": false,
@@ -192,16 +168,17 @@
               "radius": 0
             }
           },
-          "fontSize": 47
+          "fontSize": 69,
+          "textColor": "#ffffff"
         },
         {
           "id": "9wjhnzab",
           "type": "text",
           "x": 35,
-          "y": 90,
+          "y": 140,
           "w": 890,
-          "h": 70,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\"><span class=\"s1\" style=\"font-kerning: none;\">Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</span></p>",
+          "h": 50,
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\"><span class=\"s1\" style=\"font-kerning: none;\"><font color=\"#dddbe1\">Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</font></span></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -216,7 +193,9 @@
             "opacity": 100
           },
           "fontSize": 15,
-          "align": "center"
+          "align": "center",
+          "textColor": "#dddbe1",
+          "bodyFont": "Inter"
         },
         {
           "id": "hkee7kxq",
@@ -482,11 +461,11 @@
         {
           "id": "19jhmwm4",
           "type": "text",
-          "x": 95,
-          "y": 170,
+          "x": 90,
+          "y": 210,
           "w": 770,
           "h": 30,
-          "html": "<b><i><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26c.pdf\" data-sc-file=\"assets/files/sgozza26c.pdf\" target=\"_blank\" rel=\"noopener\" style=\"\"><font color=\"#9ca3af\">Resume</font></a>&nbsp;&nbsp;&nbsp;<a href=\"https://www.linkedin.com/in/stephen-gozza\" target=\"_blank\" rel=\"noopener\" style=\"background-color: transparent;\"><font color=\"#9ca3af\">LinkedIn</font></a>&nbsp; &nbsp;<span style=\"background-color: transparent;\">Contact&nbsp; &nbsp;</span><a href=\"#experoentialmarketing\" target=\"_self\" style=\"background-color: transparent;\"><font color=\"#9ca3af\">Experiential Marketing&nbsp;</font></a>&nbsp; Custom Consumer Packaging</i></b><div><br></div>",
+          "html": "<font color=\"#dddbe1\"><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26c.pdf\" data-sc-file=\"assets/files/sgozza26c.pdf\" target=\"_blank\" rel=\"noopener\" style=\"\">Resume</a>&nbsp;&nbsp;&nbsp;<a href=\"https://www.linkedin.com/in/stephen-gozza\" target=\"_blank\" rel=\"noopener\" style=\"\">LinkedIn</a>&nbsp; &nbsp;Contact&nbsp; &nbsp;<a href=\"#experoentialmarketing\" target=\"_self\" style=\"\">Experiential Marketing&nbsp;</a>&nbsp; Custom Consumer Packaging</font><div><br></div>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -504,16 +483,16 @@
             "innerStrength": 35,
             "backdropBlur": 0
           },
-          "textColor": "#9ca3af",
           "bodyFont": "Inter",
-          "align": "center"
+          "align": "center",
+          "textColor": "#dddbe1"
         },
         {
           "id": "0h7zu1qw",
           "type": "divider",
-          "x": 125,
-          "y": 200,
-          "w": 710,
+          "x": 0,
+          "y": 250,
+          "w": 960,
           "h": 20,
           "lineColor": "#a3a3a3",
           "lineWidth": 12,
@@ -537,16 +516,16 @@
           "fillType": "gradient",
           "gradientStops": [
             {
-              "color": "#e2326f",
+              "color": "#9ca3af",
               "pos": 4
             },
             {
-              "color": "#002aff",
+              "color": "#645244",
               "pos": 100
             }
           ],
           "gradientAngle": 180,
-          "locked": true
+          "locked": false
         },
         {
           "id": "vh7dobl0",
@@ -839,7 +818,8 @@
             "backdropBlur": 20
           },
           "shineEffect": true,
-          "shineMode": "scroll"
+          "shineMode": "scroll",
+          "bgOpacity": 0
         },
         {
           "id": "arc7hx9r",
