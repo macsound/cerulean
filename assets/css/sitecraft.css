@@ -1,9 +1,9 @@
 /* Sitecraft v0.2.0 */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-body{font-family:'Inter',sans-serif;color:#9ca3af;background:#43484c;margin:0}
-h1,h2,h3,h4,h5,h6{font-family:'Space Grotesk',sans-serif}
-a{color:#0891b2}
+body{font-family:'Inter',sans-serif;color:#9ca3af;background:#826f61;margin:0}
+h1,h2,h3,h4,h5,h6{font-family:'DM Serif Display',serif}
+a{color:#9e99a8}
 .sc-page{position:relative;width:100%;max-width:960px;margin:0 auto}
 .sc-elem{position:absolute}
-.sc-btn a{display:inline-block;padding:10px 24px;background:#0891b2;color:#fff;border-radius:8px;font-weight:700;text-decoration:none}
+.sc-btn a{display:inline-block;padding:10px 24px;background:#9e99a8;color:#fff;border-radius:8px;font-weight:700;text-decoration:none}
