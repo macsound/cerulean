@@ -75,7 +75,7 @@
         }
       ],
       "_migrated": true,
-      "height": 1980,
+      "height": 2170,
       "elements": [
         {
           "id": "bpoa7v8g",
@@ -83,7 +83,7 @@
           "x": 0,
           "y": 0,
           "w": 960,
-          "h": 1980,
+          "h": 2130,
           "shapeType": "rect",
           "fillColor": "#ff52f9",
           "style": {
@@ -127,6 +127,45 @@
               "pos": 100
             }
           ]
+        },
+        {
+          "id": "hfjabzf9",
+          "type": "shape",
+          "x": 90,
+          "y": 1780,
+          "w": 230,
+          "h": 260,
+          "shapeType": "rect",
+          "fillColor": "#307FE2",
+          "style": {
+            "bg": "rgba(255,255,255,0.10)",
+            "border": "none",
+            "borderColor": "rgba(255,255,255,0.18)",
+            "borderWidth": 1,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 32,
+            "shadowX": 0,
+            "shadowY": 8,
+            "opacity": 0,
+            "liquidGlass": true,
+            "_preGlass": {
+              "bg": "transparent",
+              "shadow": false,
+              "shadowBlur": 12,
+              "shadowY": 4,
+              "shadowX": 0,
+              "shadowColor": "rgba(0,0,0,.25)",
+              "border": "none",
+              "borderWidth": 2,
+              "borderColor": "#307FE2",
+              "radius": 0
+            },
+            "innerShadow": true,
+            "innerStrength": 100,
+            "backdropBlur": 9
+          }
         },
         {
           "id": "a28q909t",
@@ -715,30 +754,6 @@
           "align": "center"
         },
         {
-          "id": "820uk1vn",
-          "type": "text",
-          "x": 90,
-          "y": 1670,
-          "w": 230,
-          "h": 230,
-          "html": "<p><span style=\"background-color: transparent; color: var(--st);\">GitHub Website Builder</span></p><p>This website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100
-          },
-          "bodyFont": "Inter",
-          "fontSize": 18
-        },
-        {
           "id": "qm7c2w1h",
           "type": "badge",
           "x": 70,
@@ -826,7 +841,7 @@
           "id": "arc7hx9r",
           "type": "badge",
           "x": 35,
-          "y": 1573,
+          "y": 1650,
           "w": 106,
           "h": 25,
           "text": "Mac Apps",
@@ -861,7 +876,7 @@
           "id": "ubtrgxos",
           "type": "heading",
           "x": 90,
-          "y": 1614,
+          "y": 1730,
           "w": 290,
           "h": 56,
           "text": "Sitecraft",
@@ -882,12 +897,51 @@
           "headingFont": "DM Serif Display"
         },
         {
+          "id": "cnl43doe",
+          "type": "shape",
+          "x": 380,
+          "y": 1780,
+          "w": 240,
+          "h": 260,
+          "shapeType": "rect",
+          "fillColor": "#307FE2",
+          "style": {
+            "bg": "rgba(255,255,255,0.10)",
+            "border": "none",
+            "borderColor": "rgba(255,255,255,0.18)",
+            "borderWidth": 1,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 32,
+            "shadowX": 0,
+            "shadowY": 8,
+            "opacity": 0,
+            "liquidGlass": true,
+            "_preGlass": {
+              "bg": "transparent",
+              "shadow": false,
+              "shadowBlur": 12,
+              "shadowY": 4,
+              "shadowX": 0,
+              "shadowColor": "rgba(0,0,0,.25)",
+              "border": "none",
+              "borderWidth": 2,
+              "borderColor": "#307FE2",
+              "radius": 0
+            },
+            "innerShadow": true,
+            "innerStrength": 100,
+            "backdropBlur": 9
+          }
+        },
+        {
           "id": "dcfdnuat",
           "type": "text",
           "x": 380,
-          "y": 1670,
+          "y": 1800,
           "w": 240,
-          "h": 240,
+          "h": 230,
           "html": "<p>Simplified slide builder that focuses on the content and allows the designer to theme the content without touching the slides themselves. Conveniently export to jpg-per-slide or .pptx</p>",
           "style": {
             "bg": "transparent",
@@ -909,7 +963,7 @@
           "id": "fs062aa4",
           "type": "heading",
           "x": 380,
-          "y": 1614,
+          "y": 1730,
           "w": 290,
           "h": 56,
           "text": "Pastor Deck",
@@ -930,11 +984,50 @@
           "headingFont": "DM Serif Display"
         },
         {
+          "id": "5u586mr8",
+          "type": "shape",
+          "x": 660,
+          "y": 1780,
+          "w": 240,
+          "h": 260,
+          "shapeType": "rect",
+          "fillColor": "#307FE2",
+          "style": {
+            "bg": "rgba(255,255,255,0.10)",
+            "border": "none",
+            "borderColor": "rgba(255,255,255,0.18)",
+            "borderWidth": 1,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 32,
+            "shadowX": 0,
+            "shadowY": 8,
+            "opacity": 0,
+            "liquidGlass": true,
+            "_preGlass": {
+              "bg": "transparent",
+              "shadow": false,
+              "shadowBlur": 12,
+              "shadowY": 4,
+              "shadowX": 0,
+              "shadowColor": "rgba(0,0,0,.25)",
+              "border": "none",
+              "borderWidth": 2,
+              "borderColor": "#307FE2",
+              "radius": 0
+            },
+            "innerShadow": true,
+            "innerStrength": 100,
+            "backdropBlur": 9
+          }
+        },
+        {
           "id": "my70zf2d",
           "type": "text",
           "x": 660,
-          "y": 1670,
-          "w": 280,
+          "y": 1800,
+          "w": 240,
           "h": 230,
           "html": "Open access presenting to a Mac with display-side persistant file storage and multi user control and access for live updating and management.&nbsp;",
           "style": {
@@ -957,7 +1050,7 @@
           "id": "vt4634eb",
           "type": "heading",
           "x": 660,
-          "y": 1614,
+          "y": 1730,
           "w": 290,
           "h": 56,
           "text": "Bayberry",
@@ -976,6 +1069,32 @@
             "opacity": 100
           },
           "headingFont": "DM Serif Display"
+        },
+        {
+          "id": "820uk1vn",
+          "type": "text",
+          "x": 90,
+          "y": 1800,
+          "w": 230,
+          "h": 200,
+          "html": "<p><span style=\"background-color: transparent; color: var(--st);\">GitHub Website Builder</span></p><p>This website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100,
+            "liquidGlass": false,
+            "backdropBlur": 0
+          },
+          "bodyFont": "Inter",
+          "fontSize": 18
         }
       ],
       "includeInNav": false
