@@ -175,9 +175,9 @@
           "id": "9wjhnzab",
           "type": "text",
           "x": 35,
-          "y": 140,
+          "y": 130,
           "w": 890,
-          "h": 50,
+          "h": 80,
           "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\"><span class=\"s1\" style=\"font-kerning: none;\"><font color=\"#dddbe1\">Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</font></span></p>",
           "style": {
             "bg": "transparent",
