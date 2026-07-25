@@ -75,7 +75,7 @@
         }
       ],
       "_migrated": true,
-      "height": 1890,
+      "height": 1980,
       "elements": [
         {
           "id": "bpoa7v8g",
@@ -83,7 +83,7 @@
           "x": 0,
           "y": 0,
           "w": 960,
-          "h": 1850,
+          "h": 1980,
           "shapeType": "rect",
           "fillColor": "#ff52f9",
           "style": {
@@ -717,11 +717,11 @@
         {
           "id": "820uk1vn",
           "type": "text",
-          "x": 70,
+          "x": 90,
           "y": 1670,
-          "w": 280,
-          "h": 150,
-          "html": "<p><span style=\"background-color: transparent; color: var(--st);\">GitHub Website Builder</span></p><p>This website made in Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
+          "w": 230,
+          "h": 230,
+          "html": "<p><span style=\"background-color: transparent; color: var(--st);\">GitHub Website Builder</span></p><p>This website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -854,12 +854,13 @@
             "backdropBlur": 20
           },
           "shineEffect": true,
-          "shineMode": "scroll"
+          "shineMode": "scroll",
+          "bgOpacity": 0
         },
         {
           "id": "ubtrgxos",
           "type": "heading",
-          "x": 70,
+          "x": 90,
           "y": 1614,
           "w": 290,
           "h": 56,
@@ -884,9 +885,9 @@
           "id": "dcfdnuat",
           "type": "text",
           "x": 380,
-          "y": 1660,
-          "w": 280,
-          "h": 150,
+          "y": 1670,
+          "w": 240,
+          "h": 240,
           "html": "<p>Simplified slide builder that focuses on the content and allows the designer to theme the content without touching the slides themselves. Conveniently export to jpg-per-slide or .pptx</p>",
           "style": {
             "bg": "transparent",
@@ -908,7 +909,7 @@
           "id": "fs062aa4",
           "type": "heading",
           "x": 380,
-          "y": 1598,
+          "y": 1614,
           "w": 290,
           "h": 56,
           "text": "Pastor Deck",
@@ -932,9 +933,9 @@
           "id": "my70zf2d",
           "type": "text",
           "x": 660,
-          "y": 1654,
+          "y": 1670,
           "w": 280,
-          "h": 150,
+          "h": 230,
           "html": "Open access presenting to a Mac with display-side persistant file storage and multi user control and access for live updating and management.&nbsp;",
           "style": {
             "bg": "transparent",
@@ -956,7 +957,7 @@
           "id": "vt4634eb",
           "type": "heading",
           "x": 660,
-          "y": 1590,
+          "y": 1614,
           "w": 290,
           "h": 56,
           "text": "Bayberry",
