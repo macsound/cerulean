@@ -7,7 +7,7 @@
     "bodyFont": "Inter",
     "accentColor": "#9e99a8",
     "bgColor": "#826f61",
-    "textColor": "#ffffff",
+    "textColor": "#d4ccc4",
     "pageWidth": "medium",
     "sidePadding": 24,
     "canvasWidth": "wide",
@@ -75,7 +75,7 @@
         }
       ],
       "_migrated": true,
-      "height": 1860,
+      "height": 1890,
       "elements": [
         {
           "id": "bpoa7v8g",
@@ -83,7 +83,7 @@
           "x": 0,
           "y": 0,
           "w": 960,
-          "h": 1750,
+          "h": 1850,
           "shapeType": "rect",
           "fillColor": "#ff52f9",
           "style": {
@@ -718,10 +718,10 @@
           "id": "820uk1vn",
           "type": "text",
           "x": 70,
-          "y": 1640,
+          "y": 1670,
           "w": 280,
-          "h": 180,
-          "html": "<p><b>Sitecraft</b> - GitHub Website Builder</p><p>This website made in Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
+          "h": 150,
+          "html": "<p><span style=\"background-color: transparent; color: var(--st);\">GitHub Website Builder</span></p><p>This website made in Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -735,7 +735,8 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "bodyFont": "Inter"
+          "bodyFont": "Inter",
+          "fontSize": 18
         },
         {
           "id": "qm7c2w1h",
@@ -824,11 +825,11 @@
         {
           "id": "arc7hx9r",
           "type": "badge",
-          "x": 30,
-          "y": 1570,
-          "w": 63,
-          "h": 28,
-          "text": "Apps",
+          "x": 35,
+          "y": 1573,
+          "w": 106,
+          "h": 25,
+          "text": "Mac Apps",
           "badgeShape": "pill",
           "fillColor": "#43484c",
           "textColor": "#ffffff",
@@ -854,6 +855,126 @@
           },
           "shineEffect": true,
           "shineMode": "scroll"
+        },
+        {
+          "id": "ubtrgxos",
+          "type": "heading",
+          "x": 70,
+          "y": 1614,
+          "w": 290,
+          "h": 56,
+          "text": "Sitecraft",
+          "level": 1,
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "headingFont": "DM Serif Display"
+        },
+        {
+          "id": "dcfdnuat",
+          "type": "text",
+          "x": 380,
+          "y": 1660,
+          "w": 280,
+          "h": 150,
+          "html": "<p>Simplified slide builder that focuses on the content and allows the designer to theme the content without touching the slides themselves. Conveniently export to jpg-per-slide or .pptx</p>",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "bodyFont": "Inter",
+          "fontSize": 18
+        },
+        {
+          "id": "fs062aa4",
+          "type": "heading",
+          "x": 380,
+          "y": 1598,
+          "w": 290,
+          "h": 56,
+          "text": "Pastor Deck",
+          "level": 1,
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "headingFont": "DM Serif Display"
+        },
+        {
+          "id": "my70zf2d",
+          "type": "text",
+          "x": 660,
+          "y": 1654,
+          "w": 280,
+          "h": 150,
+          "html": "Open access presenting to a Mac with display-side persistant file storage and multi user control and access for live updating and management.&nbsp;",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "bodyFont": "Inter",
+          "fontSize": 18
+        },
+        {
+          "id": "vt4634eb",
+          "type": "heading",
+          "x": 660,
+          "y": 1590,
+          "w": 290,
+          "h": 56,
+          "text": "Bayberry",
+          "level": 1,
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "headingFont": "DM Serif Display"
         }
       ],
       "includeInNav": false
@@ -910,7 +1031,7 @@
   },
   "siteFooter": {
     "show": true,
-    "bgColor": "#0d0d14",
+    "bgColor": "#6a584b",
     "textColor": "#cccccc",
     "socialLinks": [
       {
