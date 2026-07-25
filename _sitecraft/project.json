@@ -75,7 +75,7 @@
         }
       ],
       "_migrated": true,
-      "height": 2170,
+      "height": 2590,
       "elements": [
         {
           "id": "bpoa7v8g",
@@ -83,7 +83,7 @@
           "x": 0,
           "y": 0,
           "w": 960,
-          "h": 2130,
+          "h": 2550,
           "shapeType": "rect",
           "fillColor": "#ff52f9",
           "style": {
@@ -205,7 +205,8 @@
               "borderWidth": 1,
               "borderColor": "#b0b0b0",
               "radius": 0
-            }
+            },
+            "smartShadow": false
           },
           "fontSize": 69,
           "textColor": "#ffffff"
@@ -240,7 +241,7 @@
           "id": "hkee7kxq",
           "type": "image",
           "x": 90,
-          "y": 1100,
+          "y": 1210,
           "w": 240,
           "h": 120,
           "src": "/assets/images/marriott-experiential-marketing.jpg",
@@ -269,7 +270,7 @@
           "id": "80c8hx0h",
           "type": "image",
           "x": 380,
-          "y": 1100,
+          "y": 1210,
           "w": 240,
           "h": 120,
           "src": "/assets/images/blue-experiential-marketing.jpg",
@@ -298,7 +299,7 @@
           "id": "2dvxp8b6",
           "type": "image",
           "x": 660,
-          "y": 1100,
+          "y": 1210,
           "w": 240,
           "h": 120,
           "src": "/assets/images/elasticonsetup-stephen-gozza.jpg",
@@ -327,7 +328,7 @@
           "id": "rmuusn50",
           "type": "image",
           "x": 90,
-          "y": 1250,
+          "y": 1360,
           "w": 240,
           "h": 120,
           "src": "/assets/images/conf-index-left-image-4.jpg",
@@ -356,7 +357,7 @@
           "id": "opgdu6pa",
           "type": "image",
           "x": 380,
-          "y": 1250,
+          "y": 1360,
           "w": 240,
           "h": 120,
           "src": "/assets/images/projmap-index-center-image-5.jpg",
@@ -385,7 +386,7 @@
           "id": "s32jug4r",
           "type": "image",
           "x": 660,
-          "y": 1250,
+          "y": 1360,
           "w": 240,
           "h": 120,
           "src": "/assets/images/reddissetup-index-right-image-6.jpg",
@@ -414,7 +415,7 @@
           "id": "4qmwvqrt",
           "type": "image",
           "x": 660,
-          "y": 1400,
+          "y": 1510,
           "w": 240,
           "h": 120,
           "src": "/assets/images/reddis-index-right-image-7.jpg",
@@ -443,7 +444,7 @@
           "id": "8io68ojx",
           "type": "image",
           "x": 380,
-          "y": 1400,
+          "y": 1510,
           "w": 240,
           "h": 120,
           "src": "/assets/images/elasticon-index-center-image-8.jpg",
@@ -472,7 +473,7 @@
           "id": "3tqoqtp1",
           "type": "image",
           "x": 90,
-          "y": 1400,
+          "y": 1510,
           "w": 240,
           "h": 120,
           "src": "/assets/images/ice-index-left-image-9.jpg",
@@ -775,7 +776,7 @@
             "radius": 16,
             "shadow": true,
             "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 32,
+            "shadowBlur": 10,
             "shadowX": 0,
             "shadowY": 8,
             "opacity": 100,
@@ -806,7 +807,7 @@
           "id": "q23tnq69",
           "type": "badge",
           "x": 50,
-          "y": 1020,
+          "y": 1130,
           "w": 207,
           "h": 28,
           "text": "Experiential Marketing ",
@@ -824,7 +825,7 @@
             "radius": 16,
             "shadow": true,
             "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 0,
+            "shadowBlur": 7,
             "shadowX": 0,
             "shadowY": 5,
             "opacity": 100,
@@ -840,16 +841,16 @@
         {
           "id": "arc7hx9r",
           "type": "badge",
-          "x": 35,
+          "x": 38,
           "y": 1650,
-          "w": 106,
+          "w": 100,
           "h": 25,
           "text": "Mac Apps",
           "badgeShape": "pill",
           "fillColor": "#43484c",
           "textColor": "#ffffff",
           "fontSize": 18,
-          "padX": 10,
+          "padX": 7,
           "padY": 2,
           "style": {
             "bg": "transparent",
@@ -859,7 +860,7 @@
             "radius": 16,
             "shadow": true,
             "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 0,
+            "shadowBlur": 3,
             "shadowX": 0,
             "shadowY": 5,
             "opacity": 100,
@@ -870,7 +871,8 @@
           },
           "shineEffect": true,
           "shineMode": "scroll",
-          "bgOpacity": 0
+          "bgOpacity": 0,
+          "fontWeight": 900
         },
         {
           "id": "ubtrgxos",
@@ -954,7 +956,8 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": false
           },
           "bodyFont": "Inter",
           "fontSize": 18
@@ -1041,7 +1044,11 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": false,
+            "liquidGlass": false,
+            "innerShadow": false,
+            "backdropBlur": 0
           },
           "bodyFont": "Inter",
           "fontSize": 18
@@ -1066,7 +1073,8 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": false
           },
           "headingFont": "DM Serif Display"
         },
@@ -1091,7 +1099,8 @@
             "shadowY": 4,
             "opacity": 100,
             "liquidGlass": false,
-            "backdropBlur": 0
+            "backdropBlur": 0,
+            "smartShadow": false
           },
           "bodyFont": "Inter",
           "fontSize": 18
