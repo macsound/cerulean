@@ -144,7 +144,7 @@
           "gradientStops": [
             {
               "color": "#ff42b0",
-              "pos": 49
+              "pos": 60
             },
             {
               "color": "#52b4ff",
@@ -530,20 +530,23 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100,
-            "innerShadow": false
+            "innerShadow": false,
+            "liquidGlass": false,
+            "backdropBlur": 0
           },
           "fillType": "gradient",
           "gradientStops": [
             {
               "color": "#e2326f",
-              "pos": 0
+              "pos": 4
             },
             {
-              "color": "#1a6bc7",
+              "color": "#002aff",
               "pos": 100
             }
           ],
-          "gradientAngle": 180
+          "gradientAngle": 180,
+          "locked": true
         },
         {
           "id": "vh7dobl0",
