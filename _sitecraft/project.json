@@ -100,7 +100,18 @@
             "opacity": 100,
             "liquidGlass": false,
             "backdropBlur": 0
-          }
+          },
+          "fillType": "solid",
+          "gradientStops": [
+            {
+              "color": "#307FE2",
+              "pos": 0
+            },
+            {
+              "color": "#1a6bc7",
+              "pos": 100
+            }
+          ]
         },
         {
           "id": "bpoa7v8g",
@@ -110,9 +121,9 @@
           "w": 960,
           "h": 260,
           "shapeType": "rect",
-          "fillColor": "#307FE2",
+          "fillColor": "#1b2831",
           "style": {
-            "bg": "#1b2831",
+            "bg": "transparent",
             "border": "none",
             "borderColor": "#307FE2",
             "borderWidth": 2,
@@ -124,7 +135,22 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "locked": true
+          "locked": false,
+          "fillType": "gradient",
+          "gradientColor1": "#374148",
+          "gradientColor2": "#018df9",
+          "gradientAngle": 233,
+          "gradientType": "linear",
+          "gradientStops": [
+            {
+              "color": "#ff42b0",
+              "pos": 49
+            },
+            {
+              "color": "#52b4ff",
+              "pos": 86
+            }
+          ]
         },
         {
           "id": "a28q909t",
@@ -136,11 +162,11 @@
           "text": "Stephen Gozza",
           "level": 1,
           "style": {
-            "bg": "transparent",
+            "bg": "rgba(255,255,255,0.10)",
             "border": "none",
             "borderColor": "rgba(255,255,255,0.18)",
             "borderWidth": 1,
-            "radius": 16,
+            "radius": 3,
             "shadow": true,
             "shadowColor": "rgba(0,0,0,.25)",
             "shadowBlur": 32,
@@ -159,6 +185,7 @@
               "shadowX": 0,
               "shadowColor": "rgba(0,0,0,.25)",
               "innerShadow": false,
+              "innerStrength": 35,
               "border": "none",
               "borderWidth": 1,
               "borderColor": "#b0b0b0",
@@ -502,8 +529,21 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
-          }
+            "opacity": 100,
+            "innerShadow": false
+          },
+          "fillType": "gradient",
+          "gradientStops": [
+            {
+              "color": "#e2326f",
+              "pos": 0
+            },
+            {
+              "color": "#1a6bc7",
+              "pos": 100
+            }
+          ],
+          "gradientAngle": 180
         },
         {
           "id": "vh7dobl0",
@@ -554,7 +594,7 @@
         {
           "id": "p4bpcvri",
           "type": "video",
-          "x": 550,
+          "x": 495,
           "y": 480,
           "w": 340,
           "h": 180,
