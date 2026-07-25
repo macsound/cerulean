@@ -945,7 +945,8 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": false
           },
           "headingFont": "DM Serif Display"
         },
@@ -1008,7 +1009,7 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100,
-            "smartShadow": false
+            "smartShadow": true
           },
           "bodyFont": "Inter",
           "fontSize": 18
@@ -1033,7 +1034,8 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": false
           },
           "headingFont": "DM Serif Display"
         },
@@ -1096,7 +1098,7 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100,
-            "smartShadow": false,
+            "smartShadow": true,
             "liquidGlass": false,
             "innerShadow": false,
             "backdropBlur": 0
@@ -1151,7 +1153,8 @@
             "opacity": 100,
             "liquidGlass": false,
             "backdropBlur": 0,
-            "smartShadow": true
+            "smartShadow": false,
+            "innerShadow": false
           },
           "bodyFont": "Inter",
           "fontSize": 18
@@ -1201,7 +1204,8 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": true
           },
           "align": "center",
           "bodyFont": "Inter"
