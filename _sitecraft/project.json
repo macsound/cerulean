@@ -540,10 +540,10 @@
         {
           "id": "0h7zu1qw",
           "type": "divider",
-          "x": 0,
-          "y": 250,
+          "x": 5,
+          "y": 270,
           "w": 960,
-          "h": 290,
+          "h": 20,
           "lineColor": "#a3a3a3",
           "lineWidth": 12,
           "lineStyle": "solid",
@@ -578,39 +578,13 @@
           "locked": false
         },
         {
-          "id": "vh7dobl0",
-          "type": "video",
-          "x": 100,
-          "y": 520,
-          "w": 340,
-          "h": 180,
-          "youtube": "https://drive.google.com/file/d/1mFCZXZGKZVnz0kKfemeeF1eMk-IBBR1a/view?usp=sharing",
-          "src": "",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100
-          },
-          "videoMode": "lightbox",
-          "thumbnail": "/assets/images/vision-pro-guided-tour.png",
-          "thumbnailRaw": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/vision-pro-guided-tour.png"
-        },
-        {
           "id": "rpiut8ac",
           "type": "text",
           "x": 100,
           "y": 440,
           "w": 340,
           "h": 80,
-          "html": "<p>Vision Pro Guided Tour</p><p><b>All Device UI</b></p>",
+          "html": "<p>Vision Pro Guided Tour</p><p><b>Vision Pro UI</b></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -622,9 +596,11 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": true
           },
-          "align": "center"
+          "align": "center",
+          "bodyFont": "Inter"
         },
         {
           "id": "p4bpcvri",
@@ -659,7 +635,7 @@
           "y": 440,
           "w": 340,
           "h": 80,
-          "html": "<p>iPhone Dynamic Island&nbsp;<span style=\"color: var(--st); background-color: transparent;\">Introduction Film</span></p><p><span style=\"color: var(--st); background-color: transparent;\"><b>All Device UI</b></span></p>",
+          "html": "<p>iPhone Dynamic Island&nbsp;<span style=\"color: var(--st); background-color: transparent;\">Introduction Film</span></p><p><span style=\"color: var(--st); background-color: transparent;\"><b>iPhone UI</b></span></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -675,9 +651,36 @@
             "liquidGlass": false,
             "backdropBlur": 0,
             "innerShadow": false,
-            "smartShadow": false
+            "smartShadow": true
           },
-          "align": "center"
+          "align": "center",
+          "bodyFont": "Inter"
+        },
+        {
+          "id": "vh7dobl0",
+          "type": "video",
+          "x": 100,
+          "y": 520,
+          "w": 340,
+          "h": 180,
+          "youtube": "https://drive.google.com/file/d/1mFCZXZGKZVnz0kKfemeeF1eMk-IBBR1a/view?usp=sharing",
+          "src": "",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100
+          },
+          "videoMode": "lightbox",
+          "thumbnail": "/assets/images/vision-pro-guided-tour.png",
+          "thumbnailRaw": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/vision-pro-guided-tour.png"
         },
         {
           "id": "28ttu7ee",
@@ -738,7 +741,7 @@
           "y": 740,
           "w": 340,
           "h": 80,
-          "html": "<p>Yoga Cutaway Scene<br><b>WWDC 2025</b></p>",
+          "html": "<p>Yoga Cutaway Scene<br><b>Watch UI</b></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -750,9 +753,11 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": true
           },
-          "align": "center"
+          "align": "center",
+          "bodyFont": "Inter"
         },
         {
           "id": "8aef89mi",
@@ -773,7 +778,8 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": true
           },
           "align": "center"
         },
@@ -1192,7 +1198,7 @@
           "y": 1050,
           "w": 340,
           "h": 80,
-          "html": "<p><span style=\"color: var(--st); background-color: transparent;\">Digital ID Rollout</span></p><p><b style=\"color: var(--st); background-color: transparent;\">All Device UI</b><br></p>",
+          "html": "<p><span style=\"color: var(--st); background-color: transparent;\">Digital ID Rollout</span></p><p><b style=\"color: var(--st); background-color: transparent;\">Watch UI</b><br></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -1255,7 +1261,8 @@
             "shadowBlur": 12,
             "shadowX": 0,
             "shadowY": 4,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": true
           },
           "align": "center",
           "bodyFont": "Inter"
@@ -1294,6 +1301,57 @@
           "w": 340,
           "h": 80,
           "html": "<p><span style=\"color: var(--st); background-color: transparent;\">M2 iPad Launch Film</span></p><p><b style=\"color: var(--st); background-color: transparent;\">All Device UI</b><br></p>",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100,
+            "smartShadow": true
+          },
+          "align": "center",
+          "bodyFont": "Inter"
+        },
+        {
+          "id": "jvr2i2cs",
+          "type": "video",
+          "x": 560,
+          "y": 1470,
+          "w": 340,
+          "h": 180,
+          "youtube": "https://drive.google.com/file/d/1ydRty6xXMDJK43MW8zHBC3_oUbZOpZ--/view?usp=drive_link",
+          "src": "",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.9)",
+            "shadowBlur": 2,
+            "shadowX": 0,
+            "shadowY": 1,
+            "opacity": 100
+          },
+          "videoMode": "lightbox",
+          "thumbnail": "/assets/images/iphone15-spatial.png",
+          "thumbnailRaw": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/iphone15-spatial.png"
+        },
+        {
+          "id": "y76qw9c3",
+          "type": "text",
+          "x": 560,
+          "y": 1390,
+          "w": 340,
+          "h": 80,
+          "html": "<p><span style=\"color: var(--st); background-color: transparent;\">iPhone 15 Pro Spatial Video Scene</span></p><p><b style=\"color: var(--st); background-color: transparent;\">iPhone + Vision Pro UI</b><br></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
