@@ -6,7 +6,7 @@
     "headingFont": "DM Serif Display",
     "bodyFont": "Inter",
     "accentColor": "#9e99a8",
-    "bgColor": "#826f61",
+    "bgColor": "#212239",
     "textColor": "#e7d7c5",
     "pageWidth": "medium",
     "sidePadding": 24,
@@ -81,7 +81,7 @@
         {
           "id": "bpoa7v8g",
           "type": "shape",
-          "x": 0,
+          "x": 5,
           "y": 0,
           "w": 960,
           "h": 3080,
@@ -100,7 +100,7 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "locked": true,
+          "locked": false,
           "fillType": "gradient",
           "gradientColor1": "#374148",
           "gradientColor2": "#018df9",
@@ -108,23 +108,23 @@
           "gradientType": "linear",
           "gradientStops": [
             {
-              "color": "#785c44",
+              "color": "#05060f",
               "pos": 0
             },
             {
-              "color": "#b7a693",
+              "color": "#9294ce",
               "pos": 35
             },
             {
-              "color": "#8c7d73",
+              "color": "#cccdea",
               "pos": 37
             },
             {
-              "color": "#625042",
+              "color": "#686aa6",
               "pos": 33
             },
             {
-              "color": "#c5c2bb",
+              "color": "#00023d",
               "pos": 100
             }
           ]
@@ -224,7 +224,7 @@
           "y": 130,
           "w": 890,
           "h": 80,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\"><span class=\"s1\" style=\"font-kerning: none;\"><font color=\"#dddbe1\">Whether I’m coordinating video production, building brand strategy, or working with key stakeholders to drive communications efforts, I thrive in environments where creativity and strategy come together to drive business outcomes.</font></span></p>",
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This site is built on Sitecraft, a website builder I designed and coded myself instead of reaching for a template. It's a living project — both the app and the site are still evolving, and I'd rather show that process since everything creative is ever really finished.<br></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -952,7 +952,7 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100,
-            "smartShadow": false
+            "smartShadow": true
           },
           "headingFont": "DM Serif Display"
         },
@@ -1041,7 +1041,7 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100,
-            "smartShadow": false
+            "smartShadow": true
           },
           "headingFont": "DM Serif Display"
         },
@@ -1133,7 +1133,7 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100,
-            "smartShadow": false
+            "smartShadow": true
           },
           "headingFont": "DM Serif Display"
         },
@@ -1159,7 +1159,7 @@
             "opacity": 100,
             "liquidGlass": false,
             "backdropBlur": 0,
-            "smartShadow": false,
+            "smartShadow": true,
             "innerShadow": false
           },
           "bodyFont": "Inter",
@@ -1424,7 +1424,7 @@
   },
   "siteFooter": {
     "show": true,
-    "bgColor": "#6a584b",
+    "bgColor": "#030540",
     "textColor": "#cccccc",
     "socialLinks": [
       {
