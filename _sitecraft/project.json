@@ -1268,32 +1268,6 @@
           "bodyFont": "Inter"
         },
         {
-          "id": "sbrvb4ii",
-          "type": "video",
-          "x": 110,
-          "y": 1470,
-          "w": 340,
-          "h": 180,
-          "youtube": "https://drive.google.com/file/d/1CqoWKkoYmVZTrxh0Qx5X0XRRQA015vIM/view?usp=drive_link",
-          "src": "",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.9)",
-            "shadowBlur": 2,
-            "shadowX": 0,
-            "shadowY": 1,
-            "opacity": 100
-          },
-          "videoMode": "lightbox",
-          "thumbnail": "assets/images/sbrvb4ii-thumb.jpg",
-          "thumbnailRaw": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/sbrvb4ii-thumb.jpg"
-        },
-        {
           "id": "p5m9mxj8",
           "type": "text",
           "x": 110,
@@ -1368,6 +1342,32 @@
           },
           "align": "center",
           "bodyFont": "Inter"
+        },
+        {
+          "id": "sbrvb4ii",
+          "type": "video",
+          "x": 110,
+          "y": 1470,
+          "w": 340,
+          "h": 180,
+          "youtube": "https://drive.google.com/file/d/1CqoWKkoYmVZTrxh0Qx5X0XRRQA015vIM/view?usp=drive_link",
+          "src": "",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.9)",
+            "shadowBlur": 2,
+            "shadowX": 0,
+            "shadowY": 1,
+            "opacity": 100
+          },
+          "videoMode": "lightbox",
+          "thumbnail": "assets/images/sbrvb4ii-thumb.jpg",
+          "thumbnailRaw": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/sbrvb4ii-thumb.jpg"
         }
       ],
       "includeInNav": false
