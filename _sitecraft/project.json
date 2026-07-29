@@ -100,7 +100,7 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "locked": false,
+          "locked": true,
           "fillType": "gradient",
           "gradientColor1": "#374148",
           "gradientColor2": "#018df9",
@@ -108,23 +108,23 @@
           "gradientType": "linear",
           "gradientStops": [
             {
-              "color": "#05060f",
+              "color": "#000e24",
               "pos": 0
             },
             {
-              "color": "#9294ce",
-              "pos": 35
+              "color": "#92a9ce",
+              "pos": 34
             },
             {
               "color": "#cccdea",
               "pos": 37
             },
             {
-              "color": "#686aa6",
-              "pos": 33
+              "color": "#6880a6",
+              "pos": 36
             },
             {
-              "color": "#00023d",
+              "color": "#020b17",
               "pos": 100
             }
           ]
@@ -224,7 +224,7 @@
           "y": 130,
           "w": 890,
           "h": 80,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This site is built on Sitecraft, a website builder I designed and coded myself instead of reaching for a template. It's a living project — both the app and the site are still evolving, and I'd rather show that process since everything creative is ever really finished.<br></p>",
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This site is built on Sitecraft, a website builder I designed and coded myself instead of reaching for a template. It's a living project as both the app and the site still evolving, and I'd rather show that process since everything creative is rarely ever finished.<br></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
@@ -239,7 +239,8 @@
             "opacity": 100,
             "liquidGlass": false,
             "innerShadow": false,
-            "backdropBlur": 0
+            "backdropBlur": 0,
+            "smartShadow": true
           },
           "fontSize": 18,
           "align": "center",
