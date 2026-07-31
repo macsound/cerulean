@@ -218,36 +218,6 @@
           "align": "center"
         },
         {
-          "id": "9wjhnzab",
-          "type": "text",
-          "x": 40,
-          "y": 150,
-          "w": 890,
-          "h": 80,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as both the app and the site still evolving, and I'd rather show that progress since everything creative is rarely ever finished.<br></p>",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": true,
-            "shadowColor": "#00093888",
-            "shadowBlur": 1,
-            "shadowX": 1,
-            "shadowY": 1,
-            "opacity": 100,
-            "liquidGlass": false,
-            "innerShadow": false,
-            "backdropBlur": 0,
-            "smartShadow": true
-          },
-          "fontSize": 18,
-          "align": "center",
-          "textColor": "#dddbe1",
-          "bodyFont": "Inter"
-        },
-        {
           "id": "hkee7kxq",
           "type": "image",
           "x": 90,
@@ -507,46 +477,6 @@
           },
           "originalFilename": "IMG_1040.jpeg",
           "rawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/ice-index-left-image-9.jpg"
-        },
-        {
-          "id": "0h7zu1qw",
-          "type": "divider",
-          "x": 5,
-          "y": 270,
-          "w": 960,
-          "h": 20,
-          "lineColor": "#a3a3a3",
-          "lineWidth": 12,
-          "lineStyle": "solid",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "innerShadow": false,
-            "liquidGlass": false,
-            "backdropBlur": 0
-          },
-          "fillType": "gradient",
-          "gradientStops": [
-            {
-              "color": "#9ca3af",
-              "pos": 4
-            },
-            {
-              "color": "#645244",
-              "pos": 100
-            }
-          ],
-          "gradientAngle": 180,
-          "locked": false
         },
         {
           "id": "rpiut8ac",
@@ -1084,6 +1014,59 @@
           "fontSize": 18
         },
         {
+          "id": "v0p9lfaj",
+          "type": "shape",
+          "x": 0,
+          "y": 160,
+          "w": 960,
+          "h": 120,
+          "shapeType": "rect",
+          "fillColor": "#307FE2",
+          "style": {
+            "bg": "transparent",
+            "border": "solid",
+            "borderColor": "rgba(255,255,255,0.32)",
+            "borderWidth": 1,
+            "radius": 0,
+            "shadow": true,
+            "shadowColor": "rgba(0,0,0,.22)",
+            "shadowBlur": 16,
+            "shadowX": 0,
+            "shadowY": 5,
+            "opacity": 36,
+            "innerShadow": true,
+            "liquidGlass": true,
+            "_preGlass": {
+              "bg": "transparent",
+              "shadow": false,
+              "shadowBlur": 2,
+              "shadowY": 1,
+              "shadowX": 0,
+              "shadowColor": "rgba(0,0,0,.9)",
+              "innerShadow": false,
+              "border": "none",
+              "borderWidth": 2,
+              "borderColor": "#307FE2",
+              "radius": 0
+            },
+            "innerStrength": 35,
+            "backdropBlur": 3
+          },
+          "fillType": "gradient",
+          "gradientStops": [
+            {
+              "color": "#307FE2",
+              "pos": 0
+            },
+            {
+              "color": "#032245",
+              "pos": 64
+            }
+          ],
+          "gradientType": "radial",
+          "locked": true
+        },
+        {
           "id": "vt4634eb",
           "type": "heading",
           "x": 650,
@@ -1258,7 +1241,9 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100,
-            "smartShadow": true
+            "smartShadow": true,
+            "liquidGlass": false,
+            "backdropBlur": 0
           },
           "align": "center",
           "bodyFont": "Inter"
@@ -1441,6 +1426,76 @@
           },
           "align": "center",
           "bodyFont": "Inter"
+        },
+        {
+          "id": "9wjhnzab",
+          "type": "text",
+          "x": 40,
+          "y": 170,
+          "w": 890,
+          "h": 80,
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as both the app and the site still evolving, and I'd rather show that progress since everything creative is rarely ever finished.<br></p>",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": true,
+            "shadowColor": "#00093888",
+            "shadowBlur": 1,
+            "shadowX": 1,
+            "shadowY": 1,
+            "opacity": 100,
+            "liquidGlass": false,
+            "innerShadow": false,
+            "backdropBlur": 0,
+            "smartShadow": true
+          },
+          "fontSize": 18,
+          "align": "center",
+          "textColor": "#dddbe1",
+          "bodyFont": "Inter"
+        },
+        {
+          "id": "0h7zu1qw",
+          "type": "divider",
+          "x": 0,
+          "y": 270,
+          "w": 960,
+          "h": 20,
+          "lineColor": "#a3a3a3",
+          "lineWidth": 12,
+          "lineStyle": "solid",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
+            "shadowX": 0,
+            "shadowY": 4,
+            "opacity": 100,
+            "innerShadow": false,
+            "liquidGlass": false,
+            "backdropBlur": 0
+          },
+          "fillType": "gradient",
+          "gradientStops": [
+            {
+              "color": "#9ca3af",
+              "pos": 4
+            },
+            {
+              "color": "#645244",
+              "pos": 100
+            }
+          ],
+          "gradientAngle": 180,
+          "locked": true
         }
       ],
       "includeInNav": false
