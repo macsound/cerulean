@@ -76,7 +76,7 @@
         }
       ],
       "_migrated": true,
-      "height": 3120,
+      "height": 3080,
       "elements": [
         {
           "id": "bpoa7v8g",
@@ -1496,6 +1496,30 @@
           ],
           "gradientAngle": 180,
           "locked": true
+        },
+        {
+          "id": "qsfeu7hc",
+          "type": "text",
+          "x": 360,
+          "y": 90,
+          "w": 280,
+          "h": 50,
+          "html": "<p><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26e.docx\" data-sc-file=\"assets/files/sgozza26e.docx\" target=\"_blank\" rel=\"noopener\"><b>Resume</b></a></p>",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.9)",
+            "shadowBlur": 2,
+            "shadowX": 0,
+            "shadowY": 1,
+            "opacity": 100
+          },
+          "align": "center",
+          "bodyFont": "Inter"
         }
       ],
       "includeInNav": false
@@ -1552,7 +1576,7 @@
   },
   "siteFooter": {
     "show": true,
-    "bgColor": "#27354b",
+    "bgColor": "#2d3c54",
     "textColor": "#cccccc",
     "socialLinks": [
       {
