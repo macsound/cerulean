@@ -1596,7 +1596,10 @@
             "shadowY": 1,
             "opacity": 100
           },
-          "videoMode": "lightbox"
+          "videoMode": "lightbox",
+          "thumbnail": "assets/images/osga15nn-thumb-1785949437293.jpg",
+          "thumbnailRaw": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/osga15nn-thumb-1785949437293.jpg",
+          "_thumbnailPending": false
         },
         {
           "id": "gd4oc0uf",
@@ -1648,7 +1651,10 @@
             "shadowY": 1,
             "opacity": 100
           },
-          "videoMode": "lightbox"
+          "videoMode": "lightbox",
+          "thumbnail": "assets/images/x12ycnt6-thumb-1785949466962.jpg",
+          "thumbnailRaw": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/x12ycnt6-thumb-1785949466962.jpg",
+          "_thumbnailPending": false
         }
       ],
       "includeInNav": false
