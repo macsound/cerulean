@@ -120,7 +120,7 @@
               "pos": 37
             },
             {
-              "color": "#6880a6",
+              "color": "#456292",
               "pos": 36
             },
             {
@@ -141,19 +141,19 @@
           "style": {
             "bg": "rgba(255,255,255,0.10)",
             "border": "solid",
-            "borderColor": "rgba(255,255,255,0.18)",
+            "borderColor": "rgba(255,255,255,0.32)",
             "borderWidth": 1,
-            "radius": 0,
+            "radius": 16,
             "shadow": true,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 32,
+            "shadowColor": "rgba(0,0,0,.22)",
+            "shadowBlur": 16,
             "shadowX": 0,
-            "shadowY": 8,
+            "shadowY": 5,
             "opacity": 0,
             "liquidGlass": true,
             "innerShadow": true,
             "innerStrength": 35,
-            "backdropBlur": 20,
+            "backdropBlur": 8,
             "_preGlass": {
               "bg": "transparent",
               "shadow": false,
@@ -848,23 +848,23 @@
         {
           "id": "cnl43doe",
           "type": "shape",
-          "x": 370,
+          "x": 360,
           "y": 2750,
           "w": 240,
           "h": 260,
           "shapeType": "rect",
-          "fillColor": "#307FE2",
+          "fillColor": "#3b89e8",
           "style": {
             "bg": "rgba(255,255,255,0.10)",
-            "border": "none",
-            "borderColor": "rgba(255,255,255,0.18)",
+            "border": "solid",
+            "borderColor": "rgba(255,255,255,0.32)",
             "borderWidth": 1,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 32,
+            "radius": 16,
+            "shadow": true,
+            "shadowColor": "rgba(0,0,0,.22)",
+            "shadowBlur": 16,
             "shadowX": 0,
-            "shadowY": 8,
+            "shadowY": 5,
             "opacity": 0,
             "liquidGlass": true,
             "_preGlass": {
@@ -874,20 +874,38 @@
               "shadowY": 4,
               "shadowX": 0,
               "shadowColor": "rgba(0,0,0,.25)",
+              "innerShadow": true,
+              "innerStrength": 100,
               "border": "none",
               "borderWidth": 2,
               "borderColor": "#307FE2",
               "radius": 0
             },
             "innerShadow": true,
-            "innerStrength": 100,
-            "backdropBlur": 9
-          }
+            "innerStrength": 35,
+            "backdropBlur": 8
+          },
+          "fillType": "gradient",
+          "gradientAngle": 114,
+          "gradientStops": [
+            {
+              "color": "#307FE2",
+              "pos": 0
+            },
+            {
+              "color": "#1a6bc7",
+              "pos": 50
+            },
+            {
+              "color": "#ffffff",
+              "pos": 100
+            }
+          ]
         },
         {
           "id": "dcfdnuat",
           "type": "text",
-          "x": 380,
+          "x": 370,
           "y": 2770,
           "w": 220,
           "h": 230,
@@ -912,7 +930,7 @@
         {
           "id": "fs062aa4",
           "type": "heading",
-          "x": 370,
+          "x": 360,
           "y": 2700,
           "w": 240,
           "h": 56,
@@ -942,18 +960,18 @@
           "w": 240,
           "h": 260,
           "shapeType": "rect",
-          "fillColor": "#307FE2",
+          "fillColor": "#3b89e8",
           "style": {
             "bg": "rgba(255,255,255,0.10)",
-            "border": "none",
-            "borderColor": "rgba(255,255,255,0.18)",
+            "border": "solid",
+            "borderColor": "rgba(255,255,255,0.32)",
             "borderWidth": 1,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 32,
+            "radius": 16,
+            "shadow": true,
+            "shadowColor": "rgba(0,0,0,.22)",
+            "shadowBlur": 16,
             "shadowX": 0,
-            "shadowY": 8,
+            "shadowY": 5,
             "opacity": 0,
             "liquidGlass": true,
             "_preGlass": {
@@ -963,15 +981,33 @@
               "shadowY": 4,
               "shadowX": 0,
               "shadowColor": "rgba(0,0,0,.25)",
+              "innerShadow": true,
+              "innerStrength": 100,
               "border": "none",
               "borderWidth": 2,
               "borderColor": "#307FE2",
               "radius": 0
             },
             "innerShadow": true,
-            "innerStrength": 100,
-            "backdropBlur": 9
-          }
+            "innerStrength": 35,
+            "backdropBlur": 8
+          },
+          "fillType": "gradient",
+          "gradientAngle": 114,
+          "gradientStops": [
+            {
+              "color": "#307FE2",
+              "pos": 0
+            },
+            {
+              "color": "#1a6bc7",
+              "pos": 50
+            },
+            {
+              "color": "#ffffff",
+              "pos": 100
+            }
+          ]
         },
         {
           "id": "my70zf2d",
@@ -1102,7 +1138,8 @@
             "liquidGlass": false,
             "backdropBlur": 0,
             "smartShadow": true,
-            "innerShadow": false
+            "innerShadow": false,
+            "liquidGlassMode": "text"
           },
           "bodyFont": "Inter",
           "fontSize": 18
