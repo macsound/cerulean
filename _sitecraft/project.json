@@ -948,7 +948,10 @@
             "shadowX": 0,
             "shadowY": 4,
             "opacity": 100,
-            "smartShadow": true
+            "smartShadow": true,
+            "liquidGlass": false,
+            "backdropBlur": 0,
+            "liquidGlassMode": "text"
           },
           "headingFont": "DM Serif Display"
         },
