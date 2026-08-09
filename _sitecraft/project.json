@@ -819,7 +819,8 @@
           "shineEffect": true,
           "shineMode": "scroll",
           "bgOpacity": 0,
-          "fontWeight": 900
+          "fontWeight": 900,
+          "anchorId": "apps"
         },
         {
           "id": "ubtrgxos",
@@ -1465,7 +1466,7 @@
           "y": 180,
           "w": 890,
           "h": 80,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as both the app and the site still evolving, and I'd rather show that progress since everything creative is rarely ever finished.<br></p>",
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as the app gains more features I'm able to demonstrate on the site.<br></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
