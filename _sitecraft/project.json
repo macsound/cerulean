@@ -184,7 +184,8 @@
               "pos": 100
             }
           ],
-          "gradientAngle": 114
+          "gradientAngle": 114,
+          "noiseAmount": 50
         },
         {
           "id": "a28q909t",
@@ -212,7 +213,7 @@
             "backdropBlur": 0,
             "innerStrength": 35,
             "smartShadow": true,
-            "liquidGlassMode": "panel"
+            "liquidGlassMode": "text"
           },
           "fontSize": 69,
           "textColor": "#ffffff",
@@ -900,7 +901,8 @@
               "color": "#ffffff",
               "pos": 100
             }
-          ]
+          ],
+          "noiseAmount": 52
         },
         {
           "id": "dcfdnuat",
@@ -1010,7 +1012,8 @@
               "color": "#ffffff",
               "pos": 100
             }
-          ]
+          ],
+          "noiseAmount": 53
         },
         {
           "id": "my70zf2d",
