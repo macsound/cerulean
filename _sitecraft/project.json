@@ -130,64 +130,6 @@
           ]
         },
         {
-          "id": "hfjabzf9",
-          "type": "shape",
-          "x": 80,
-          "y": 3090,
-          "w": 230,
-          "h": 260,
-          "shapeType": "rect",
-          "fillColor": "#3b89e8",
-          "style": {
-            "bg": "rgba(255,255,255,0.10)",
-            "border": "solid",
-            "borderColor": "rgba(255,255,255,0.32)",
-            "borderWidth": 1,
-            "radius": 16,
-            "shadow": true,
-            "shadowColor": "rgba(0,0,0,.22)",
-            "shadowBlur": 16,
-            "shadowX": 0,
-            "shadowY": 5,
-            "opacity": 0,
-            "liquidGlass": true,
-            "innerShadow": true,
-            "innerStrength": 35,
-            "backdropBlur": 8,
-            "_preGlass": {
-              "bg": "transparent",
-              "shadow": false,
-              "shadowBlur": 12,
-              "shadowY": 4,
-              "shadowX": 0,
-              "shadowColor": "rgba(0,0,0,.25)",
-              "innerShadow": true,
-              "innerStrength": 100,
-              "border": "none",
-              "borderWidth": 2,
-              "borderColor": "#307FE2",
-              "radius": 0
-            }
-          },
-          "fillType": "gradient",
-          "gradientStops": [
-            {
-              "color": "#307FE2",
-              "pos": 0
-            },
-            {
-              "color": "#1a6bc7",
-              "pos": 50
-            },
-            {
-              "color": "#ffffff",
-              "pos": 100
-            }
-          ],
-          "gradientAngle": 114,
-          "noiseAmount": 50
-        },
-        {
           "id": "a28q909t",
           "type": "heading",
           "x": 240,
@@ -823,228 +765,6 @@
           "anchorId": "apps"
         },
         {
-          "id": "ubtrgxos",
-          "type": "heading",
-          "x": 80,
-          "y": 3040,
-          "w": 230,
-          "h": 56,
-          "text": "Sitecraft",
-          "level": 1,
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "smartShadow": true
-          },
-          "headingFont": "DM Serif Display"
-        },
-        {
-          "id": "cnl43doe",
-          "type": "shape",
-          "x": 360,
-          "y": 3090,
-          "w": 240,
-          "h": 260,
-          "shapeType": "rect",
-          "fillColor": "#3b89e8",
-          "style": {
-            "bg": "rgba(255,255,255,0.10)",
-            "border": "solid",
-            "borderColor": "rgba(255,255,255,0.32)",
-            "borderWidth": 1,
-            "radius": 16,
-            "shadow": true,
-            "shadowColor": "rgba(0,0,0,.22)",
-            "shadowBlur": 16,
-            "shadowX": 0,
-            "shadowY": 5,
-            "opacity": 0,
-            "liquidGlass": true,
-            "_preGlass": {
-              "bg": "transparent",
-              "shadow": false,
-              "shadowBlur": 12,
-              "shadowY": 4,
-              "shadowX": 0,
-              "shadowColor": "rgba(0,0,0,.25)",
-              "innerShadow": true,
-              "innerStrength": 100,
-              "border": "none",
-              "borderWidth": 2,
-              "borderColor": "#307FE2",
-              "radius": 0
-            },
-            "innerShadow": true,
-            "innerStrength": 35,
-            "backdropBlur": 8
-          },
-          "fillType": "gradient",
-          "gradientAngle": 114,
-          "gradientStops": [
-            {
-              "color": "#307FE2",
-              "pos": 0
-            },
-            {
-              "color": "#1a6bc7",
-              "pos": 50
-            },
-            {
-              "color": "#ffffff",
-              "pos": 100
-            }
-          ],
-          "noiseAmount": 52
-        },
-        {
-          "id": "dcfdnuat",
-          "type": "text",
-          "x": 370,
-          "y": 3110,
-          "w": 220,
-          "h": 230,
-          "html": "<p>Simplified slide builder that focuses on the content and allows the designer to theme the content without touching the slides themselves. Conveniently export to jpg-per-slide or .pptx</p>",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "smartShadow": true
-          },
-          "bodyFont": "Inter",
-          "fontSize": 18
-        },
-        {
-          "id": "fs062aa4",
-          "type": "heading",
-          "x": 360,
-          "y": 3040,
-          "w": 240,
-          "h": 56,
-          "text": "Pastor Deck",
-          "level": 1,
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "smartShadow": true,
-            "liquidGlass": false,
-            "backdropBlur": 0,
-            "liquidGlassMode": "text"
-          },
-          "headingFont": "DM Serif Display"
-        },
-        {
-          "id": "5u586mr8",
-          "type": "shape",
-          "x": 650,
-          "y": 3090,
-          "w": 240,
-          "h": 260,
-          "shapeType": "rect",
-          "fillColor": "#3b89e8",
-          "style": {
-            "bg": "rgba(255,255,255,0.10)",
-            "border": "solid",
-            "borderColor": "rgba(255,255,255,0.32)",
-            "borderWidth": 1,
-            "radius": 16,
-            "shadow": true,
-            "shadowColor": "rgba(0,0,0,.22)",
-            "shadowBlur": 16,
-            "shadowX": 0,
-            "shadowY": 5,
-            "opacity": 0,
-            "liquidGlass": true,
-            "_preGlass": {
-              "bg": "transparent",
-              "shadow": false,
-              "shadowBlur": 12,
-              "shadowY": 4,
-              "shadowX": 0,
-              "shadowColor": "rgba(0,0,0,.25)",
-              "innerShadow": true,
-              "innerStrength": 100,
-              "border": "none",
-              "borderWidth": 2,
-              "borderColor": "#307FE2",
-              "radius": 0
-            },
-            "innerShadow": true,
-            "innerStrength": 35,
-            "backdropBlur": 8
-          },
-          "fillType": "gradient",
-          "gradientAngle": 114,
-          "gradientStops": [
-            {
-              "color": "#307FE2",
-              "pos": 0
-            },
-            {
-              "color": "#1a6bc7",
-              "pos": 50
-            },
-            {
-              "color": "#ffffff",
-              "pos": 100
-            }
-          ],
-          "noiseAmount": 53
-        },
-        {
-          "id": "my70zf2d",
-          "type": "text",
-          "x": 660,
-          "y": 3110,
-          "w": 220,
-          "h": 230,
-          "html": "Open access presenting to a Mac with display-side persistant file storage and multi user control and access for live updating and management.&nbsp;",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "smartShadow": true,
-            "liquidGlass": false,
-            "innerShadow": false,
-            "backdropBlur": 0
-          },
-          "bodyFont": "Inter",
-          "fontSize": 18
-        },
-        {
           "id": "v0p9lfaj",
           "type": "shape",
           "x": 0,
@@ -1096,60 +816,6 @@
           ],
           "gradientType": "radial",
           "locked": true
-        },
-        {
-          "id": "vt4634eb",
-          "type": "heading",
-          "x": 650,
-          "y": 3040,
-          "w": 240,
-          "h": 56,
-          "text": "Bayberry",
-          "level": 1,
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "smartShadow": true
-          },
-          "headingFont": "DM Serif Display"
-        },
-        {
-          "id": "820uk1vn",
-          "type": "text",
-          "x": 90,
-          "y": 3110,
-          "w": 210,
-          "h": 200,
-          "html": "<p><span style=\"background-color: transparent; color: var(--st);\">GitHub Website Builder</span></p><p>This website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</p>",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "liquidGlass": false,
-            "backdropBlur": 0,
-            "smartShadow": true,
-            "innerShadow": false,
-            "liquidGlassMode": "text"
-          },
-          "bodyFont": "Inter",
-          "fontSize": 18
         },
         {
           "id": "dgu0hfqk",
@@ -1659,6 +1325,273 @@
           "thumbnail": "assets/images/x12ycnt6-thumb-1785949466962.jpg",
           "thumbnailRaw": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/x12ycnt6-thumb-1785949466962.jpg",
           "_thumbnailPending": false
+        },
+        {
+          "id": "c8eveqb5",
+          "type": "tiles",
+          "x": 30,
+          "y": 3020,
+          "w": 900,
+          "h": 340,
+          "align": "center",
+          "transition": "flip",
+          "visibleCount": 3,
+          "gap": 40,
+          "anchorId": "",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.9)",
+            "shadowBlur": 2,
+            "shadowX": 0,
+            "shadowY": 1,
+            "opacity": 100,
+            "liquidGlass": false,
+            "backdropBlur": 0
+          },
+          "cards": [
+            {
+              "id": "1bf3cbpq",
+              "front": {
+                "fillType": "solid",
+                "fillColor": "#307FE2",
+                "gradientStops": null,
+                "gradientAngle": 135,
+                "gradientType": "linear",
+                "fillImage": "",
+                "fillImageRawUrl": "",
+                "noiseAmount": 0,
+                "label": {
+                  "text": "",
+                  "x": 20,
+                  "y": 0,
+                  "w": 200,
+                  "h": 20,
+                  "fontSize": 1,
+                  "color": "#ffffff"
+                },
+                "heading": {
+                  "text": "Sitecraft",
+                  "x": 20,
+                  "y": 12,
+                  "w": 200,
+                  "h": 56,
+                  "fontSize": 22,
+                  "fontWeight": 700,
+                  "color": "#ffffff"
+                },
+                "body": {
+                  "text": "GitHub Website Builder\nThis website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub",
+                  "x": 20,
+                  "y": 44,
+                  "w": 200,
+                  "h": 100,
+                  "fontSize": 14,
+                  "color": "#ffffff"
+                }
+              },
+              "back": {
+                "fillType": "photo",
+                "fillColor": "#1a2744",
+                "gradientStops": null,
+                "gradientAngle": 135,
+                "gradientType": "linear",
+                "fillImage": "",
+                "fillImageRawUrl": "",
+                "noiseAmount": 0,
+                "label": {
+                  "text": "",
+                  "x": 20,
+                  "y": 18,
+                  "w": 200,
+                  "h": 20,
+                  "fontSize": 12,
+                  "color": "#ffffff"
+                },
+                "heading": {
+                  "text": "More detail",
+                  "x": 20,
+                  "y": 44,
+                  "w": 200,
+                  "h": 56,
+                  "fontSize": 22,
+                  "fontWeight": 700,
+                  "color": "#ffffff"
+                },
+                "body": {
+                  "text": "Add the back-side content here.",
+                  "x": 20,
+                  "y": 104,
+                  "w": 200,
+                  "h": 100,
+                  "fontSize": 14,
+                  "color": "#ffffff"
+                }
+              }
+            },
+            {
+              "id": "2ff8umyo",
+              "front": {
+                "fillType": "solid",
+                "fillColor": "#307FE2",
+                "gradientStops": null,
+                "gradientAngle": 135,
+                "gradientType": "linear",
+                "fillImage": "",
+                "fillImageRawUrl": "",
+                "noiseAmount": 0,
+                "label": {
+                  "text": "",
+                  "x": 20,
+                  "y": 0,
+                  "w": 200,
+                  "h": 20,
+                  "fontSize": 12,
+                  "color": "#ffffff"
+                },
+                "heading": {
+                  "text": "PastorDeck",
+                  "x": 20,
+                  "y": 12,
+                  "w": 200,
+                  "h": 56,
+                  "fontSize": 22,
+                  "fontWeight": 700,
+                  "color": "#ffffff"
+                },
+                "body": {
+                  "text": "Simplified slide builder that focuses on the content and allows the designer to theme the content without touching the slides themselves. Conveniently export to jpg-per-slide or .pptx",
+                  "x": 20,
+                  "y": 44,
+                  "w": 200,
+                  "h": 100,
+                  "fontSize": 14,
+                  "color": "#ffffff"
+                }
+              },
+              "back": {
+                "fillType": "solid",
+                "fillColor": "#1a2744",
+                "gradientStops": null,
+                "gradientAngle": 135,
+                "gradientType": "linear",
+                "fillImage": "",
+                "fillImageRawUrl": "",
+                "noiseAmount": 0,
+                "label": {
+                  "text": "",
+                  "x": 20,
+                  "y": 18,
+                  "w": 200,
+                  "h": 20,
+                  "fontSize": 12,
+                  "color": "#ffffff"
+                },
+                "heading": {
+                  "text": "More detail",
+                  "x": 20,
+                  "y": 44,
+                  "w": 200,
+                  "h": 56,
+                  "fontSize": 22,
+                  "fontWeight": 700,
+                  "color": "#ffffff"
+                },
+                "body": {
+                  "text": "Add the back-side content here.",
+                  "x": 20,
+                  "y": 104,
+                  "w": 200,
+                  "h": 100,
+                  "fontSize": 14,
+                  "color": "#ffffff"
+                }
+              }
+            },
+            {
+              "id": "xpo01lqo",
+              "front": {
+                "fillType": "solid",
+                "fillColor": "#307FE2",
+                "gradientStops": null,
+                "gradientAngle": 135,
+                "gradientType": "linear",
+                "fillImage": "",
+                "fillImageRawUrl": "",
+                "noiseAmount": 0,
+                "label": {
+                  "text": "",
+                  "x": 20,
+                  "y": 0,
+                  "w": 200,
+                  "h": 20,
+                  "fontSize": 12,
+                  "color": "#ffffff"
+                },
+                "heading": {
+                  "text": "Bayberry",
+                  "x": 20,
+                  "y": 12,
+                  "w": 200,
+                  "h": 56,
+                  "fontSize": 22,
+                  "fontWeight": 700,
+                  "color": "#ffffff"
+                },
+                "body": {
+                  "text": "Open access presenting to a Mac with display-side persistant file storage and multi user control and access for live updating and management. ",
+                  "x": 20,
+                  "y": 44,
+                  "w": 200,
+                  "h": 100,
+                  "fontSize": 14,
+                  "color": "#ffffff"
+                }
+              },
+              "back": {
+                "fillType": "solid",
+                "fillColor": "#1a2744",
+                "gradientStops": null,
+                "gradientAngle": 135,
+                "gradientType": "linear",
+                "fillImage": "",
+                "fillImageRawUrl": "",
+                "noiseAmount": 0,
+                "label": {
+                  "text": "",
+                  "x": 20,
+                  "y": 18,
+                  "w": 200,
+                  "h": 20,
+                  "fontSize": 12,
+                  "color": "#ffffff"
+                },
+                "heading": {
+                  "text": "More detail",
+                  "x": 20,
+                  "y": 44,
+                  "w": 200,
+                  "h": 56,
+                  "fontSize": 22,
+                  "fontWeight": 700,
+                  "color": "#ffffff"
+                },
+                "body": {
+                  "text": "Add the back-side content here.",
+                  "x": 20,
+                  "y": 104,
+                  "w": 200,
+                  "h": 100,
+                  "fontSize": 14,
+                  "color": "#ffffff"
+                }
+              }
+            }
+          ]
         }
       ],
       "includeInNav": false
