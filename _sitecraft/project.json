@@ -5,7 +5,7 @@
   "style": {
     "headingFont": "DM Serif Display",
     "bodyFont": "Inter",
-    "accentColor": "#9e99a8",
+    "accentColor": "#0891b2",
     "bgColor": "#212239",
     "textColor": "#e7d7c5",
     "pageWidth": "medium",
@@ -76,7 +76,7 @@
         }
       ],
       "_migrated": true,
-      "height": 3390,
+      "height": 3400,
       "elements": [
         {
           "id": "bpoa7v8g",
@@ -1357,9 +1357,18 @@
             {
               "id": "1bf3cbpq",
               "front": {
-                "fillType": "solid",
+                "fillType": "gradient",
                 "fillColor": "#307FE2",
-                "gradientStops": null,
+                "gradientStops": [
+                  {
+                    "color": "#546478",
+                    "pos": 0
+                  },
+                  {
+                    "color": "#1a6bc7",
+                    "pos": 100
+                  }
+                ],
                 "gradientAngle": 135,
                 "gradientType": "linear",
                 "fillImage": "",
