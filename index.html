@@ -53,7 +53,7 @@ html{scroll-behavior:smooth}
 .sc-tiles-wrap{display:flex;width:100%}
 .sc-tiles-track{display:flex;overflow:hidden;transition:transform .4s ease}
 .sc-tile-card{position:relative;flex-shrink:0}
-.sc-tile-perspective{width:100%;height:100%;perspective:1200px}
+.sc-tile-perspective{width:100%;height:100%;perspective:1200px;position:relative}
 .sc-tile-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
 .sc-tile-card.flipped .sc-tile-inner{transform:rotateY(180deg)}
 .sc-tile-face{position:absolute;inset:0;border-radius:12px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
@@ -170,24 +170,27 @@ html{scroll-behavior:smooth}
 <div id="apps" data-type="badge" style="position:absolute;left:20px;top:2940px;z-index:21;width:max-content;height:max-content;/* anchor */border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.50), inset 0 -1px 0 rgba(0,0,0,0.30);overflow:hidden;--ar:185/59;"><span class="sc-shine" data-shine-mode="scroll" data-shine-interval="5" style="display:block;white-space:nowrap;text-align:center;font-family:'Inter',sans-serif;font-size:32px;font-weight:900;color:#ffffff;padding:10px 16px;position:relative;z-index:1;background:rgba(67,72,76,0);border-radius:999px">Mac Apps</span></div>
 <div data-type="tiles" style="position:absolute;left:30px;top:3020px;z-index:42;width:900px;height:340px;overflow:hidden;--ar:900/340;"><div class="sc-tiles-wrap transition-flip" id="tilesgroup-c8eveqb5" data-visible="3" data-gap="40" data-total="3" data-page="0" style="justify-content:center">
     <div class="sc-tiles-track" style="width:900px;gap:40px"><div class="sc-tile-card" id="tile-c8eveqb5-c0" style="width:273.3333333333333px;height:340px">
-      <div class="sc-tile-perspective"><div class="sc-tile-inner">
+      <div class="sc-tile-perspective" style="height:285.6px;margin-top:27.2px"><div class="sc-tile-inner">
         <div class="sc-tile-face sc-tile-front"><div style="position:absolute;inset:0;background:linear-gradient(135deg, #546478 0%, #1a6bc7 100%)"></div><div style="position:absolute;left:20px;top:12px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">Sitecraft</div><div style="position:absolute;left:20px;top:44px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">GitHub Website Builder
 This website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub</div></div>
-        <div class="sc-tile-face sc-tile-back"><div style="position:absolute;inset:0;background:#1a2744"></div><div style="position:absolute;left:20px;top:44px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">More detail</div><div style="position:absolute;left:20px;top:104px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">Add the back-side content here.</div></div>
-      </div></div>
+        <div class="sc-tile-face sc-tile-back"><div style="position:absolute;inset:0;background:url('https://raw.githubusercontent.com/macsound/cerulean/main/https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png') center/cover no-repeat #1a2744"></div><div style="position:absolute;left:20px;top:44px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">More detail</div><div style="position:absolute;left:20px;top:104px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">Add the back-side content here.</div></div>
+      </div>
       <div class="sc-tile-flipbtn" onclick="scToggleTile('c8eveqb5-c0')"></div>
+      </div>
     </div><div class="sc-tile-card" id="tile-c8eveqb5-c1" style="width:273.3333333333333px;height:340px">
-      <div class="sc-tile-perspective"><div class="sc-tile-inner">
-        <div class="sc-tile-face sc-tile-front"><div style="position:absolute;inset:0;background:#307FE2"></div><div style="position:absolute;left:20px;top:12px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">PastorDeck</div><div style="position:absolute;left:20px;top:44px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">Simplified slide builder that focuses on the content and allows the designer to theme the content without touching the slides themselves. Conveniently export to jpg-per-slide or .pptx</div></div>
+      <div class="sc-tile-perspective" style="height:285.6px;margin-top:27.2px"><div class="sc-tile-inner">
+        <div class="sc-tile-face sc-tile-front"><div style="position:absolute;inset:0;background:linear-gradient(135deg, #546478 0%, #1a6bc7 100%)"></div><div style="position:absolute;left:20px;top:12px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">PastorDeck</div><div style="position:absolute;left:20px;top:44px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">Simplified slide builder that focuses on the content and allows the designer to theme the content without touching the slides themselves. Conveniently export to jpg-per-slide or .pptx</div></div>
         <div class="sc-tile-face sc-tile-back"><div style="position:absolute;inset:0;background:#1a2744"></div><div style="position:absolute;left:20px;top:44px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">More detail</div><div style="position:absolute;left:20px;top:104px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">Add the back-side content here.</div></div>
-      </div></div>
+      </div>
       <div class="sc-tile-flipbtn" onclick="scToggleTile('c8eveqb5-c1')"></div>
+      </div>
     </div><div class="sc-tile-card" id="tile-c8eveqb5-c2" style="width:273.3333333333333px;height:340px">
-      <div class="sc-tile-perspective"><div class="sc-tile-inner">
-        <div class="sc-tile-face sc-tile-front"><div style="position:absolute;inset:0;background:#307FE2"></div><div style="position:absolute;left:20px;top:12px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">Bayberry</div><div style="position:absolute;left:20px;top:44px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">Open access presenting to a Mac with display-side persistant file storage and multi user control and access for live updating and management. </div></div>
+      <div class="sc-tile-perspective" style="height:285.6px;margin-top:27.2px"><div class="sc-tile-inner">
+        <div class="sc-tile-face sc-tile-front"><div style="position:absolute;inset:0;background:linear-gradient(135deg, #546478 0%, #1a6bc7 100%)"></div><div style="position:absolute;left:20px;top:12px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">Bayberry</div><div style="position:absolute;left:20px;top:44px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">Open access presenting to a Mac with display-side persistant file storage and multi user control and access for live updating and management. </div></div>
         <div class="sc-tile-face sc-tile-back"><div style="position:absolute;inset:0;background:#1a2744"></div><div style="position:absolute;left:20px;top:44px;width:200px;height:56px;font-size:22px;color:#ffffff;overflow:hidden;font-family:'DM Serif Display',serif;font-weight:700;line-height:1.2">More detail</div><div style="position:absolute;left:20px;top:104px;width:200px;height:100px;font-size:14px;color:#ffffff;overflow:hidden;font-family:'Inter',sans-serif;line-height:1.4">Add the back-side content here.</div></div>
-      </div></div>
+      </div>
       <div class="sc-tile-flipbtn" onclick="scToggleTile('c8eveqb5-c2')"></div>
+      </div>
     </div></div>
   </div></div>
 </div>
