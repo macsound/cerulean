@@ -1371,32 +1371,32 @@
                 ],
                 "gradientAngle": 135,
                 "gradientType": "linear",
-                "fillImage": "",
-                "fillImageRawUrl": "",
+                "fillImage": "assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
+                "fillImageRawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
                 "noiseAmount": 0,
                 "label": {
-                  "text": "",
+                  "text": "Sitecraft",
                   "x": 20,
                   "y": 0,
                   "w": 200,
                   "h": 20,
-                  "fontSize": 1,
+                  "fontSize": 22,
                   "color": "#ffffff"
                 },
                 "heading": {
-                  "text": "Sitecraft",
+                  "text": "GitHub Website Builder",
                   "x": 20,
-                  "y": 12,
+                  "y": 31,
                   "w": 200,
                   "h": 56,
-                  "fontSize": 22,
+                  "fontSize": 18,
                   "fontWeight": 700,
                   "color": "#ffffff"
                 },
                 "body": {
-                  "text": "GitHub Website Builder\nThis website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub",
+                  "text": "\nThis website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub",
                   "x": 20,
-                  "y": 44,
+                  "y": 64,
                   "w": 200,
                   "h": 100,
                   "fontSize": 14,
@@ -1409,8 +1409,8 @@
                 "gradientStops": null,
                 "gradientAngle": 135,
                 "gradientType": "linear",
-                "fillImage": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
-                "fillImageRawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
+                "fillImage": "assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
+                "fillImageRawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
                 "noiseAmount": 0,
                 "label": {
                   "text": "",
@@ -1422,7 +1422,7 @@
                   "color": "#ffffff"
                 },
                 "heading": {
-                  "text": "More detail",
+                  "text": "",
                   "x": 20,
                   "y": 44,
                   "w": 200,
@@ -1432,7 +1432,7 @@
                   "color": "#ffffff"
                 },
                 "body": {
-                  "text": "Add the back-side content here.",
+                  "text": "",
                   "x": 20,
                   "y": 104,
                   "w": 200,
@@ -1492,13 +1492,13 @@
                 }
               },
               "back": {
-                "fillType": "solid",
+                "fillType": "photo",
                 "fillColor": "#1a2744",
                 "gradientStops": null,
                 "gradientAngle": 135,
                 "gradientType": "linear",
-                "fillImage": "",
-                "fillImageRawUrl": "",
+                "fillImage": "assets/images/Screenshot 2026-08-09 at 4.57.16 PM.png",
+                "fillImageRawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/Screenshot 2026-08-09 at 4.57.16 PM.png",
                 "noiseAmount": 0,
                 "label": {
                   "text": "",
@@ -1510,7 +1510,7 @@
                   "color": "#ffffff"
                 },
                 "heading": {
-                  "text": "More detail",
+                  "text": "",
                   "x": 20,
                   "y": 44,
                   "w": 200,
@@ -1520,7 +1520,7 @@
                   "color": "#ffffff"
                 },
                 "body": {
-                  "text": "Add the back-side content here.",
+                  "text": "",
                   "x": 20,
                   "y": 104,
                   "w": 200,
