@@ -1377,16 +1377,16 @@
                 "label": {
                   "text": "Sitecraft",
                   "x": 20,
-                  "y": 0,
+                  "y": 8,
                   "w": 200,
-                  "h": 20,
-                  "fontSize": 22,
+                  "h": 26,
+                  "fontSize": 27,
                   "color": "#ffffff"
                 },
                 "heading": {
                   "text": "GitHub Website Builder",
                   "x": 20,
-                  "y": 31,
+                  "y": 35,
                   "w": 200,
                   "h": 56,
                   "fontSize": 18,
