@@ -1658,7 +1658,8 @@
             "innerShadow": true,
             "innerStrength": 35,
             "backdropBlur": 8
-          }
+          },
+          "locked": true
         },
         {
           "id": "vem16xs9",
@@ -1698,7 +1699,8 @@
             "innerShadow": true,
             "innerStrength": 35,
             "backdropBlur": 8
-          }
+          },
+          "locked": true
         },
         {
           "id": "7bfiens0",
