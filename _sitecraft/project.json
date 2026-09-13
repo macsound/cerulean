@@ -5,7 +5,7 @@
   "style": {
     "headingFont": "DM Serif Display",
     "bodyFont": "Inter",
-    "accentColor": "#0891b2",
+    "accentColor": "#216318",
     "bgColor": "#212239",
     "textColor": "#e7d7c5",
     "pageWidth": "medium",
@@ -76,7 +76,7 @@
         }
       ],
       "_migrated": true,
-      "height": 3400,
+      "height": 3430,
       "elements": [
         {
           "id": "bpoa7v8g",
@@ -100,7 +100,7 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "locked": true,
+          "locked": false,
           "fillType": "gradient",
           "gradientColor1": "#374148",
           "gradientColor2": "#018df9",
@@ -112,22 +112,23 @@
               "pos": 0
             },
             {
-              "color": "#92a9ce",
+              "color": "#92cea4",
               "pos": 34
             },
             {
-              "color": "#cccdea",
+              "color": "#ccead8",
               "pos": 37
             },
             {
-              "color": "#456292",
+              "color": "#357962",
               "pos": 36
             },
             {
               "color": "#020b17",
-              "pos": 100
+              "pos": 94
             }
-          ]
+          ],
+          "noiseAmount": 0
         },
         {
           "id": "a28q909t",
@@ -1361,11 +1362,11 @@
                 "fillColor": "#307FE2",
                 "gradientStops": [
                   {
-                    "color": "#546478",
+                    "color": "#54786a",
                     "pos": 0
                   },
                   {
-                    "color": "#1a6bc7",
+                    "color": "#1ac4c7",
                     "pos": 100
                   }
                 ],
@@ -1449,42 +1450,42 @@
                 "fillColor": "#307FE2",
                 "gradientStops": [
                   {
-                    "color": "#546478",
+                    "color": "#54786a",
                     "pos": 0
                   },
                   {
-                    "color": "#1a6bc7",
+                    "color": "#1ac4c7",
                     "pos": 100
                   }
                 ],
                 "gradientAngle": 135,
                 "gradientType": "linear",
-                "fillImage": "",
-                "fillImageRawUrl": "",
+                "fillImage": "assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
+                "fillImageRawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
                 "noiseAmount": 0,
                 "label": {
-                  "text": "",
+                  "text": "PastorDeck",
                   "x": 20,
-                  "y": 0,
+                  "y": 8,
                   "w": 200,
-                  "h": 20,
-                  "fontSize": 1,
+                  "h": 26,
+                  "fontSize": 27,
                   "color": "#ffffff"
                 },
                 "heading": {
-                  "text": "PastorDeck",
+                  "text": "",
                   "x": 20,
-                  "y": 12,
+                  "y": 35,
                   "w": 200,
                   "h": 56,
-                  "fontSize": 22,
+                  "fontSize": 18,
                   "fontWeight": 700,
                   "color": "#ffffff"
                 },
                 "body": {
                   "text": "Simplified slide builder that focuses on the content and allows the designer to theme the content without touching the slides themselves. Conveniently export to jpg-per-slide or .pptx",
                   "x": 20,
-                  "y": 44,
+                  "y": 64,
                   "w": 200,
                   "h": 100,
                   "fontSize": 14,
@@ -1537,42 +1538,42 @@
                 "fillColor": "#307FE2",
                 "gradientStops": [
                   {
-                    "color": "#546478",
+                    "color": "#54785a",
                     "pos": 0
                   },
                   {
-                    "color": "#1a6bc7",
+                    "color": "#1ac745",
                     "pos": 100
                   }
                 ],
                 "gradientAngle": 135,
                 "gradientType": "linear",
-                "fillImage": "",
-                "fillImageRawUrl": "",
+                "fillImage": "assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
+                "fillImageRawUrl": "https://raw.githubusercontent.com/macsound/cerulean/main/assets/images/Screenshot 2026-08-09 at 4.54.40 PM.png",
                 "noiseAmount": 0,
                 "label": {
-                  "text": "",
+                  "text": "Bayberry",
                   "x": 20,
-                  "y": 0,
+                  "y": 8,
                   "w": 200,
-                  "h": 20,
-                  "fontSize": 1,
+                  "h": 44,
+                  "fontSize": 27,
                   "color": "#ffffff"
                 },
                 "heading": {
-                  "text": "Bayberry",
+                  "text": "",
                   "x": 20,
-                  "y": 12,
+                  "y": 35,
                   "w": 200,
-                  "h": 56,
-                  "fontSize": 22,
+                  "h": 50,
+                  "fontSize": 18,
                   "fontWeight": 700,
                   "color": "#ffffff"
                 },
                 "body": {
                   "text": "Open access presenting to a Mac with display-side persistant file storage and multi user control and access for live updating and management. ",
                   "x": 20,
-                  "y": 44,
+                  "y": 64,
                   "w": 200,
                   "h": 100,
                   "fontSize": 14,
@@ -1797,7 +1798,7 @@
   },
   "siteFooter": {
     "show": true,
-    "bgColor": "#2d3c54",
+    "bgColor": "#081921",
     "textColor": "#cccccc",
     "socialLinks": [
       {
