@@ -3,10 +3,10 @@
   "name": "Cerulean",
   "description": "",
   "style": {
-    "headingFont": "DM Serif Display",
-    "bodyFont": "Inter",
+    "headingFont": "Raleway",
+    "bodyFont": "Open Sans",
     "accentColor": "#216318",
-    "bgColor": "#212239",
+    "bgColor": "#182e39",
     "textColor": "#e7d7c5",
     "pageWidth": "medium",
     "sidePadding": 24,
@@ -76,13 +76,13 @@
         }
       ],
       "_migrated": true,
-      "height": 3430,
+      "height": 3380,
       "elements": [
         {
           "id": "bpoa7v8g",
           "type": "shape",
           "x": 0,
-          "y": 10,
+          "y": 0,
           "w": 960,
           "h": 3380,
           "shapeType": "rect",
@@ -100,7 +100,7 @@
             "shadowY": 4,
             "opacity": 100
           },
-          "locked": false,
+          "locked": true,
           "fillType": "gradient",
           "gradientColor1": "#374148",
           "gradientColor2": "#018df9",
