@@ -1401,15 +1401,15 @@
                 "heading": {
                   "text": "GitHub Website Builder",
                   "x": 20,
-                  "y": 35,
+                  "y": 39,
                   "w": 200,
                   "h": 56,
-                  "fontSize": 18,
+                  "fontSize": 16,
                   "fontWeight": 700,
                   "color": "#ffffff"
                 },
                 "body": {
-                  "text": "\nThis website is made with Sitecraft, an original app built by Stephen Gozza to create websites hosted on GitHub",
+                  "text": "\nCreate fully featured websites with CSS animations, gradients, embedded images and video, all for free by hosting on GitHub",
                   "x": 20,
                   "y": 64,
                   "w": 200,
