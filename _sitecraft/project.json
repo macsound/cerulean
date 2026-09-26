@@ -1764,7 +1764,7 @@
           "y": 90,
           "w": 150,
           "h": 30,
-          "html": "<p><a href=\"https://macsound.github.io/cerulean//NetRoundTrip\" target=\"_blank\" rel=\"noopener\">NetRoundTrip</a></p>",
+          "html": "<p><a href=\"https://macsound.github.io/cerulean/NetRoundTrip\" target=\"_blank\" rel=\"noopener\">NetRoundTrip</a></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
