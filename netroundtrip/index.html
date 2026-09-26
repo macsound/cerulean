@@ -1,0 +1,245 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connection Check</title><style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,system-ui,sans-serif;background:#f4f2ee;color:#2a2a2a;padding:20px}
+.card{max-width:520px;margin:0 auto;position:relative}
+.status{border-radius:16px;padding:28px 24px;text-align:center;margin-bottom:16px;transition:background .3s}
+.status.good{background:#dcf5e3}
+.status.bad{background:#fbdede}
+.status.warn{background:#fdf0d5}
+.status.checking{background:#e9e6e0}
+.status h1{font-size:22px;margin:0 0 6px}
+.status p{margin:0;font-size:14px;color:#555}
+.rows{background:#fff;border-radius:12px;padding:4px 0;margin-bottom:16px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid #eee;font-size:14px}
+.row:last-child{border-bottom:none}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px}
+.dot.ok{background:#3aa65a}.dot.fail{background:#d9534f}.dot.pending{background:#ccc}
+.log{background:#1e1e1e;color:#9fd89f;font-family:ui-monospace,monospace;font-size:11.5px;border-radius:10px;padding:12px;height:140px;overflow-y:auto}
+.log div{white-space:nowrap}
+button{width:100%;padding:12px;border-radius:10px;border:none;background:#2f6fed;color:#fff;font-size:15px;font-weight:600;margin-top:8px;cursor:pointer}
+.small{font-size:11.5px;color:#888;text-align:center;margin-top:10px;line-height:1.5}
+
+/* ── Hidden emblem + station log ── */
+.emblem-wrap{position:fixed;right:16px;bottom:16px;width:34px;height:34px;opacity:.22;cursor:pointer;transition:opacity .25s;z-index:50}
+.emblem-wrap:hover{opacity:.75}
+.emblem-wrap.panel-open{opacity:.9}
+.emblem-wrap svg{width:100%;height:100%;display:block}
+.emblem-sweep{transform-origin:45px 45px;animation:sweep 4s linear infinite}
+@keyframes sweep{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+.station-log{position:fixed;inset:0;background:rgba(10,12,11,.92);color:#bfe8d8;z-index:100;
+  display:none;flex-direction:column;font-family:ui-monospace,monospace;padding:18px;backdrop-filter:blur(3px)}
+.station-log.open{display:flex}
+.sl-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #2c3d38;padding-bottom:10px;margin-bottom:12px}
+.sl-title{font-size:13px;letter-spacing:.14em;color:#9fd8c9}
+.sl-close{background:none;border:1px solid #3a4d47;color:#9fd8c9;width:auto;padding:4px 10px;font-size:11px;margin:0;border-radius:6px}
+.sl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.sl-stat{border:1px solid #2c3d38;border-radius:8px;padding:8px;text-align:center}
+.sl-stat b{display:block;font-size:18px;color:#eafff5}
+.sl-stat span{font-size:9.5px;color:#7a9f92;letter-spacing:.06em}
+.sl-body{flex:1;overflow-y:auto;font-size:11px;line-height:1.6;border:1px solid #2c3d38;border-radius:8px;padding:10px;background:#0e1412}
+.sl-body div{white-space:pre-wrap;word-break:break-word;padding-bottom:4px;border-bottom:1px solid #1c2825;margin-bottom:4px}
+.sl-actions{display:flex;gap:8px;margin-top:10px}
+.sl-actions button{margin-top:0;background:#1f3830;color:#bfe8d8;font-size:12px;padding:9px}
+</style></head><body>
+<div class="card">
+  <div class="status checking" id="status">
+    <h1 id="statusTitle">Checking…</h1>
+    <p id="statusSub">Running the first round of tests</p>
+  </div>
+  <div class="rows">
+    <div class="row"><span><span class="dot pending" id="dotWifi"></span>Home network (Wi-Fi/LAN)</span><span id="txtWifi">—</span></div>
+    <div class="row"><span><span class="dot pending" id="dotNet1"></span>Internet check #1</span><span id="txtNet1">—</span></div>
+    <div class="row"><span><span class="dot pending" id="dotNet2"></span>Internet check #2</span><span id="txtNet2">—</span></div>
+    <div class="row"><span><span class="dot pending" id="dotSite"></span>This website</span><span id="txtSite">—</span></div>
+  </div>
+  <div class="log" id="log"></div>
+  <button id="copyBtn">Copy report to send</button>
+  <div class="small">Runs a new check every 8 seconds. Leave this tab open — if the internet drops, the results below will show it.</div>
+</div>
+
+<div class="emblem-wrap" id="emblemBtn" title="">
+  <svg viewBox="0 0 90 90">
+    <circle cx="45" cy="45" r="42" fill="none" stroke="#7a8f8d" stroke-width="1"/>
+    <circle cx="45" cy="45" r="42" fill="none" stroke="#9fd8c9" stroke-width="1" stroke-dasharray="2 4"/>
+    <circle cx="45" cy="45" r="28" fill="none" stroke="#7a8f8d" stroke-width="1" opacity=".7"/>
+    <circle cx="45" cy="45" r="16" fill="none" stroke="#9fd8c9" stroke-width="1" opacity=".55"/>
+    <g class="emblem-sweep">
+      <path d="M45,45 L45,8 A37,37 0 0,1 78,58 Z" fill="#9fd8c9" opacity=".18"/>
+      <line x1="45" y1="45" x2="45" y2="8" stroke="#9fd8c9" stroke-width="1.5"/>
+    </g>
+    <circle cx="45" cy="45" r="3" fill="#9fd8c9"/>
+  </svg>
+</div>
+
+<div class="station-log" id="stationLog">
+  <div class="sl-head">
+    <div class="sl-title">◆ STATION LOG — NETROUNDTRIP</div>
+    <button class="sl-close" id="slClose">CLOSE</button>
+  </div>
+  <div class="sl-stats">
+    <div class="sl-stat"><b id="statCycles">0</b><span>CYCLES RUN</span></div>
+    <div class="sl-stat"><b id="statUptime">—</b><span>UPTIME</span></div>
+    <div class="sl-stat"><b id="statAvgMs">—</b><span>AVG LATENCY</span></div>
+    <div class="sl-stat"><b id="statStreak">0</b><span>WORST STREAK</span></div>
+  </div>
+  <div class="sl-body" id="slBody"></div>
+  <div class="sl-actions">
+    <button id="exportFullBtn">Export full session log</button>
+  </div>
+</div>
+
+<script>
+const TIMEOUT_MS = 4000;
+const INTERVAL_MS = 8000;
+const MAX_HISTORY = 500; // full session log cap — generous, but not unbounded on a tab left open for days
+const history = [];       // full detail objects, for the hidden Station Log
+const shortLog = [];      // short display strings, for the visible on-page log box
+
+let cycleCount = 0;
+let successCount = 0;
+let latencySum = 0;
+let latencyCount = 0;
+let currentFailStreak = 0;
+let worstFailStreak = 0;
+
+function probe(url) {
+  return new Promise((resolve) => {
+    const start = performance.now();
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    fetch(url, { mode: 'no-cors', cache: 'no-store', signal: controller.signal })
+      .then(() => { clearTimeout(timer); resolve({ ok: true, ms: Math.round(performance.now() - start) }); })
+      .catch(() => { clearTimeout(timer); resolve({ ok: false, ms: Math.round(performance.now() - start) }); });
+  });
+}
+
+function setRow(dotId, txtId, ok, label) {
+  document.getElementById(dotId).className = 'dot ' + (ok ? 'ok' : 'fail');
+  document.getElementById(txtId).textContent = label;
+}
+
+function pushShortLog(text) {
+  const el = document.getElementById('log');
+  const line = document.createElement('div');
+  const t = new Date().toLocaleTimeString();
+  line.textContent = `[${t}] ${text}`;
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
+  shortLog.push(`[${t}] ${text}`);
+  if (shortLog.length > 200) shortLog.shift();
+}
+
+function pushHistory(entry) {
+  history.push(entry);
+  if (history.length > MAX_HISTORY) history.shift();
+}
+
+function renderStationLog() {
+  document.getElementById('statCycles').textContent = cycleCount;
+  document.getElementById('statUptime').textContent = cycleCount ? Math.round(100 * successCount / cycleCount) + '%' : '—';
+  document.getElementById('statAvgMs').textContent = latencyCount ? Math.round(latencySum / latencyCount) + 'ms' : '—';
+  document.getElementById('statStreak').textContent = worstFailStreak;
+  const body = document.getElementById('slBody');
+  body.innerHTML = history.slice().reverse().map(h =>
+    `<div>[${h.time}] wifi:${h.wifi?'up  ':'DOWN'} gstatic:${h.net1} cloudflare:${h.net2} site:${h.site} → ${h.verdict}</div>`
+  ).join('');
+}
+
+async function runCycle() {
+  const wifiOk = navigator.onLine;
+  setRow('dotWifi', 'txtWifi', wifiOk, wifiOk ? 'Connected' : 'Disconnected');
+
+  const [net1, net2, site] = await Promise.all([
+    probe('https://www.gstatic.com/generate_204'),
+    probe('https://cp.cloudflare.com/generate_204'),
+    probe(location.origin + location.pathname + '?t=' + Date.now()),
+  ]);
+  setRow('dotNet1', 'txtNet1', net1.ok, net1.ok ? net1.ms + 'ms' : 'failed');
+  setRow('dotNet2', 'txtNet2', net2.ok, net2.ok ? net2.ms + 'ms' : 'failed');
+  setRow('dotSite', 'txtSite', site.ok, site.ok ? site.ms + 'ms' : 'failed');
+
+  const netOkCount = [net1.ok, net2.ok].filter(Boolean).length;
+  const box = document.getElementById('status');
+  const title = document.getElementById('statusTitle');
+  const sub = document.getElementById('statusSub');
+
+  let verdict;
+  let cycleOk;
+  if (!wifiOk) {
+    box.className = 'status bad';
+    title.textContent = 'Not connected to Wi-Fi';
+    sub.textContent = 'This device has no active network connection at all.';
+    verdict = 'WIFI DOWN'; cycleOk = false;
+  } else if (netOkCount === 0) {
+    box.className = 'status bad';
+    title.textContent = 'Wi-Fi is fine — internet is not';
+    sub.textContent = 'Connected locally, but nothing is reaching the internet. Likely the internet provider or modem.';
+    verdict = 'ISP/MODEM ISSUE'; cycleOk = false;
+  } else if (netOkCount === 1) {
+    box.className = 'status warn';
+    title.textContent = 'Internet connection is flaky';
+    sub.textContent = 'Some checks succeed and some fail — sign of a weak or congested connection.';
+    verdict = 'FLAKY'; cycleOk = false;
+  } else {
+    box.className = 'status good';
+    title.textContent = 'Everything looks fine';
+    sub.textContent = 'Wi-Fi and internet both responded normally.';
+    verdict = 'OK'; cycleOk = true;
+  }
+  pushShortLog(`Wi-Fi:${wifiOk?'up':'DOWN'} gstatic:${net1.ok?net1.ms+'ms':'FAIL'} cloudflare:${net2.ok?net2.ms+'ms':'FAIL'} site:${site.ok?site.ms+'ms':'FAIL'} → ${verdict}`);
+
+  cycleCount++;
+  if (cycleOk) { successCount++; currentFailStreak = 0; } else { currentFailStreak++; worstFailStreak = Math.max(worstFailStreak, currentFailStreak); }
+  [net1, net2, site].forEach(r => { if (r.ok) { latencySum += r.ms; latencyCount++; } });
+  pushHistory({
+    time: new Date().toLocaleTimeString(),
+    wifi: wifiOk,
+    net1: net1.ok ? net1.ms + 'ms' : 'FAIL',
+    net2: net2.ok ? net2.ms + 'ms' : 'FAIL',
+    site: site.ok ? site.ms + 'ms' : 'FAIL',
+    verdict,
+  });
+  renderStationLog();
+}
+
+document.getElementById('copyBtn').onclick = () => {
+  const text = shortLog.slice(-20).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    document.getElementById('copyBtn').textContent = 'Copied!';
+    setTimeout(() => { document.getElementById('copyBtn').textContent = 'Copy report to send'; }, 1500);
+  });
+};
+
+// Hidden emblem: click to reveal the Station Log — a fuller, "for analysis"
+// history the casual status card up top deliberately doesn't show, so the
+// everyday view stays simple for someone who just needs a yes/no answer.
+const emblemBtn = document.getElementById('emblemBtn');
+const stationLog = document.getElementById('stationLog');
+emblemBtn.onclick = () => {
+  const willOpen = !stationLog.classList.contains('open');
+  stationLog.classList.toggle('open', willOpen);
+  emblemBtn.classList.toggle('panel-open', willOpen);
+  if (willOpen) renderStationLog();
+};
+document.getElementById('slClose').onclick = () => {
+  stationLog.classList.remove('open');
+  emblemBtn.classList.remove('panel-open');
+};
+document.getElementById('exportFullBtn').onclick = () => {
+  const text = history.map(h => `[${h.time}] wifi:${h.wifi?'up':'DOWN'} gstatic:${h.net1} cloudflare:${h.net2} site:${h.site} -> ${h.verdict}`).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('exportFullBtn');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied ' + history.length + ' entries!';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  });
+};
+
+runCycle();
+setInterval(runCycle, INTERVAL_MS);
+window.addEventListener('online', () => pushShortLog('Browser reports: back online'));
+window.addEventListener('offline', () => pushShortLog('Browser reports: went offline'));
+</script>
+</body></html>
