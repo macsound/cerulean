@@ -1217,7 +1217,7 @@
           "y": 90,
           "w": 80,
           "h": 50,
-          "html": "<p><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26e.docx\" data-sc-file=\"assets/files/sgozza26e.docx\" target=\"_blank\" rel=\"noopener\"><b>Resume</b></a></p>",
+          "html": "<p><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26e.docx\" data-sc-file=\"assets/files/sgozza26e.docx\" target=\"_blank\" rel=\"noopener\"><b><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza-cpm26c.pdf\" data-sc-file=\"assets/files/sgozza-cpm26c.pdf\" target=\"_blank\" rel=\"noopener\">Resume</a></b></a></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
