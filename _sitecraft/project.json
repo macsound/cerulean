@@ -140,37 +140,23 @@
           "text": "Stephen Gozza",
           "level": 1,
           "style": {
-            "bg": "rgba(255,255,255,0.10)",
-            "border": "solid",
-            "borderColor": "rgba(255,255,255,0.32)",
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#b0b0b0",
             "borderWidth": 1,
-            "radius": 16,
-            "shadow": true,
-            "shadowColor": "rgba(0,0,0,.22)",
-            "shadowBlur": 16,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.25)",
+            "shadowBlur": 12,
             "shadowX": 0,
-            "shadowY": 5,
+            "shadowY": 4,
             "opacity": 100,
-            "innerShadow": true,
-            "liquidGlass": true,
-            "backdropBlur": 8,
-            "innerStrength": 35,
-            "smartShadow": true,
-            "liquidGlassMode": "text",
-            "_preGlass": {
-              "bg": "transparent",
-              "shadow": false,
-              "shadowBlur": 12,
-              "shadowY": 4,
-              "shadowX": 0,
-              "shadowColor": "rgba(0,0,0,.25)",
-              "innerShadow": true,
-              "innerStrength": 35,
-              "border": "none",
-              "borderWidth": 1,
-              "borderColor": "#b0b0b0",
-              "radius": 0
-            }
+            "innerShadow": false,
+            "liquidGlass": false,
+            "backdropBlur": 0,
+            "innerStrength": 51,
+            "smartShadow": false,
+            "liquidGlassMode": "text"
           },
           "fontSize": 69,
           "textColor": "#ffffff",
@@ -1754,7 +1740,8 @@
             "liquidGlassMode": "text"
           },
           "headingFont": "Raleway",
-          "fontSize": 39
+          "fontSize": 39,
+          "fontWeight": 700
         }
       ],
       "includeInNav": false
