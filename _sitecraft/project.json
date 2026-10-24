@@ -76,7 +76,7 @@
         }
       ],
       "_migrated": true,
-      "height": 3400,
+      "height": 3440,
       "elements": [
         {
           "id": "bpoa7v8g",
@@ -108,23 +108,23 @@
           "gradientType": "linear",
           "gradientStops": [
             {
-              "color": "#000e24",
+              "color": "#7e3c07",
               "pos": 0
             },
             {
-              "color": "#92cea4",
+              "color": "#ffcb8f",
               "pos": 34
             },
             {
-              "color": "#ccead8",
+              "color": "#ffbc70",
               "pos": 37
             },
             {
-              "color": "#357962",
+              "color": "#be7827",
               "pos": 36
             },
             {
-              "color": "#020b17",
+              "color": "#170c02",
               "pos": 94
             }
           ],
@@ -140,23 +140,37 @@
           "text": "Stephen Gozza",
           "level": 1,
           "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#b0b0b0",
+            "bg": "rgba(255,255,255,0.10)",
+            "border": "solid",
+            "borderColor": "rgba(255,255,255,0.32)",
             "borderWidth": 1,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
+            "radius": 16,
+            "shadow": true,
+            "shadowColor": "rgba(0,0,0,.22)",
+            "shadowBlur": 16,
             "shadowX": 0,
-            "shadowY": 4,
+            "shadowY": 5,
             "opacity": 100,
             "innerShadow": true,
-            "liquidGlass": false,
-            "backdropBlur": 0,
+            "liquidGlass": true,
+            "backdropBlur": 8,
             "innerStrength": 35,
             "smartShadow": true,
-            "liquidGlassMode": "text"
+            "liquidGlassMode": "text",
+            "_preGlass": {
+              "bg": "transparent",
+              "shadow": false,
+              "shadowBlur": 12,
+              "shadowY": 4,
+              "shadowX": 0,
+              "shadowColor": "rgba(0,0,0,.25)",
+              "innerShadow": true,
+              "innerStrength": 35,
+              "border": "none",
+              "borderWidth": 1,
+              "borderColor": "#b0b0b0",
+              "radius": 0
+            }
           },
           "fontSize": 69,
           "textColor": "#ffffff",
@@ -631,55 +645,6 @@
           "align": "center"
         },
         {
-          "id": "qm7c2w1h",
-          "type": "badge",
-          "x": 27,
-          "y": 330,
-          "w": 293,
-          "h": 59,
-          "text": "Video Production",
-          "badgeShape": "pill",
-          "fillColor": "#43484c",
-          "textColor": "#ffffff",
-          "fontSize": 32,
-          "padX": 16,
-          "padY": 10,
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "rgba(255,255,255,0.32)",
-            "borderWidth": 1,
-            "radius": 80,
-            "shadow": true,
-            "shadowColor": "rgba(0,0,0,.22)",
-            "shadowBlur": 16,
-            "shadowX": 0,
-            "shadowY": 5,
-            "opacity": 100,
-            "innerShadow": true,
-            "liquidGlass": true,
-            "innerStrength": 35,
-            "backdropBlur": 8,
-            "_preGlass": {
-              "bg": "transparent",
-              "shadow": false,
-              "shadowBlur": 0,
-              "shadowY": 5,
-              "shadowX": 0,
-              "shadowColor": "rgba(0,0,0,.25)",
-              "innerShadow": true,
-              "innerStrength": 100,
-              "border": "none",
-              "borderWidth": 1,
-              "borderColor": "rgba(255,255,255,0.18)",
-              "radius": 80
-            }
-          },
-          "shineEffect": true,
-          "shineMode": "scroll",
-          "bgOpacity": 0
-        },
-        {
           "id": "q23tnq69",
           "type": "badge",
           "x": 30,
@@ -782,18 +747,18 @@
         {
           "id": "v0p9lfaj",
           "type": "shape",
-          "x": 0,
+          "x": 90,
           "y": 160,
-          "w": 960,
+          "w": 830,
           "h": 120,
           "shapeType": "rect",
           "fillColor": "#307FE2",
           "style": {
-            "bg": "transparent",
-            "border": "solid",
+            "bg": "rgba(255,255,255,0.10)",
+            "border": "none",
             "borderColor": "rgba(255,255,255,0.32)",
             "borderWidth": 1,
-            "radius": 0,
+            "radius": 16,
             "shadow": true,
             "shadowColor": "rgba(0,0,0,.22)",
             "shadowBlur": 16,
@@ -802,6 +767,8 @@
             "opacity": 36,
             "innerShadow": true,
             "liquidGlass": true,
+            "innerStrength": 35,
+            "backdropBlur": 12,
             "_preGlass": {
               "bg": "transparent",
               "shadow": false,
@@ -810,13 +777,12 @@
               "shadowX": 0,
               "shadowColor": "rgba(0,0,0,.9)",
               "innerShadow": false,
+              "innerStrength": 35,
               "border": "none",
               "borderWidth": 2,
               "borderColor": "#307FE2",
               "radius": 0
-            },
-            "innerStrength": 35,
-            "backdropBlur": 3
+            }
           },
           "fillType": "gradient",
           "gradientStops": [
@@ -830,7 +796,14 @@
             }
           ],
           "gradientType": "radial",
-          "locked": true
+          "locked": false,
+          "td3d": false,
+          "td3dDepth": 16,
+          "td3dGloss": 60,
+          "td3dIridescence": 50,
+          "td3dTintMode": "auto",
+          "td3dUseGlobalAngle": true,
+          "td3dHover": "none"
         },
         {
           "id": "dgu0hfqk",
@@ -956,7 +929,9 @@
             "opacity": 100,
             "smartShadow": true,
             "liquidGlass": false,
-            "backdropBlur": 0
+            "backdropBlur": 0,
+            "innerShadow": false,
+            "liquidGlassMode": "panel"
           },
           "align": "center",
           "bodyFont": "Inter"
@@ -1143,9 +1118,9 @@
         {
           "id": "9wjhnzab",
           "type": "text",
-          "x": 45,
+          "x": 160,
           "y": 180,
-          "w": 890,
+          "w": 680,
           "h": 80,
           "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as the app gains more features I'm able to demonstrate on the site.<br></p>",
           "style": {
@@ -1163,52 +1138,11 @@
             "liquidGlass": false,
             "innerShadow": false,
             "backdropBlur": 0,
-            "smartShadow": true
+            "smartShadow": false
           },
           "fontSize": 18,
           "align": "center",
-          "textColor": "#dddbe1",
-          "bodyFont": "Inter"
-        },
-        {
-          "id": "0h7zu1qw",
-          "type": "divider",
-          "x": 0,
-          "y": 270,
-          "w": 960,
-          "h": 20,
-          "lineColor": "#a3a3a3",
-          "lineWidth": 12,
-          "lineStyle": "solid",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": false,
-            "shadowColor": "rgba(0,0,0,.25)",
-            "shadowBlur": 12,
-            "shadowX": 0,
-            "shadowY": 4,
-            "opacity": 100,
-            "innerShadow": false,
-            "liquidGlass": false,
-            "backdropBlur": 0
-          },
-          "fillType": "gradient",
-          "gradientStops": [
-            {
-              "color": "#9ca3af",
-              "pos": 4
-            },
-            {
-              "color": "#645244",
-              "pos": 100
-            }
-          ],
-          "gradientAngle": 180,
-          "locked": true
+          "bodyFont": "Open Sans"
         },
         {
           "id": "qsfeu7hc",
@@ -1376,11 +1310,11 @@
                 "fillColor": "#307FE2",
                 "gradientStops": [
                   {
-                    "color": "#54786a",
+                    "color": "#ab6b23",
                     "pos": 0
                   },
                   {
-                    "color": "#1ac4c7",
+                    "color": "#653d13",
                     "pos": 100
                   }
                 ],
@@ -1464,11 +1398,11 @@
                 "fillColor": "#307FE2",
                 "gradientStops": [
                   {
-                    "color": "#54786a",
+                    "color": "#ab6b23",
                     "pos": 0
                   },
                   {
-                    "color": "#1ac4c7",
+                    "color": "#653d13",
                     "pos": 100
                   }
                 ],
@@ -1489,10 +1423,10 @@
                 "heading": {
                   "text": "",
                   "x": 20,
-                  "y": 35,
+                  "y": 39,
                   "w": 200,
                   "h": 56,
-                  "fontSize": 18,
+                  "fontSize": 16,
                   "fontWeight": 700,
                   "color": "#ffffff"
                 },
@@ -1552,11 +1486,11 @@
                 "fillColor": "#307FE2",
                 "gradientStops": [
                   {
-                    "color": "#547a6c",
+                    "color": "#ab6b23",
                     "pos": 0
                   },
                   {
-                    "color": "#1dc3c6",
+                    "color": "#653d13",
                     "pos": 100
                   }
                 ],
@@ -1570,17 +1504,17 @@
                   "x": 20,
                   "y": 8,
                   "w": 200,
-                  "h": 44,
+                  "h": 26,
                   "fontSize": 27,
                   "color": "#ffffff"
                 },
                 "heading": {
                   "text": "",
                   "x": 20,
-                  "y": 35,
+                  "y": 39,
                   "w": 200,
-                  "h": 50,
-                  "fontSize": 18,
+                  "h": 56,
+                  "fontSize": 16,
                   "fontWeight": 700,
                   "color": "#ffffff"
                 },
@@ -1720,7 +1654,7 @@
         {
           "id": "7bfiens0",
           "type": "divider",
-          "x": -10,
+          "x": 0,
           "y": 400,
           "w": 990,
           "h": 10,
@@ -1779,6 +1713,48 @@
             "opacity": 100
           },
           "bodyFont": "Open Sans"
+        },
+        {
+          "id": "kigmg88r",
+          "type": "heading",
+          "x": 45,
+          "y": 344,
+          "w": 550,
+          "h": 56,
+          "text": "Video Content Production",
+          "level": 1,
+          "style": {
+            "bg": "rgba(255,255,255,0.10)",
+            "border": "none",
+            "borderColor": "rgba(255,255,255,0.32)",
+            "borderWidth": 1,
+            "radius": 16,
+            "shadow": true,
+            "shadowColor": "rgba(0,0,0,.22)",
+            "shadowBlur": 16,
+            "shadowX": 0,
+            "shadowY": 5,
+            "opacity": 100,
+            "liquidGlass": true,
+            "_preGlass": {
+              "bg": "transparent",
+              "shadow": false,
+              "shadowBlur": 2,
+              "shadowY": 1,
+              "shadowX": 0,
+              "shadowColor": "rgba(0,0,0,.9)",
+              "border": "none",
+              "borderWidth": 2,
+              "borderColor": "#307FE2",
+              "radius": 0
+            },
+            "innerShadow": true,
+            "innerStrength": 35,
+            "backdropBlur": 40,
+            "liquidGlassMode": "text"
+          },
+          "headingFont": "Raleway",
+          "fontSize": 39
         }
       ],
       "includeInNav": false
