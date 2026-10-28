@@ -731,68 +731,6 @@
           "anchorId": "apps"
         },
         {
-          "id": "v0p9lfaj",
-          "type": "shape",
-          "x": 90,
-          "y": 160,
-          "w": 830,
-          "h": 120,
-          "shapeType": "rect",
-          "fillColor": "#307FE2",
-          "style": {
-            "bg": "rgba(255,255,255,0.10)",
-            "border": "none",
-            "borderColor": "rgba(255,255,255,0.32)",
-            "borderWidth": 1,
-            "radius": 16,
-            "shadow": true,
-            "shadowColor": "rgba(0,0,0,.22)",
-            "shadowBlur": 16,
-            "shadowX": 0,
-            "shadowY": 5,
-            "opacity": 36,
-            "innerShadow": true,
-            "liquidGlass": true,
-            "innerStrength": 35,
-            "backdropBlur": 12,
-            "_preGlass": {
-              "bg": "transparent",
-              "shadow": false,
-              "shadowBlur": 2,
-              "shadowY": 1,
-              "shadowX": 0,
-              "shadowColor": "rgba(0,0,0,.9)",
-              "innerShadow": false,
-              "innerStrength": 35,
-              "border": "none",
-              "borderWidth": 2,
-              "borderColor": "#307FE2",
-              "radius": 0
-            }
-          },
-          "fillType": "gradient",
-          "gradientStops": [
-            {
-              "color": "#307FE2",
-              "pos": 0
-            },
-            {
-              "color": "#032245",
-              "pos": 38
-            }
-          ],
-          "gradientType": "radial",
-          "locked": false,
-          "td3d": false,
-          "td3dDepth": 16,
-          "td3dGloss": 60,
-          "td3dIridescence": 50,
-          "td3dTintMode": "auto",
-          "td3dUseGlobalAngle": true,
-          "td3dHover": "none",
-          "noiseAmount": 0
-        },
-        {
           "id": "dgu0hfqk",
           "type": "video",
           "x": 110,
@@ -1101,35 +1039,6 @@
           },
           "align": "center",
           "bodyFont": "Inter"
-        },
-        {
-          "id": "9wjhnzab",
-          "type": "text",
-          "x": 160,
-          "y": 180,
-          "w": 710,
-          "h": 80,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as the app gains more features I'm able to demonstrate on the site, think of the opportunities!<br></p>",
-          "style": {
-            "bg": "transparent",
-            "border": "none",
-            "borderColor": "#307FE2",
-            "borderWidth": 2,
-            "radius": 0,
-            "shadow": true,
-            "shadowColor": "#00093888",
-            "shadowBlur": 1,
-            "shadowX": 1,
-            "shadowY": 1,
-            "opacity": 100,
-            "liquidGlass": false,
-            "innerShadow": false,
-            "backdropBlur": 0,
-            "smartShadow": false
-          },
-          "fontSize": 18,
-          "align": "center",
-          "bodyFont": "Open Sans"
         },
         {
           "id": "qsfeu7hc",
@@ -1598,6 +1507,29 @@
           "locked": true
         },
         {
+          "id": "twxdpf9p",
+          "type": "shape",
+          "x": 0,
+          "y": 170,
+          "w": 960,
+          "h": 100,
+          "shapeType": "rect",
+          "fillColor": "#674014",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.9)",
+            "shadowBlur": 2,
+            "shadowX": 0,
+            "shadowY": 1,
+            "opacity": 44
+          }
+        },
+        {
           "id": "vem16xs9",
           "type": "divider",
           "x": -10,
@@ -1743,6 +1675,36 @@
           "headingFont": "Raleway",
           "fontSize": 39,
           "fontWeight": 700
+        },
+        {
+          "id": "9wjhnzab",
+          "type": "text",
+          "x": 160,
+          "y": 180,
+          "w": 710,
+          "h": 80,
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as the app gains more features I'm able to demonstrate on the site, think of the opportunities!<br></p>",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "#00093888",
+            "shadowBlur": 1,
+            "shadowX": 1,
+            "shadowY": 1,
+            "opacity": 100,
+            "liquidGlass": false,
+            "innerShadow": false,
+            "backdropBlur": 0,
+            "smartShadow": false,
+            "liquidGlassMode": "text"
+          },
+          "fontSize": 17,
+          "align": "center",
+          "bodyFont": "Open Sans"
         }
       ],
       "includeInNav": false
