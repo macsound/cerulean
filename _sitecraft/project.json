@@ -1683,7 +1683,7 @@
           "y": 180,
           "w": 710,
           "h": 80,
-          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as the app gains more features I'm able to demonstrate on the site, think of the opportunities!<br></p>",
+          "html": "<p class=\"p1\" style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal;\">This webpage is built using Sitecraft, a website builder I designed and coded myself instead of reaching for a SaaS template. It's a living project as the app gains more features, I'm able to demonstrate on the site, think of the opportunities!<br></p>",
           "style": {
             "bg": "transparent",
             "border": "none",
