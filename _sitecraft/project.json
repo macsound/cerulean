@@ -133,10 +133,10 @@
         {
           "id": "a28q909t",
           "type": "heading",
-          "x": 240,
-          "y": 40,
-          "w": 520,
-          "h": 100,
+          "x": 310,
+          "y": 35,
+          "w": 450,
+          "h": 70,
           "text": "STEPHEN GOZZA",
           "level": 1,
           "style": {
@@ -158,9 +158,9 @@
             "smartShadow": false,
             "liquidGlassMode": "text"
           },
-          "fontSize": 46,
+          "fontSize": 52,
           "textColor": "#ffffff",
-          "align": "center",
+          "align": "left",
           "fontWeight": 100,
           "headingFont": "Raleway"
         },
@@ -1045,9 +1045,9 @@
           "id": "qsfeu7hc",
           "type": "text",
           "x": 360,
-          "y": 90,
+          "y": 135,
           "w": 80,
-          "h": 50,
+          "h": 30,
           "html": "<p><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza26e.docx\" data-sc-file=\"assets/files/sgozza26e.docx\" target=\"_blank\" rel=\"noopener\"><b><a href=\"https://raw.githubusercontent.com/macsound/cerulean/main/assets/files/sgozza-cpm26c.pdf\" data-sc-file=\"assets/files/sgozza-cpm26c.pdf\" target=\"_blank\" rel=\"noopener\">Resume</a></b></a></p>",
           "style": {
             "bg": "transparent",
@@ -1614,8 +1614,8 @@
         {
           "id": "txq26bq0",
           "type": "text",
-          "x": 490,
-          "y": 90,
+          "x": 530,
+          "y": 135,
           "w": 150,
           "h": 30,
           "html": "<p><a href=\"netroundtrip/\" target=\"_self\">NetRoundTrip</a></p>",
@@ -1630,7 +1630,8 @@
             "shadowBlur": 2,
             "shadowX": 0,
             "shadowY": 1,
-            "opacity": 100
+            "opacity": 100,
+            "smartShadow": true
           },
           "bodyFont": "Open Sans"
         },
@@ -1729,6 +1730,39 @@
             "opacity": 100
           },
           "iconId": "evxij61y"
+        },
+        {
+          "id": "9cpj0zko",
+          "type": "shape",
+          "x": 320,
+          "y": 95,
+          "w": 420,
+          "h": 10,
+          "shapeType": "rect",
+          "fillColor": "#ffffff",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.9)",
+            "shadowBlur": 2,
+            "shadowX": 0,
+            "shadowY": 1,
+            "opacity": 100,
+            "liquidGlass": false,
+            "backdropBlur": 0
+          },
+          "td3d": false,
+          "td3dDepth": 16,
+          "td3dGloss": 60,
+          "td3dIridescence": 50,
+          "td3dTintMode": "auto",
+          "td3dUseGlobalAngle": true,
+          "td3dHover": "none",
+          "fillOpacity": 25
         }
       ],
       "includeInNav": false
