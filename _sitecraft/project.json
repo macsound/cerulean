@@ -134,10 +134,10 @@
           "id": "a28q909t",
           "type": "heading",
           "x": 240,
-          "y": 10,
+          "y": 40,
           "w": 520,
           "h": 100,
-          "text": "Stephen Gozza",
+          "text": "STEPHEN GOZZA",
           "level": 1,
           "style": {
             "bg": "transparent",
@@ -158,10 +158,11 @@
             "smartShadow": false,
             "liquidGlassMode": "text"
           },
-          "fontSize": 69,
+          "fontSize": 46,
           "textColor": "#ffffff",
           "align": "center",
-          "fontWeight": 700
+          "fontWeight": 100,
+          "headingFont": "Raleway"
         },
         {
           "id": "hkee7kxq",
@@ -1705,6 +1706,29 @@
           "fontSize": 17,
           "align": "center",
           "bodyFont": "Open Sans"
+        },
+        {
+          "id": "f3uumucv",
+          "type": "typoicon",
+          "x": 170,
+          "y": 5,
+          "w": 130,
+          "h": 130,
+          "alt": "",
+          "style": {
+            "bg": "transparent",
+            "border": "none",
+            "borderColor": "#307FE2",
+            "borderWidth": 2,
+            "radius": 0,
+            "shadow": false,
+            "shadowColor": "rgba(0,0,0,.9)",
+            "shadowBlur": 2,
+            "shadowX": 0,
+            "shadowY": 1,
+            "opacity": 100
+          },
+          "iconId": "evxij61y"
         }
       ],
       "includeInNav": false
@@ -1788,5 +1812,90 @@
       }
     ],
     "copyright": "© 2026 Stephen Gozza — All rights reserved  "
-  }
+  },
+  "icons": [
+    {
+      "id": "evxij61y",
+      "name": "Icon",
+      "icon": {
+        "v": 1,
+        "w": 200,
+        "h": 200,
+        "bg": {
+          "kind": "none",
+          "shape": "rounded",
+          "radius": 36,
+          "color": "#1a2744",
+          "c2": "#307FE2",
+          "angle": 135,
+          "site": 4,
+          "site2": 0
+        },
+        "layers": [
+          {
+            "id": "iwa5dkaq",
+            "kind": "glyph",
+            "glyph": "diamond",
+            "w": 175,
+            "h": 204,
+            "x": 100,
+            "y": 100,
+            "rot": 0,
+            "opacity": 100,
+            "fill": {
+              "kind": "solid",
+              "color": "#a15c0c",
+              "c2": "#1a2744",
+              "angle": 135,
+              "site": null,
+              "site2": null
+            },
+            "combine": "none"
+          },
+          {
+            "id": "a2",
+            "text": "G",
+            "font": "Inter",
+            "weight": 900,
+            "size": 95,
+            "x": 121,
+            "y": 97,
+            "rot": 0,
+            "opacity": 100,
+            "fill": {
+              "kind": "gradient",
+              "color": "#ffebb3",
+              "c2": "#f2b064",
+              "angle": 135,
+              "site": null,
+              "site2": null
+            },
+            "combine": "none"
+          },
+          {
+            "id": "a1",
+            "text": "S",
+            "font": "Playfair Display",
+            "weight": 900,
+            "size": 134,
+            "x": 75,
+            "y": 96,
+            "rot": 1,
+            "opacity": 100,
+            "fill": {
+              "kind": "gradient",
+              "color": "#fff3e5",
+              "c2": "#e1a056",
+              "angle": 135,
+              "site": null,
+              "site2": null
+            },
+            "combine": "none"
+          }
+        ]
+      },
+      "fmt": "svg",
+      "pngSize": 1024
+    }
+  ]
 }
