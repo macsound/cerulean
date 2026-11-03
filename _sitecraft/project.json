@@ -108,24 +108,24 @@
           "gradientType": "linear",
           "gradientStops": [
             {
-              "color": "#7e3c07",
-              "pos": 0
+              "color": "#665942",
+              "pos": 3
             },
             {
-              "color": "#ffcb8f",
-              "pos": 34
+              "color": "#ad967b",
+              "pos": 30
             },
             {
-              "color": "#ffbc70",
+              "color": "#f2ebe3",
               "pos": 37
             },
             {
-              "color": "#be7827",
+              "color": "#907c64",
               "pos": 36
             },
             {
               "color": "#170c02",
-              "pos": 94
+              "pos": 100
             }
           ],
           "noiseAmount": 0
@@ -1893,7 +1893,7 @@
             "opacity": 100,
             "fill": {
               "kind": "solid",
-              "color": "#a15c0c",
+              "color": "#3a2c1d",
               "c2": "#1a2744",
               "angle": 135,
               "site": null,
@@ -1913,8 +1913,8 @@
             "opacity": 100,
             "fill": {
               "kind": "gradient",
-              "color": "#ffebb3",
-              "c2": "#f2b064",
+              "color": "#cdb9a2",
+              "c2": "#764f23",
               "angle": 135,
               "site": null,
               "site2": null
@@ -1934,7 +1934,7 @@
             "fill": {
               "kind": "gradient",
               "color": "#fff3e5",
-              "c2": "#e1a056",
+              "c2": "#6f3c1b",
               "angle": 135,
               "site": null,
               "site2": null
