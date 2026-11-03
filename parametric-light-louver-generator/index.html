@@ -100,7 +100,11 @@
                     </button>
                 </div>
 
-                <div class="space-y-4">
+                <div class="space-y-4 max-h-[calc(100vh-280px)] overflow-y-auto pr-1 scrollbar-thin">
+                    
+                    <!-- Section: Light & Fit -->
+                    <div class="text-[11px] font-bold text-brand-500 uppercase tracking-wider border-b border-slate-800 pb-1">Mounting & Fit</div>
+
                     <!-- Light Bezel Outer Diam -->
                     <div>
                         <div class="flex justify-between text-xs mb-1">
@@ -117,10 +121,9 @@
                             <span id="val_fit_clearance" class="text-brand-500 font-mono font-bold">0.3</span>
                         </div>
                         <input type="range" id="fit_clearance" min="0.0" max="1.5" step="0.05" value="0.3" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                        <p class="text-[10px] text-slate-500 mt-0.5">Recommended: 0.2mm for tight friction, 0.4mm for easy slip-on.</p>
                     </div>
 
-                    <!-- Wall Thickness -->
+                    <!-- Outer Wall Thickness -->
                     <div>
                         <div class="flex justify-between text-xs mb-1">
                             <label for="wall_thickness" class="font-medium text-slate-300">Outer Wall Thickness (mm)</label>
@@ -129,14 +132,59 @@
                         <input type="range" id="wall_thickness" min="1.0" max="5.0" step="0.2" value="2.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
                     </div>
 
+                    <!-- Section: Stop Lip & Snap Ridge -->
+                    <div class="text-[11px] font-bold text-brand-500 uppercase tracking-wider border-b border-slate-800 pb-1 pt-2">Snap Fit & Internal Lip</div>
+
+                    <!-- Internal Lip Thickness -->
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <label for="lip_thickness" class="font-medium text-slate-300">Internal Lip Extension (mm)</label>
+                            <span id="val_lip_thickness" class="text-brand-500 font-mono font-bold">2.0</span>
+                        </div>
+                        <input type="range" id="lip_thickness" min="0.5" max="10.0" step="0.5" value="2.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
+                        <p class="text-[10px] text-slate-500 mt-0.5">Width of internal stop-ring resting on front bezel.</p>
+                    </div>
+
+                    <!-- Internal Lip Height -->
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <label for="lip_height" class="font-medium text-slate-300">Internal Lip Height (mm)</label>
+                            <span id="val_lip_height" class="text-brand-500 font-mono font-bold">2.0</span>
+                        </div>
+                        <input type="range" id="lip_height" min="1.0" max="8.0" step="0.5" value="2.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Snap Ridge Depth -->
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <label for="snap_ridge_depth" class="font-medium text-slate-300">Snap Ridge Depth (mm)</label>
+                            <span id="val_snap_ridge_depth" class="text-brand-500 font-mono font-bold">0.5</span>
+                        </div>
+                        <input type="range" id="snap_ridge_depth" min="0.0" max="2.0" step="0.1" value="0.5" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
+                        <p class="text-[10px] text-slate-500 mt-0.5">Internal bevel height that snaps past bezel edge.</p>
+                    </div>
+
                     <!-- Clip Sleeve Length -->
                     <div>
                         <div class="flex justify-between text-xs mb-1">
                             <label for="clip_length" class="font-medium text-slate-300">Clip Sleeve Length (mm)</label>
-                            <span id="val_clip_length" class="text-brand-500 font-mono font-bold">16.0</span>
+                            <span id="val_clip_length" class="text-brand-500 font-mono font-bold">18.0</span>
                         </div>
-                        <input type="range" id="clip_length" min="5" max="50" step="1" value="16" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
+                        <input type="range" id="clip_length" min="8" max="50" step="1" value="18" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
                     </div>
+
+                    <!-- Clip Relief Slots -->
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <label for="num_slots" class="font-medium text-slate-300">Clip Relief Slots</label>
+                            <span id="val_num_slots" class="text-brand-500 font-mono font-bold">4</span>
+                        </div>
+                        <input type="range" id="num_slots" min="0" max="8" step="2" value="4" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
+                        <p class="text-[10px] text-slate-500 mt-0.5">Slots flex open so plastic snaps without splitting.</p>
+                    </div>
+
+                    <!-- Section: Tophat & Louvers -->
+                    <div class="text-[11px] font-bold text-brand-500 uppercase tracking-wider border-b border-slate-800 pb-1 pt-2">Tophat & Louver Grid</div>
 
                     <!-- Tophat Extension Length -->
                     <div>
@@ -150,39 +198,31 @@
                     <!-- Honeycomb Grid Depth -->
                     <div>
                         <div class="flex justify-between text-xs mb-1">
-                            <label for="grid_depth" class="font-medium text-slate-300">Honeycomb Louver Depth (mm)</label>
+                            <label for="grid_depth" class="font-medium text-slate-300">Louver Grid Depth (mm)</label>
                             <span id="val_grid_depth" class="text-brand-500 font-mono font-bold">10.0</span>
                         </div>
                         <input type="range" id="grid_depth" min="2" max="30" step="1" value="10" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
                     </div>
 
-                    <!-- Cell Flat-to-Flat Size -->
+                    <!-- Hexagon Cell Size -->
                     <div>
                         <div class="flex justify-between text-xs mb-1">
-                            <label for="cell_flat_size" class="font-medium text-slate-300">Cell Flat Width (mm)</label>
-                            <span id="val_cell_flat_size" class="text-brand-500 font-mono font-bold">6.0</span>
+                            <label for="hex_flat_to_flat" class="font-medium text-slate-300">Continuous Hex Width (mm)</label>
+                            <span id="val_hex_flat_to_flat" class="text-brand-500 font-mono font-bold">6.0</span>
                         </div>
-                        <input type="range" id="cell_flat_size" min="3.0" max="15.0" step="0.5" value="6.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
+                        <input type="range" id="hex_flat_to_flat" min="3.0" max="15.0" step="0.5" value="6.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
                     </div>
 
                     <!-- Grid Wall Thickness -->
                     <div>
                         <div class="flex justify-between text-xs mb-1">
-                            <label for="grid_wall_thick" class="font-medium text-slate-300">Cell Wall Thickness (mm)</label>
+                            <label for="grid_wall_thick" class="font-medium text-slate-300">Grid Wall Thickness (mm)</label>
                             <span id="val_grid_wall_thick" class="text-brand-500 font-mono font-bold">0.8</span>
                         </div>
                         <input type="range" id="grid_wall_thick" min="0.4" max="2.0" step="0.1" value="0.8" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                        <p class="text-[10px] text-slate-500 mt-0.5">0.8mm matches 2 standard 0.4mm nozzle wall passes.</p>
+                        <p class="text-[10px] text-slate-500 mt-0.5">0.8mm matches 2 perimeter walls on 0.4mm nozzle.</p>
                     </div>
 
-                    <!-- Number of Flex Slots -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="num_slots" class="font-medium text-slate-300">Clip Relief Slots</label>
-                            <span id="val_num_slots" class="text-brand-500 font-mono font-bold">4</span>
-                        </div>
-                        <input type="range" id="num_slots" min="0" max="8" step="2" value="4" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
                 </div>
             </div>
 
@@ -203,10 +243,10 @@
         <div class="lg:col-span-8 flex flex-col space-y-6">
             
             <!-- 3D Viewport Card -->
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col relative h-[450px]">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col relative h-[480px]">
                 <div class="absolute top-3 left-3 z-10 bg-slate-950/80 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-medium text-slate-300 flex items-center space-x-2">
                     <i class="fa-solid fa-eye text-brand-500"></i>
-                    <span>Interactive 3D Preview</span>
+                    <span>Interactive 3D Preview (Continuous Hex + Snap Fit)</span>
                 </div>
                 
                 <div class="absolute top-3 right-3 z-10 flex space-x-2">
@@ -223,8 +263,9 @@
 
                 <!-- Footer Stats Overlay inside Viewport -->
                 <div class="absolute bottom-3 left-3 z-10 bg-slate-950/80 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-800 text-[11px] font-mono text-slate-400 flex space-x-4">
-                    <div>Total Height: <span id="stat-height" class="text-slate-200">51.0mm</span></div>
+                    <div>Total Height: <span id="stat-height" class="text-slate-200">53.0mm</span></div>
                     <div>Outer Diam: <span id="stat-diam" class="text-slate-200">64.6mm</span></div>
+                    <div>Aperture Inner: <span id="stat-aperture" class="text-slate-200">56.3mm</span></div>
                 </div>
             </div>
 
@@ -242,7 +283,7 @@
                 </div>
 
                 <div class="relative flex-1 bg-slate-950 rounded-lg border border-slate-800/80 p-3 overflow-hidden">
-                    <pre><code id="scad-code-output" class="text-xs text-brand-500 font-mono block overflow-x-auto h-48 scrollbar-thin"></code></pre>
+                    <pre><code id="scad-code-output" class="text-xs text-brand-500 font-mono block overflow-x-auto h-52 scrollbar-thin"></code></pre>
                 </div>
             </div>
 
@@ -261,11 +302,11 @@
             </div>
             
             <div class="space-y-3 text-sm text-slate-300">
-                <p>This single-page web app is fully static and self-contained. You can easily host it on GitHub Pages with Jekyll by following one of these two options:</p>
+                <p>This single-page web app is fully static and self-contained. You can host it on GitHub Pages with Jekyll using one of these options:</p>
 
                 <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2">
                     <h4 class="font-semibold text-brand-500 text-xs uppercase tracking-wider">Option A: Raw HTML Page (Recommended)</h4>
-                    <p class="text-xs text-slate-400">Save this file as <code class="text-slate-200 bg-slate-800 px-1 py-0.5 rounded">index.html</code> inside your Jekyll repository. Add this Front-Matter snippet to the top of the file so Jekyll passes it cleanly:</p>
+                    <p class="text-xs text-slate-400">Save this file as <code class="text-slate-200 bg-slate-800 px-1 py-0.5 rounded">index.html</code> inside your Jekyll repository. Add this Front-Matter snippet to the top of the file:</p>
                     <pre class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs text-emerald-400 font-mono">---
 layout: null
 ---</pre>
@@ -273,10 +314,10 @@ layout: null
 
                 <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2">
                     <h4 class="font-semibold text-brand-500 text-xs uppercase tracking-wider">Option B: Embedded in Existing Theme</h4>
-                    <p class="text-xs text-slate-400">If you want to keep your site navbar and footer, paste the HTML body contents into a standard page markdown file (e.g., <code class="text-slate-200 bg-slate-800 px-1 py-0.5 rounded">louver.md</code>) with:</p>
+                    <p class="text-xs text-slate-400">To maintain your Jekyll theme header and footer, create a markdown page (e.g. <code class="text-slate-200 bg-slate-800 px-1 py-0.5 rounded">louver.md</code>):</p>
                     <pre class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs text-emerald-400 font-mono">---
 layout: page
-title: Parametric Louver Generator
+title: Louver Generator
 ---</pre>
                 </div>
             </div>
@@ -300,10 +341,13 @@ title: Parametric Louver Generator
             light_outer_diam: 60.0,
             fit_clearance: 0.3,
             wall_thickness: 2.0,
-            clip_length: 16.0,
+            lip_thickness: 2.0,
+            lip_height: 2.0,
+            snap_ridge_depth: 0.5,
+            clip_length: 18.0,
             tophat_length: 35.0,
             grid_depth: 10.0,
-            cell_flat_size: 6.0,
+            hex_flat_to_flat: 6.0,
             grid_wall_thick: 0.8,
             num_slots: 4
         };
@@ -311,8 +355,9 @@ title: Parametric Louver Generator
         // DOM Inputs Mapping
         const inputs = [
             'light_outer_diam', 'fit_clearance', 'wall_thickness', 
+            'lip_thickness', 'lip_height', 'snap_ridge_depth',
             'clip_length', 'tophat_length', 'grid_depth', 
-            'cell_flat_size', 'grid_wall_thick', 'num_slots'
+            'hex_flat_to_flat', 'grid_wall_thick', 'num_slots'
         ];
 
         // ThreeJS Global Variables
@@ -348,7 +393,7 @@ title: Parametric Louver Generator
             dirLight1.position.set(80, 120, 90);
             scene.add(dirLight1);
 
-            const dirLight2 = new THREE.DirectionalLight(0x0284c7, 0.4);
+            const dirLight2 = new THREE.DirectionalLight(0x0284c7, 0.5);
             dirLight2.position.set(-80, -50, -80);
             scene.add(dirLight2);
 
@@ -398,11 +443,20 @@ title: Parametric Louver Generator
             const innerR = innerD / 2;
             const outerR = outerD / 2;
             const totalH = params.clip_length + params.tophat_length;
+            const apertureR = innerR - params.lip_thickness;
 
-            const material = new THREE.MeshStandardMaterial({
+            const bodyMaterial = new THREE.MeshStandardMaterial({
                 color: 0x334155,
                 metalness: 0.2,
                 roughness: 0.5,
+                wireframe: isWireframe,
+                side: THREE.DoubleSide
+            });
+
+            const lipMaterial = new THREE.MeshStandardMaterial({
+                color: 0x475569,
+                metalness: 0.3,
+                roughness: 0.4,
                 wireframe: isWireframe,
                 side: THREE.DoubleSide
             });
@@ -415,46 +469,94 @@ title: Parametric Louver Generator
                 side: THREE.DoubleSide
             });
 
-            // 1. Outer Main Cylinder Body
+            // 1. Outer Main Cylinder Body Shape
             const bodyShape = new THREE.Shape();
             bodyShape.absarc(0, 0, outerR, 0, Math.PI * 2, false);
+
+            // Aperture Hole path (includes step at lip)
             const holePath = new THREE.Path();
             holePath.absarc(0, 0, innerR, 0, Math.PI * 2, true);
             bodyShape.holes.push(holePath);
 
-            const extrudeSettings = {
-                depth: totalH,
-                bevelEnabled: false,
-                curveSegments: 64
-            };
+            const clipExtrudeSettings = { depth: params.clip_length, bevelEnabled: false, curveSegments: 64 };
+            const bodyClipMesh = new THREE.Mesh(new THREE.ExtrudeGeometry(bodyShape, clipExtrudeSettings), bodyMaterial);
+            bodyClipMesh.rotation.x = -Math.PI / 2;
+            louverMeshGroup.add(bodyClipMesh);
 
-            const bodyGeom = new THREE.ExtrudeGeometry(bodyShape, extrudeSettings);
-            const bodyMesh = new THREE.Mesh(bodyGeom, material);
-            bodyMesh.rotation.x = -Math.PI / 2;
-            louverMeshGroup.add(bodyMesh);
+            // 2. Tophat Extension Shell
+            const tophatShape = new THREE.Shape();
+            tophatShape.absarc(0, 0, outerR, 0, Math.PI * 2, false);
+            const tophatHole = new THREE.Path();
+            tophatHole.absarc(0, 0, Math.max(0.1, apertureR), 0, Math.PI * 2, true);
+            tophatShape.holes.push(tophatHole);
 
-            // 2. Honeycomb Grid Louvers
+            const tophatExtrudeSettings = { depth: params.tophat_length, bevelEnabled: false, curveSegments: 64 };
+            const tophatMesh = new THREE.Mesh(new THREE.ExtrudeGeometry(tophatShape, tophatExtrudeSettings), bodyMaterial);
+            tophatMesh.rotation.x = -Math.PI / 2;
+            tophatMesh.position.y = params.clip_length;
+            louverMeshGroup.add(tophatMesh);
+
+            // 3. Internal Retention Stop Lip Ring
+            if (params.lip_thickness > 0 && params.lip_height > 0) {
+                const lipShape = new THREE.Shape();
+                lipShape.absarc(0, 0, innerR, 0, Math.PI * 2, false);
+                const lipHole = new THREE.Path();
+                lipHole.absarc(0, 0, Math.max(0.1, apertureR), 0, Math.PI * 2, true);
+                lipShape.holes.push(lipHole);
+
+                const lipExtrudeSettings = { depth: params.lip_height, bevelEnabled: false, curveSegments: 64 };
+                const lipMesh = new THREE.Mesh(new THREE.ExtrudeGeometry(lipShape, lipExtrudeSettings), lipMaterial);
+                lipMesh.rotation.x = -Math.PI / 2;
+                lipMesh.position.y = params.clip_length;
+                louverMeshGroup.add(lipMesh);
+            }
+
+            // 4. Internal Snap Ridge (Beveled Ring inside sleeve)
+            if (params.snap_ridge_depth > 0) {
+                const snapGeom = new THREE.CylinderGeometry(
+                    innerR - params.snap_ridge_depth,
+                    innerR,
+                    3,
+                    64, 1, true
+                );
+                const snapMesh = new THREE.Mesh(snapGeom, lipMaterial);
+                snapMesh.position.y = 3.5;
+                louverMeshGroup.add(snapMesh);
+            }
+
+            // 5. Continuous Hexagonal Grid Mesh
             const gridGroup = new THREE.Group();
-            const cellR = params.cell_flat_size / 1.73205;
-            const pitchX = (cellR * 1.73205) + params.grid_wall_thick;
-            const pitchY = (cellR * 1.5) + (params.grid_wall_thick * 0.866);
+            const cellFlat = params.hex_flat_to_flat;
+            const rIn = cellFlat / (2 * Math.cos(Math.PI / 6));
+            const rOut = rIn + (params.grid_wall_thick / Math.cos(Math.PI / 6));
+
+            const pitchX = cellFlat + params.grid_wall_thick;
+            const pitchY = (cellFlat + params.grid_wall_thick) * Math.cos(Math.PI / 6);
 
             const countX = Math.ceil(innerD / pitchX) + 1;
             const countY = Math.ceil(innerD / pitchY) + 1;
 
-            const hexShape = new THREE.Shape();
+            // Define clean continuous hexagonal wall shape
+            const singleHexShape = new THREE.Shape();
             for (let i = 0; i < 6; i++) {
                 const angle = (Math.PI / 3) * i;
-                const x = cellR * Math.cos(angle);
-                const y = cellR * Math.sin(angle);
-                if (i === 0) hexShape.moveTo(x, y);
-                else hexShape.lineTo(x, y);
+                const x = rOut * Math.cos(angle);
+                const y = rOut * Math.sin(angle);
+                if (i === 0) singleHexShape.moveTo(x, y);
+                else singleHexShape.lineTo(x, y);
             }
+            const singleHexHole = new THREE.Path();
+            for (let i = 0; i < 6; i++) {
+                const angle = (Math.PI / 3) * i;
+                const x = rIn * Math.cos(angle);
+                const y = rIn * Math.sin(angle);
+                if (i === 0) singleHexHole.moveTo(x, y);
+                else singleHexHole.lineTo(x, y);
+            }
+            singleHexShape.holes.push(singleHexHole);
 
-            const gridExtrudeSettings = {
-                depth: params.grid_depth,
-                bevelEnabled: false
-            };
+            const hexExtrudeSettings = { depth: params.grid_depth, bevelEnabled: false };
+            const hexGeom = new THREE.ExtrudeGeometry(singleHexShape, hexExtrudeSettings);
 
             for (let y = -countY; y <= countY; y++) {
                 for (let x = -countX; x <= countX; x++) {
@@ -462,8 +564,7 @@ title: Parametric Louver Generator
                     const cx = x * pitchX + offsetX;
                     const cy = y * pitchY;
 
-                    if (Math.sqrt(cx * cx + cy * cy) < (innerR - cellR)) {
-                        const hexGeom = new THREE.ExtrudeGeometry(hexShape, gridExtrudeSettings);
+                    if (Math.sqrt(cx * cx + cy * cy) < (innerR - rOut)) {
                         const hexMesh = new THREE.Mesh(hexGeom, gridMaterial);
                         hexMesh.position.set(cx, cy, 0);
                         gridGroup.add(hexMesh);
@@ -472,12 +573,13 @@ title: Parametric Louver Generator
             }
 
             gridGroup.rotation.x = -Math.PI / 2;
-            gridGroup.position.y = params.clip_length;
+            gridGroup.position.y = params.clip_length + params.lip_height;
             louverMeshGroup.add(gridGroup);
 
             // Update UI Stats
             document.getElementById('stat-height').textContent = `${totalH.toFixed(1)}mm`;
             document.getElementById('stat-diam').textContent = `${outerD.toFixed(1)}mm`;
+            document.getElementById('stat-aperture').textContent = `${(apertureR * 2).toFixed(1)}mm`;
 
             // Update OpenSCAD Output Code
             generateOpenSCADCode();
@@ -486,39 +588,51 @@ title: Parametric Louver Generator
         // Generate OpenSCAD Code Script
         function generateOpenSCADCode() {
             const scadCode = `// ====================================================================
-// PARAMETRIC HONEYCOMB TOP-HAT & GLARE LOUVER ACCESSORY
+// UPDATED PARAMETRIC HONEYCOMB TOP-HAT WITH SNAP LIP & HEX GRID
 // Auto-generated by LouverCAD Studio
 // Optimized for Bambu Lab A1 Mini Bed (180x180mm)
 // ====================================================================
 
-$fn = 120; // Resolution for smooth circles
+$fn = 100;
 
-// --- USER MEASUREMENTS ---
-light_outer_diam = ${params.light_outer_diam.toFixed(1)};  // Bezel diameter (mm)
-fit_clearance    = ${params.fit_clearance.toFixed(2)};   // Snug friction fit offset (mm)
-
-// --- TOP-HAT & LOUVER DIMENSIONS ---
+// --- USER MEASUREMENTS & FIT ADJUSTMENTS ---
+light_outer_diam = ${params.light_outer_diam.toFixed(1)};  // Bezel outer diameter (mm)
+fit_clearance    = ${params.fit_clearance.toFixed(2)};   // Friction fit offset (mm)
 wall_thickness   = ${params.wall_thickness.toFixed(1)};   // Outer wall thickness (mm)
+
+// --- RETENTION LIP & SNAP FIT ---
+lip_thickness    = ${params.lip_thickness.toFixed(1)};   // Internal stop lip width (mm)
+lip_height       = ${params.lip_height.toFixed(1)};   // Internal stop lip thickness (mm)
+snap_ridge_depth = ${params.snap_ridge_depth.toFixed(2)};   // Internal snap ridge depth (mm)
 clip_length      = ${params.clip_length.toFixed(1)};  // Clip sleeve length (mm)
+num_slots        = ${params.num_slots};     // Number of flex relief slots
+
+// --- TOP-HAT & LOUVER GRID ---
 tophat_length    = ${params.tophat_length.toFixed(1)};  // Lens extension length (mm)
 grid_depth       = ${params.grid_depth.toFixed(1)};  // Depth of honeycomb louvers (mm)
-cell_flat_size   = ${params.cell_flat_size.toFixed(1)};   // Honeycomb cell width (mm)
-grid_wall_thick  = ${params.grid_wall_thick.toFixed(1)};   // Cell wall thickness (mm)
-num_slots        = ${params.num_slots};     // Number of clip relief slots
+hex_flat_to_flat = ${params.hex_flat_to_flat.toFixed(1)};   // Continuous hex cell width (mm)
+grid_wall_thick  = ${params.grid_wall_thick.toFixed(1)};   // Hex wall thickness (mm)
 
 // --- COMPUTED VALUES ---
 inner_d = light_outer_diam + fit_clearance;
 outer_d = inner_d + (2 * wall_thickness);
 total_h = clip_length + tophat_length;
-hex_r   = cell_flat_size / 1.7320508;
 
-module hex_cell(r, h) {
-    cylinder(r = r, h = h + 2, $fn = 6, center = true);
+// Single Continuous Hexagonal Cell Wall Module
+module hex_ring(s, wall_t, h) {
+    r_in = s / (2 * cos(30));
+    r_out = r_in + (wall_t / cos(30));
+    difference() {
+        cylinder(r = r_out, h = h, $fn = 6, center = true);
+        cylinder(r = r_in, h = h + 2, $fn = 6, center = true);
+    }
 }
 
-module honeycomb_grid(r, wall_t, bounds_d, depth) {
-    pitch_x = (r * 1.7320508) + wall_t;
-    pitch_y = (r * 1.5) + (wall_t * 0.866);
+// Continuous Honeycomb Array Generator
+module continuous_honeycomb_grid(cell_size, wall_t, bounds_d, depth) {
+    pitch_x = cell_size + wall_t;
+    pitch_y = (cell_size + wall_t) * cos(30);
+    
     count_x = ceil(bounds_d / pitch_x) + 2;
     count_y = ceil(bounds_d / pitch_y) + 2;
     
@@ -529,7 +643,7 @@ module honeycomb_grid(r, wall_t, bounds_d, depth) {
                 for (x = [-count_x : count_x]) {
                     offset_x = (abs(y) % 2 == 1) ? pitch_x / 2 : 0;
                     translate([x * pitch_x + offset_x, y * pitch_y, 0])
-                        hex_cell(r, depth + 2);
+                        hex_ring(cell_size, wall_t, depth);
                 }
             }
         }
@@ -538,33 +652,48 @@ module honeycomb_grid(r, wall_t, bounds_d, depth) {
 
 module main_assembly() {
     difference() {
-        // Outer Shell
-        cylinder(d = outer_d, h = total_h);
+        union() {
+            // Main Outer Cylindrical Shell
+            cylinder(d = outer_d, h = total_h);
+            
+            // Internal Snap Ridge (locks past bezel edge)
+            if (snap_ridge_depth > 0) {
+                translate([0, 0, 2])
+                    cylinder(d1 = inner_d, d2 = inner_d - (snap_ridge_depth * 2), h = 3);
+            }
+        }
         
-        // Inner clearance bore
+        // Inner Sleeve Bore
         translate([0, 0, -1])
             cylinder(d = inner_d, h = clip_length + 1);
             
-        // Aperture path through tophat
-        translate([0, 0, clip_length - 0.1])
-            cylinder(d = inner_d - 1, h = tophat_length + 2);
+        // Tophat Aperture Path (past internal stop lip)
+        translate([0, 0, clip_length + lip_height])
+            cylinder(d = inner_d - (lip_thickness * 2), h = tophat_length + 2);
             
-        // Flex relief slots
+        // Flex Relief Slots (allows clip fingers to flex and snap)
         if (num_slots > 0) {
             for (a = [0 : (360 / num_slots) : 359]) {
                 rotate([0, 0, a])
-                    translate([-1.0, 0, -1])
-                        cube([2.0, outer_d + 2, clip_length - 2]);
+                    translate([-1.2, 0, -1])
+                        cube([2.4, outer_d + 4, clip_length - 2]);
             }
         }
     }
     
-    // Integrated Honeycomb Grid
-    translate([0, 0, clip_length + (grid_depth / 2)])
-        difference() {
-            cylinder(d = inner_d, h = grid_depth, center = true);
-            honeycomb_grid(hex_r, grid_wall_thick, inner_d, grid_depth);
-        }
+    // Adjustable Internal Stop Lip
+    if (lip_thickness > 0 && lip_height > 0) {
+        translate([0, 0, clip_length])
+            difference() {
+                cylinder(d = inner_d, h = lip_height);
+                translate([0, 0, -0.5])
+                    cylinder(d = inner_d - (lip_thickness * 2), h = lip_height + 1);
+            }
+    }
+        
+    // Continuous Hexagon Honeycomb Louver Grid
+    translate([0, 0, clip_length + lip_height + (grid_depth / 2)])
+        continuous_honeycomb_grid(hex_flat_to_flat, grid_wall_thick, inner_d, grid_depth);
 }
 
 main_assembly();`;
@@ -614,7 +743,7 @@ main_assembly();`;
                 el.addEventListener('input', (e) => {
                     const value = parseFloat(e.target.value);
                     params[id] = value;
-                    if (valDisplay) valDisplay.textContent = value.toFixed(id === 'fit_clearance' || id === 'grid_wall_thick' ? 2 : (id === 'num_slots' ? 0 : 1));
+                    if (valDisplay) valDisplay.textContent = value.toFixed(id === 'fit_clearance' || id === 'snap_ridge_depth' || id === 'grid_wall_thick' ? 2 : (id === 'num_slots' ? 0 : 1));
                     rebuildGeometry();
                 });
             });
@@ -624,10 +753,13 @@ main_assembly();`;
                 params.light_outer_diam = 60.0;
                 params.fit_clearance = 0.3;
                 params.wall_thickness = 2.0;
-                params.clip_length = 16.0;
+                params.lip_thickness = 2.0;
+                params.lip_height = 2.0;
+                params.snap_ridge_depth = 0.5;
+                params.clip_length = 18.0;
                 params.tophat_length = 35.0;
                 params.grid_depth = 10.0;
-                params.cell_flat_size = 6.0;
+                params.hex_flat_to_flat = 6.0;
                 params.grid_wall_thick = 0.8;
                 params.num_slots = 4;
 
@@ -635,7 +767,7 @@ main_assembly();`;
                     const el = document.getElementById(id);
                     const valDisplay = document.getElementById(`val_${id}`);
                     el.value = params[id];
-                    if (valDisplay) valDisplay.textContent = params[id].toFixed(id === 'fit_clearance' || id === 'grid_wall_thick' ? 2 : (id === 'num_slots' ? 0 : 1));
+                    if (valDisplay) valDisplay.textContent = params[id].toFixed(id === 'fit_clearance' || id === 'snap_ridge_depth' || id === 'grid_wall_thick' ? 2 : (id === 'num_slots' ? 0 : 1));
                 });
 
                 rebuildGeometry();
