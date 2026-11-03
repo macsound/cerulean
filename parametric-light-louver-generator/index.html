@@ -1,650 +1,796 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parametric Honeycomb Light Louver & Tophat Generator</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#075985',
-                            900: '#0c4a6e',
-                        }
-                    }
-                }
-            }
+    <title>Honeycomb Top-Hat Lens Generator</title>
+    <style>
+        :root {
+            --bg-color: #121214;
+            --panel-bg: #1e1e24;
+            --panel-border: #2c2c36;
+            --accent-color: #3b82f6;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --color-sleeve: #3b82f6;
+            --color-retention: #eab308;
+            --color-tophat: #a855f7;
+            --color-grid: #10b981;
         }
-    </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Three.js and OrbitControls -->
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #app-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #controls-panel {
+            width: 380px;
+            background: var(--panel-bg);
+            border-right: 1px solid var(--panel-border);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .panel-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--panel-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-header h1 {
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            background: #2a2a36;
+            color: var(--text-main);
+            border: 1px solid var(--panel-border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover:not(:disabled) {
+            background: #363646;
+            border-color: #4a4a5a;
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #2563eb;
+        }
+
+        .btn-success {
+            background: #059669;
+            border-color: #059669;
+            color: #fff;
+        }
+
+        .btn-success:hover:not(:disabled) {
+            background: #10b981;
+        }
+
+        .controls-scroll {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .color-toggle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s ease;
+        }
+
+        .color-toggle.active {
+            transform: scale(1.25);
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .control-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .control-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+
+        .value-display {
+            display: flex;
+            gap: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .current-val {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .prev-val {
+            color: var(--text-muted);
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        .prev-val::before {
+            content: "(was ";
+        }
+        .prev-val::after {
+            content: ")";
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            background: #2a2a36;
+            border-radius: 2px;
+            outline: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+        }
+
+        /* Color-coordinated slider thumbs by section */
+        input[data-section="sleeve"]::-webkit-slider-thumb {
+            background: var(--color-sleeve);
+        }
+        input[data-section="retention"]::-webkit-slider-thumb {
+            background: var(--color-retention);
+        }
+        input[data-section="tophat"]::-webkit-slider-thumb {
+            background: var(--color-tophat);
+        }
+        input[data-section="grid"]::-webkit-slider-thumb {
+            background: var(--color-grid);
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb,
+        input[type="range"]:active::-webkit-slider-thumb {
+            transform: scale(1.35);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+        }
+
+        #viewport-container {
+            flex-grow: 1;
+            position: relative;
+            background: radial-gradient(circle at center, #1a1a24 0%, #0d0d12 100%);
+        }
+
+        #canvas3d {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 36px;
+            height: 20px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider-round {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #2a2a36;
+            transition: .2s;
+            border-radius: 20px;
+        }
+
+        .slider-round:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .2s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider-round {
+            background-color: var(--accent-color);
+        }
+
+        input:checked + .slider-round:before {
+            transform: translateX(16px);
+        }
+
+        .footer-export-panel {
+            padding: 16px 20px;
+            border-top: 1px solid var(--panel-border);
+            display: flex;
+            gap: 10px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #059669;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .toast.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/exporters/STLExporter.js"></script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        code, pre {
-            font-family: 'Fira Code', monospace;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
-
-    <!-- Header Navigation -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-brand-600 text-white p-2 rounded-lg shadow-lg shadow-brand-500/20">
-                    <i class="fa-solid fa-cube text-xl"></i>
-                </div>
-                <div>
-                    <h1 class="font-bold text-lg leading-none tracking-tight text-white">LouverCAD Studio</h1>
-                    <p class="text-xs text-slate-400 mt-1">Honeycomb Glare Tophat & Lens Generator</p>
+<body>
+    <div id="app-container">
+        <div id="controls-panel">
+            <div class="panel-header">
+                <h1>Lens Generator</h1>
+                <div class="header-actions">
+                    <button id="undoBtn" class="btn" disabled title="Undo last change (Ctrl+Z)">↺ Undo</button>
                 </div>
             </div>
 
-            <div class="flex items-center space-x-3">
-                <button id="jekyll-info-btn" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg flex items-center space-x-2 transition">
-                    <i class="fa-brands fa-github text-sm"></i>
-                    <span>GitHub / Jekyll Host Guide</span>
-                </button>
+            <div class="controls-scroll">
+                <div class="toggle-row">
+                    <span>Show Section Colors</span>
+                    <label class="switch">
+                        <input type="checkbox" id="globalHighlightToggle">
+                        <span class="slider-round"></span>
+                    </label>
+                </div>
+
+                <!-- SECTION 1: CLIP SLEEVE -->
+                <div class="section-header">
+                    <span class="section-title">1. Clip Sleeve & Relief Slots</span>
+                    <span class="color-toggle" id="indicator-sleeve" style="background-color: var(--color-sleeve); color: var(--color-sleeve);"></span>
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Light Bezel Outer Diam (mm)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-light_outer_diam">60.0</span>
+                            <span class="prev-val" id="prev-light_outer_diam" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-light_outer_diam" min="30" max="120" step="0.5" value="60.0" data-section="sleeve">
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Fit Clearance (mm)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-fit_clearance">0.3</span>
+                            <span class="prev-val" id="prev-fit_clearance" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-fit_clearance" min="0.1" max="1.0" step="0.05" value="0.3" data-section="sleeve">
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Sleeve Clip Length (mm)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-clip_length">18.0</span>
+                            <span class="prev-val" id="prev-clip_length" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-clip_length" min="10" max="40" step="1" value="18.0" data-section="sleeve">
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Flex Relief Slots (Count)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-num_slots">4</span>
+                            <span class="prev-val" id="prev-num_slots" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-num_slots" min="0" max="8" step="2" value="4" data-section="sleeve">
+                </div>
+
+                <!-- SECTION 2: STOP LIP & SNAP RIDGE -->
+                <div class="section-header">
+                    <span class="section-title">2. Stop Lip & Snap Ridge</span>
+                    <span class="color-toggle" id="indicator-retention" style="background-color: var(--color-retention); color: var(--color-retention);"></span>
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Internal Lip Thickness (mm)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-lip_thickness">2.0</span>
+                            <span class="prev-val" id="prev-lip_thickness" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-lip_thickness" min="0.5" max="5.0" step="0.5" value="2.0" data-section="retention">
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Snap Ridge Depth (mm)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-snap_ridge_depth">0.5</span>
+                            <span class="prev-val" id="prev-snap_ridge_depth" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-snap_ridge_depth" min="0.0" max="1.5" step="0.1" value="0.5" data-section="retention">
+                </div>
+
+                <!-- SECTION 3: TOPHAT EXTENSION & FLARE -->
+                <div class="section-header">
+                    <span class="section-title">3. Top-Hat & Flare Angle</span>
+                    <span class="color-toggle" id="indicator-tophat" style="background-color: var(--color-tophat); color: var(--color-tophat);"></span>
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Top-Hat Extension Length (mm)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-tophat_length">35.0</span>
+                            <span class="prev-val" id="prev-tophat_length" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-tophat_length" min="15" max="80" step="1" value="35.0" data-section="tophat">
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Top Flare Angle (deg)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-tophat_flare_angle">0.0</span>
+                            <span class="prev-val" id="prev-tophat_flare_angle" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-tophat_flare_angle" min="0" max="30" step="1" value="0.0" data-section="tophat">
+                </div>
+
+                <!-- SECTION 4: ANTI-GLARE GRID -->
+                <div class="section-header">
+                    <span class="section-title">4. Anti-Glare Grid</span>
+                    <span class="color-toggle" id="indicator-grid" style="background-color: var(--color-grid); color: var(--color-grid);"></span>
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Grid Depth (mm)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-grid_depth">10.0</span>
+                            <span class="prev-val" id="prev-grid_depth" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-grid_depth" min="3" max="25" step="1" value="10.0" data-section="grid">
+                </div>
+
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <span>Grid Spacing (mm)</span>
+                        <div class="value-display">
+                            <span class="current-val" id="val-grid_spacing">6.0</span>
+                            <span class="prev-val" id="prev-grid_spacing" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <input type="range" id="param-grid_spacing" min="3" max="12" step="0.5" value="6.0" data-section="grid">
+                </div>
+            </div>
+
+            <div class="footer-export-panel">
+                <button id="exportStlBtn" class="btn btn-success" style="flex: 1;">Export STL</button>
+                <button id="exportScadBtn" class="btn btn-primary" style="flex: 1;">Export SCAD</button>
             </div>
         </div>
-    </header>
 
-    <!-- Main Workspace -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        <!-- Left Panel: Parameter Controls (4 Cols) -->
-        <div class="lg:col-span-4 flex flex-col space-y-6">
-            
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl">
-                <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
-                    <h2 class="font-semibold text-slate-200 flex items-center gap-2">
-                        <i class="fa-solid fa-sliders text-brand-500"></i> Dimensions & Settings
-                    </h2>
-                    <button id="reset-params" class="text-xs text-slate-400 hover:text-white transition" title="Reset to Defaults">
-                        <i class="fa-solid fa-rotate-left mr-1"></i> Reset
-                    </button>
-                </div>
-
-                <div class="space-y-4 max-h-[calc(100vh-280px)] overflow-y-auto pr-1 scrollbar-thin">
-                    
-                    <!-- Section: Light & Fit -->
-                    <div class="text-[11px] font-bold text-brand-500 uppercase tracking-wider border-b border-slate-800 pb-1">Mounting & Fit</div>
-
-                    <!-- Light Bezel Outer Diam -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="light_outer_diam" class="font-medium text-slate-300">Light Bezel Outer Diam (mm)</label>
-                            <span id="val_light_outer_diam" class="text-brand-500 font-mono font-bold">60.0</span>
-                        </div>
-                        <input type="range" id="light_outer_diam" min="15" max="150" step="0.5" value="60" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
-
-                    <!-- Fit Clearance -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="fit_clearance" class="font-medium text-slate-300">Fit Clearance Offset (mm)</label>
-                            <span id="val_fit_clearance" class="text-brand-500 font-mono font-bold">0.3</span>
-                        </div>
-                        <input type="range" id="fit_clearance" min="0.0" max="1.5" step="0.05" value="0.3" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
-
-                    <!-- Outer Wall Thickness -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="wall_thickness" class="font-medium text-slate-300">Outer Wall Thickness (mm)</label>
-                            <span id="val_wall_thickness" class="text-brand-500 font-mono font-bold">2.0</span>
-                        </div>
-                        <input type="range" id="wall_thickness" min="1.0" max="5.0" step="0.2" value="2.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
-
-                    <!-- Section: Stop Lip & Snap Ridge -->
-                    <div class="text-[11px] font-bold text-brand-500 uppercase tracking-wider border-b border-slate-800 pb-1 pt-2">Snap Fit & Internal Lip</div>
-
-                    <!-- Internal Lip Thickness -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="lip_thickness" class="font-medium text-slate-300">Internal Lip Extension (mm)</label>
-                            <span id="val_lip_thickness" class="text-brand-500 font-mono font-bold">2.0</span>
-                        </div>
-                        <input type="range" id="lip_thickness" min="0.5" max="10.0" step="0.5" value="2.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                        <p class="text-[10px] text-slate-500 mt-0.5">Width of internal stop-ring resting on front bezel.</p>
-                    </div>
-
-                    <!-- Internal Lip Height -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="lip_height" class="font-medium text-slate-300">Internal Lip Height (mm)</label>
-                            <span id="val_lip_height" class="text-brand-500 font-mono font-bold">2.0</span>
-                        </div>
-                        <input type="range" id="lip_height" min="1.0" max="8.0" step="0.5" value="2.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
-
-                    <!-- Snap Ridge Depth -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="snap_ridge_depth" class="font-medium text-slate-300">Snap Ridge Depth (mm)</label>
-                            <span id="val_snap_ridge_depth" class="text-brand-500 font-mono font-bold">0.5</span>
-                        </div>
-                        <input type="range" id="snap_ridge_depth" min="0.0" max="2.0" step="0.1" value="0.5" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                        <p class="text-[10px] text-slate-500 mt-0.5">Internal bevel height that snaps past bezel edge.</p>
-                    </div>
-
-                    <!-- Clip Sleeve Length -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="clip_length" class="font-medium text-slate-300">Clip Sleeve Length (mm)</label>
-                            <span id="val_clip_length" class="text-brand-500 font-mono font-bold">18.0</span>
-                        </div>
-                        <input type="range" id="clip_length" min="8" max="50" step="1" value="18" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
-
-                    <!-- Clip Relief Slots -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="num_slots" class="font-medium text-slate-300">Clip Relief Slots</label>
-                            <span id="val_num_slots" class="text-brand-500 font-mono font-bold">4</span>
-                        </div>
-                        <input type="range" id="num_slots" min="0" max="8" step="2" value="4" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                        <p class="text-[10px] text-slate-500 mt-0.5">Slots flex open so plastic snaps without splitting.</p>
-                    </div>
-
-                    <!-- Section: Tophat & Louvers -->
-                    <div class="text-[11px] font-bold text-brand-500 uppercase tracking-wider border-b border-slate-800 pb-1 pt-2">Tophat & Louver Grid</div>
-
-                    <!-- Tophat Extension Length -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="tophat_length" class="font-medium text-slate-300">Tophat Extension (mm)</label>
-                            <span id="val_tophat_length" class="text-brand-500 font-mono font-bold">35.0</span>
-                        </div>
-                        <input type="range" id="tophat_length" min="10" max="100" step="1" value="35" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
-
-                    <!-- Honeycomb Grid Depth -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="grid_depth" class="font-medium text-slate-300">Louver Grid Depth (mm)</label>
-                            <span id="val_grid_depth" class="text-brand-500 font-mono font-bold">10.0</span>
-                        </div>
-                        <input type="range" id="grid_depth" min="2" max="30" step="1" value="10" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
-
-                    <!-- Hexagon Cell Size -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="hex_flat_to_flat" class="font-medium text-slate-300">Continuous Hex Width (mm)</label>
-                            <span id="val_hex_flat_to_flat" class="text-brand-500 font-mono font-bold">6.0</span>
-                        </div>
-                        <input type="range" id="hex_flat_to_flat" min="3.0" max="15.0" step="0.5" value="6.0" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                    </div>
-
-                    <!-- Grid Wall Thickness -->
-                    <div>
-                        <div class="flex justify-between text-xs mb-1">
-                            <label for="grid_wall_thick" class="font-medium text-slate-300">Grid Wall Thickness (mm)</label>
-                            <span id="val_grid_wall_thick" class="text-brand-500 font-mono font-bold">0.8</span>
-                        </div>
-                        <input type="range" id="grid_wall_thick" min="0.4" max="2.0" step="0.1" value="0.8" class="w-full accent-brand-500 bg-slate-800 rounded-lg cursor-pointer">
-                        <p class="text-[10px] text-slate-500 mt-0.5">0.8mm matches 2 perimeter walls on 0.4mm nozzle.</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Export Action Box -->
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl flex flex-col space-y-3">
-                <button id="export-stl-btn" class="w-full py-3 px-4 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-lg shadow-lg shadow-brand-500/20 flex items-center justify-center space-x-2 transition transform active:scale-[0.98]">
-                    <i class="fa-solid fa-download"></i>
-                    <span>Download STL File</span>
-                </button>
-                <div class="text-[11px] text-slate-400 text-center flex items-center justify-center gap-1">
-                    <i class="fa-solid fa-check-circle text-emerald-500"></i> Optimized for Bambu Lab A1 Mini Bed
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Right Panel: Interactive 3D Viewport & OpenSCAD Code (8 Cols) -->
-        <div class="lg:col-span-8 flex flex-col space-y-6">
-            
-            <!-- 3D Viewport Card -->
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col relative h-[480px]">
-                <div class="absolute top-3 left-3 z-10 bg-slate-950/80 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-medium text-slate-300 flex items-center space-x-2">
-                    <i class="fa-solid fa-eye text-brand-500"></i>
-                    <span>Interactive 3D Preview (Continuous Hex + Snap Fit)</span>
-                </div>
-                
-                <div class="absolute top-3 right-3 z-10 flex space-x-2">
-                    <button id="view-reset" class="bg-slate-950/80 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs px-2.5 py-1.5 rounded-lg transition" title="Reset Camera">
-                        <i class="fa-solid fa-arrows-to-dot"></i>
-                    </button>
-                    <button id="toggle-wireframe" class="bg-slate-950/80 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs px-2.5 py-1.5 rounded-lg transition" title="Toggle Wireframe">
-                        <i class="fa-solid fa-vector-square"></i>
-                    </button>
-                </div>
-
-                <!-- Three.js Canvas Container -->
-                <div id="canvas-container" class="w-full h-full bg-slate-950 cursor-grab active:cursor-grabbing"></div>
-
-                <!-- Footer Stats Overlay inside Viewport -->
-                <div class="absolute bottom-3 left-3 z-10 bg-slate-950/80 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-800 text-[11px] font-mono text-slate-400 flex space-x-4">
-                    <div>Total Height: <span id="stat-height" class="text-slate-200">53.0mm</span></div>
-                    <div>Outer Diam: <span id="stat-diam" class="text-slate-200">64.6mm</span></div>
-                    <div>Aperture Inner: <span id="stat-aperture" class="text-slate-200">56.3mm</span></div>
-                </div>
-            </div>
-
-            <!-- OpenSCAD Code Generator Card -->
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl flex flex-col flex-1">
-                <div class="flex items-center justify-between mb-3 pb-3 border-b border-slate-800">
-                    <div class="flex items-center space-x-2">
-                        <i class="fa-solid fa-code text-brand-500"></i>
-                        <h2 class="font-semibold text-slate-200 text-sm">Generated OpenSCAD Code</h2>
-                    </div>
-                    <button id="copy-scad" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-3 py-1.5 rounded-lg border border-slate-700 flex items-center space-x-1.5 transition">
-                        <i class="fa-solid fa-copy"></i>
-                        <span>Copy Code</span>
-                    </button>
-                </div>
-
-                <div class="relative flex-1 bg-slate-950 rounded-lg border border-slate-800/80 p-3 overflow-hidden">
-                    <pre><code id="scad-code-output" class="text-xs text-brand-500 font-mono block overflow-x-auto h-52 scrollbar-thin"></code></pre>
-                </div>
-            </div>
-
-        </div>
-
-    </main>
-
-    <!-- Jekyll / GitHub Pages Modal -->
-    <div id="jekyll-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4">
-            <div class="flex justify-between items-center pb-3 border-b border-slate-800">
-                <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                    <i class="fa-brands fa-github text-brand-500"></i> Hosting on GitHub Pages / Jekyll
-                </h3>
-                <button id="close-modal" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <div class="space-y-3 text-sm text-slate-300">
-                <p>This single-page web app is fully static and self-contained. You can host it on GitHub Pages with Jekyll using one of these options:</p>
-
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2">
-                    <h4 class="font-semibold text-brand-500 text-xs uppercase tracking-wider">Option A: Raw HTML Page (Recommended)</h4>
-                    <p class="text-xs text-slate-400">Save this file as <code class="text-slate-200 bg-slate-800 px-1 py-0.5 rounded">index.html</code> inside your Jekyll repository. Add this Front-Matter snippet to the top of the file:</p>
-                    <pre class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs text-emerald-400 font-mono">---
-layout: null
----</pre>
-                </div>
-
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2">
-                    <h4 class="font-semibold text-brand-500 text-xs uppercase tracking-wider">Option B: Embedded in Existing Theme</h4>
-                    <p class="text-xs text-slate-400">To maintain your Jekyll theme header and footer, create a markdown page (e.g. <code class="text-slate-200 bg-slate-800 px-1 py-0.5 rounded">louver.md</code>):</p>
-                    <pre class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs text-emerald-400 font-mono">---
-layout: page
-title: Louver Generator
----</pre>
-                </div>
-            </div>
-
-            <div class="pt-2 flex justify-end">
-                <button id="confirm-modal" class="bg-brand-600 hover:bg-brand-500 text-white px-4 py-2 rounded-lg text-xs font-semibold">Got it</button>
-            </div>
+        <div id="viewport-container">
+            <canvas id="canvas3d"></canvas>
         </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-emerald-600 text-white px-4 py-2.5 rounded-xl shadow-xl text-xs font-medium flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
-        <i class="fa-solid fa-circle-check"></i>
-        <span id="toast-msg">Notification Message</span>
-    </div>
+    <div id="toast" class="toast">Action completed</div>
 
-    <!-- Application Script -->
     <script>
-        // Parameters State Object
+        // State Management & History
         const params = {
             light_outer_diam: 60.0,
             fit_clearance: 0.3,
-            wall_thickness: 2.0,
+            clip_length: 18.0,
+            num_slots: 4,
             lip_thickness: 2.0,
             lip_height: 2.0,
             snap_ridge_depth: 0.5,
-            clip_length: 18.0,
             tophat_length: 35.0,
+            tophat_flare_angle: 0.0,
             grid_depth: 10.0,
-            hex_flat_to_flat: 6.0,
-            grid_wall_thick: 0.8,
-            num_slots: 4
+            grid_spacing: 6.0,
+            wall_thickness: 2.0,
+            grid_wall_thick: 0.8
         };
 
-        // DOM Inputs Mapping
-        const inputs = [
-            'light_outer_diam', 'fit_clearance', 'wall_thickness', 
-            'lip_thickness', 'lip_height', 'snap_ridge_depth',
-            'clip_length', 'tophat_length', 'grid_depth', 
-            'hex_flat_to_flat', 'grid_wall_thick', 'num_slots'
-        ];
+        const historyStack = [];
+        let initialDragValues = {};
 
-        // ThreeJS Global Variables
-        let scene, camera, renderer, controls;
-        let louverMeshGroup;
-        let isWireframe = false;
+        // Section Highlight Colors
+        const SECTION_COLORS = {
+            sleeve: 0x3b82f6,    // Muted Blue
+            retention: 0xeab308, // Soft Amber
+            tophat: 0xa855f7,    // Soft Purple
+            grid: 0x10b981      // Emerald Green
+        };
 
-        // Initialize Scene
-        function init3D() {
-            const container = document.getElementById('canvas-container');
-            
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x090d16);
+        const ACTIVE_HOVER_COLOR = 0x22c55e; // Muted Soft Green for active slider hover
 
-            camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(90, 80, 110);
+        let activeHoverSection = null;
+        let globalHighlightEnabled = false;
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.shadowMap.enabled = true;
-            container.appendChild(renderer.domElement);
+        // Three.js Setup
+        const container = document.getElementById('viewport-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(100, 80, 120);
 
-            controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.dampingFactor = 0.05;
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas3d'), antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // Lighting Setup
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-            scene.add(ambientLight);
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
 
-            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
-            dirLight1.position.set(80, 120, 90);
-            scene.add(dirLight1);
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+        const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.7);
+        dirLight1.position.set(100, 150, 100);
+        scene.add(dirLight1);
+        const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
+        dirLight2.position.set(-100, -50, -100);
+        scene.add(dirLight2);
 
-            const dirLight2 = new THREE.DirectionalLight(0x0284c7, 0.5);
-            dirLight2.position.set(-80, -50, -80);
-            scene.add(dirLight2);
+        // Model Group
+        const modelGroup = new THREE.Group();
+        scene.add(modelGroup);
 
-            // Print Bed Visualizer Grid (Bambu A1 Mini bed size: 180x180)
-            const gridHelper = new THREE.GridHelper(180, 18, 0x0284c7, 0x1e293b);
-            gridHelper.position.y = 0;
-            scene.add(gridHelper);
+        // Materials Cache
+        const materials = {
+            base: new THREE.MeshStandardMaterial({ color: 0x2a2a32, roughness: 0.4, metalness: 0.1, side: THREE.DoubleSide }),
+            sleeve: new THREE.MeshStandardMaterial({ color: SECTION_COLORS.sleeve, roughness: 0.4, side: THREE.DoubleSide }),
+            retention: new THREE.MeshStandardMaterial({ color: SECTION_COLORS.retention, roughness: 0.4, side: THREE.DoubleSide }),
+            tophat: new THREE.MeshStandardMaterial({ color: SECTION_COLORS.tophat, roughness: 0.4, side: THREE.DoubleSide }),
+            grid: new THREE.MeshStandardMaterial({ color: SECTION_COLORS.grid, roughness: 0.4, side: THREE.DoubleSide }),
+            active: new THREE.MeshStandardMaterial({ color: ACTIVE_HOVER_COLOR, roughness: 0.3, metalness: 0.2, side: THREE.DoubleSide })
+        };
 
-            louverMeshGroup = new THREE.Group();
-            scene.add(louverMeshGroup);
-
-            window.addEventListener('resize', onWindowResize);
-            
-            rebuildGeometry();
-            animate();
+        function getMaterialForSection(sectionName) {
+            if (activeHoverSection === sectionName) return materials.active;
+            if (globalHighlightEnabled) return materials[sectionName];
+            return materials.base;
         }
 
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update();
-            renderer.render(scene, camera);
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 2500);
         }
 
-        function onWindowResize() {
-            const container = document.getElementById('canvas-container');
-            if (!container) return;
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        }
+        // Fast Parametric Model Generation
+        function rebuildModel() {
+            while (modelGroup.children.length > 0) {
+                const child = modelGroup.children[0];
+                if (child.geometry) child.geometry.dispose();
+                modelGroup.remove(child);
+            }
 
-        // Rebuild 3D Mesh procedural representation
-        function rebuildGeometry() {
-            // Clear existing meshes
-            while(louverMeshGroup.children.length > 0){ 
-                const obj = louverMeshGroup.children[0];
-                if(obj.geometry) obj.geometry.dispose();
-                if(obj.material) {
-                    if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
-                    else obj.material.dispose();
+            const innerR = (params.light_outer_diam + params.fit_clearance) / 2;
+            const outerR = innerR + params.wall_thickness;
+            const clipL = params.clip_length;
+            const tophatL = params.tophat_length;
+            const lipThick = params.lip_thickness;
+            const lipH = params.lip_height;
+            const snapDepth = params.snap_ridge_depth;
+            const flareRad = (params.tophat_flare_angle * Math.PI) / 180;
+            const topOuterR = outerR + (tophatL * Math.tan(flareRad));
+            const topInnerR = Math.max(0.1, (innerR - lipThick) + (tophatL * Math.tan(flareRad)));
+
+            // 1. Clip Sleeve (with flex slots simulated)
+            const numSlots = parseInt(params.num_slots, 10);
+            if (numSlots === 0) {
+                const sleeveGeo = new THREE.CylinderGeometry(outerR, outerR, clipL, 64, 1, true);
+                const sleeveMesh = new THREE.Mesh(sleeveGeo, getMaterialForSection('sleeve'));
+                sleeveMesh.position.y = clipL / 2;
+                modelGroup.add(sleeveMesh);
+            } else {
+                const arcLength = ((Math.PI * 2) - (numSlots * 0.08)) / numSlots;
+                for (let i = 0; i < numSlots; i++) {
+                    const startAngle = i * (arcLength + 0.08);
+                    const sleeveGeo = new THREE.CylinderGeometry(outerR, outerR, clipL, 16, 1, true, startAngle, arcLength);
+                    const sleeveMesh = new THREE.Mesh(sleeveGeo, getMaterialForSection('sleeve'));
+                    sleeveMesh.position.y = clipL / 2;
+                    modelGroup.add(sleeveMesh);
                 }
-                louverMeshGroup.remove(obj); 
             }
 
-            const innerD = params.light_outer_diam + params.fit_clearance;
-            const outerD = innerD + (2 * params.wall_thickness);
-            const innerR = innerD / 2;
-            const outerR = outerD / 2;
-            const totalH = params.clip_length + params.tophat_length;
-            const apertureR = innerR - params.lip_thickness;
-
-            const bodyMaterial = new THREE.MeshStandardMaterial({
-                color: 0x334155,
-                metalness: 0.2,
-                roughness: 0.5,
-                wireframe: isWireframe,
-                side: THREE.DoubleSide
-            });
-
-            const lipMaterial = new THREE.MeshStandardMaterial({
-                color: 0x475569,
-                metalness: 0.3,
-                roughness: 0.4,
-                wireframe: isWireframe,
-                side: THREE.DoubleSide
-            });
-
-            const gridMaterial = new THREE.MeshStandardMaterial({
-                color: 0x0284c7,
-                metalness: 0.3,
-                roughness: 0.4,
-                wireframe: isWireframe,
-                side: THREE.DoubleSide
-            });
-
-            // 1. Outer Main Cylinder Body Shape
-            const bodyShape = new THREE.Shape();
-            bodyShape.absarc(0, 0, outerR, 0, Math.PI * 2, false);
-
-            // Aperture Hole path (includes step at lip)
-            const holePath = new THREE.Path();
-            holePath.absarc(0, 0, innerR, 0, Math.PI * 2, true);
-            bodyShape.holes.push(holePath);
-
-            const clipExtrudeSettings = { depth: params.clip_length, bevelEnabled: false, curveSegments: 64 };
-            const bodyClipMesh = new THREE.Mesh(new THREE.ExtrudeGeometry(bodyShape, clipExtrudeSettings), bodyMaterial);
-            bodyClipMesh.rotation.x = -Math.PI / 2;
-            louverMeshGroup.add(bodyClipMesh);
-
-            // 2. Tophat Extension Shell
-            const tophatShape = new THREE.Shape();
-            tophatShape.absarc(0, 0, outerR, 0, Math.PI * 2, false);
-            const tophatHole = new THREE.Path();
-            tophatHole.absarc(0, 0, Math.max(0.1, apertureR), 0, Math.PI * 2, true);
-            tophatShape.holes.push(tophatHole);
-
-            const tophatExtrudeSettings = { depth: params.tophat_length, bevelEnabled: false, curveSegments: 64 };
-            const tophatMesh = new THREE.Mesh(new THREE.ExtrudeGeometry(tophatShape, tophatExtrudeSettings), bodyMaterial);
-            tophatMesh.rotation.x = -Math.PI / 2;
-            tophatMesh.position.y = params.clip_length;
-            louverMeshGroup.add(tophatMesh);
-
-            // 3. Internal Retention Stop Lip Ring
-            if (params.lip_thickness > 0 && params.lip_height > 0) {
-                const lipShape = new THREE.Shape();
-                lipShape.absarc(0, 0, innerR, 0, Math.PI * 2, false);
-                const lipHole = new THREE.Path();
-                lipHole.absarc(0, 0, Math.max(0.1, apertureR), 0, Math.PI * 2, true);
-                lipShape.holes.push(lipHole);
-
-                const lipExtrudeSettings = { depth: params.lip_height, bevelEnabled: false, curveSegments: 64 };
-                const lipMesh = new THREE.Mesh(new THREE.ExtrudeGeometry(lipShape, lipExtrudeSettings), lipMaterial);
-                lipMesh.rotation.x = -Math.PI / 2;
-                lipMesh.position.y = params.clip_length;
-                louverMeshGroup.add(lipMesh);
+            // 2. Snap Ridge
+            if (snapDepth > 0) {
+                const snapGeo = new THREE.CylinderGeometry(innerR, innerR - snapDepth, 3, 64, 1, true);
+                const snapMesh = new THREE.Mesh(snapGeo, getMaterialForSection('retention'));
+                snapMesh.position.y = 2 + 1.5;
+                modelGroup.add(snapMesh);
             }
 
-            // 4. Internal Snap Ridge (Beveled Ring inside sleeve)
-            if (params.snap_ridge_depth > 0) {
-                const snapGeom = new THREE.CylinderGeometry(
-                    innerR - params.snap_ridge_depth,
-                    innerR,
-                    3,
-                    64, 1, true
-                );
-                const snapMesh = new THREE.Mesh(snapGeom, lipMaterial);
-                snapMesh.position.y = 3.5;
-                louverMeshGroup.add(snapMesh);
-            }
+            // 3. Stop Lip
+            const lipShape = new THREE.Shape();
+            lipShape.absarc(0, 0, innerR, 0, Math.PI * 2, false);
+            const lipPath = new THREE.Path();
+            lipPath.absarc(0, 0, Math.max(0.1, innerR - lipThick), 0, Math.PI * 2, true);
+            lipShape.holes.push(lipPath);
 
-            // 5. Continuous Hexagonal Grid Mesh
+            const lipGeo = new THREE.ExtrudeGeometry(lipShape, { depth: lipH, bevelEnabled: false, curveSegments: 48 });
+            const lipMesh = new THREE.Mesh(lipGeo, getMaterialForSection('retention'));
+            lipMesh.rotation.x = Math.PI / 2;
+            lipMesh.position.y = clipL + lipH;
+            modelGroup.add(lipMesh);
+
+            // 4. Top-Hat Extension Shell (Supports flared angle)
+            const tophatGeo = new THREE.CylinderGeometry(topOuterR, outerR, tophatL, 64, 1, true);
+            const tophatMesh = new THREE.Mesh(tophatGeo, getMaterialForSection('tophat'));
+            tophatMesh.position.y = clipL + (tophatL / 2);
+            modelGroup.add(tophatMesh);
+
+            // 5. Optimized Straight-Line Grid Louver
             const gridGroup = new THREE.Group();
-            const cellFlat = params.hex_flat_to_flat;
-            const rIn = cellFlat / (2 * Math.cos(Math.PI / 6));
-            const rOut = rIn + (params.grid_wall_thick / Math.cos(Math.PI / 6));
+            const gridD = params.grid_depth;
+            const spacing = params.grid_spacing;
+            const gridR = innerR;
+            const wallT = params.grid_wall_thick;
 
-            const pitchX = cellFlat + params.grid_wall_thick;
-            const pitchY = (cellFlat + params.grid_wall_thick) * Math.cos(Math.PI / 6);
+            const gridYCenter = clipL + lipH + (gridD / 2);
 
-            const countX = Math.ceil(innerD / pitchX) + 1;
-            const countY = Math.ceil(innerD / pitchY) + 1;
-
-            // Define clean continuous hexagonal wall shape
-            const singleHexShape = new THREE.Shape();
-            for (let i = 0; i < 6; i++) {
-                const angle = (Math.PI / 3) * i;
-                const x = rOut * Math.cos(angle);
-                const y = rOut * Math.sin(angle);
-                if (i === 0) singleHexShape.moveTo(x, y);
-                else singleHexShape.lineTo(x, y);
-            }
-            const singleHexHole = new THREE.Path();
-            for (let i = 0; i < 6; i++) {
-                const angle = (Math.PI / 3) * i;
-                const x = rIn * Math.cos(angle);
-                const y = rIn * Math.sin(angle);
-                if (i === 0) singleHexHole.moveTo(x, y);
-                else singleHexHole.lineTo(x, y);
-            }
-            singleHexShape.holes.push(singleHexHole);
-
-            const hexExtrudeSettings = { depth: params.grid_depth, bevelEnabled: false };
-            const hexGeom = new THREE.ExtrudeGeometry(singleHexShape, hexExtrudeSettings);
-
-            for (let y = -countY; y <= countY; y++) {
-                for (let x = -countX; x <= countX; x++) {
-                    const offsetX = (Math.abs(y) % 2 === 1) ? pitchX / 2 : 0;
-                    const cx = x * pitchX + offsetX;
-                    const cy = y * pitchY;
-
-                    if (Math.sqrt(cx * cx + cy * cy) < (innerR - rOut)) {
-                        const hexMesh = new THREE.Mesh(hexGeom, gridMaterial);
-                        hexMesh.position.set(cx, cy, 0);
-                        gridGroup.add(hexMesh);
-                    }
+            for (let x = -gridR; x <= gridR; x += spacing) {
+                const len = Math.sqrt(Math.max(0, gridR * gridR - x * x)) * 2;
+                if (len > 1) {
+                    const boxGeo = new THREE.BoxGeometry(wallT, gridD, len);
+                    const boxMesh = new THREE.Mesh(boxGeo, getMaterialForSection('grid'));
+                    boxMesh.position.set(x, gridYCenter, 0);
+                    gridGroup.add(boxMesh);
                 }
             }
 
-            gridGroup.rotation.x = -Math.PI / 2;
-            gridGroup.position.y = params.clip_length + params.lip_height;
-            louverMeshGroup.add(gridGroup);
+            for (let z = -gridR; z <= gridR; z += spacing) {
+                const len = Math.sqrt(Math.max(0, gridR * gridR - z * z)) * 2;
+                if (len > 1) {
+                    const boxGeo = new THREE.BoxGeometry(len, gridD, wallT);
+                    const boxMesh = new THREE.Mesh(boxGeo, getMaterialForSection('grid'));
+                    boxMesh.position.set(0, gridYCenter, z);
+                    gridGroup.add(boxMesh);
+                }
+            }
 
-            // Update UI Stats
-            document.getElementById('stat-height').textContent = `${totalH.toFixed(1)}mm`;
-            document.getElementById('stat-diam').textContent = `${outerD.toFixed(1)}mm`;
-            document.getElementById('stat-aperture').textContent = `${(apertureR * 2).toFixed(1)}mm`;
-
-            // Update OpenSCAD Output Code
-            generateOpenSCADCode();
+            modelGroup.add(gridGroup);
         }
 
-        // Generate OpenSCAD Code Script
-        function generateOpenSCADCode() {
-            const scadCode = `// ====================================================================
-// UPDATED PARAMETRIC HONEYCOMB TOP-HAT WITH SNAP LIP & HEX GRID
-// Auto-generated by LouverCAD Studio
-// Optimized for Bambu Lab A1 Mini Bed (180x180mm)
-// ====================================================================
+        // Setup Event Listeners
+        const sliders = document.querySelectorAll('input[type="range"]');
+        const undoBtn = document.getElementById('undoBtn');
+        const globalToggle = document.getElementById('globalHighlightToggle');
 
+        sliders.forEach(slider => {
+            const paramKey = slider.id.replace('param-', '');
+            const section = slider.dataset.section;
+
+            slider.addEventListener('pointerdown', () => {
+                initialDragValues[paramKey] = params[paramKey];
+                document.getElementById(`prev-${paramKey}`).textContent = params[paramKey].toFixed(1);
+                document.getElementById(`prev-${paramKey}`).style.display = 'inline';
+            });
+
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                params[paramKey] = val;
+                document.getElementById(`val-${paramKey}`).textContent = val.toFixed(1);
+                rebuildModel();
+            });
+
+            slider.addEventListener('pointerup', () => {
+                if (initialDragValues[paramKey] !== undefined && initialDragValues[paramKey] !== params[paramKey]) {
+                    historyStack.push({
+                        param: paramKey,
+                        from: initialDragValues[paramKey],
+                        to: params[paramKey]
+                    });
+                    undoBtn.disabled = false;
+                }
+                delete initialDragValues[paramKey];
+            });
+
+            slider.addEventListener('mouseenter', () => {
+                activeHoverSection = section;
+                rebuildModel();
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                activeHoverSection = null;
+                rebuildModel();
+            });
+        });
+
+        // Global Highlight Toggle
+        globalToggle.addEventListener('change', (e) => {
+            globalHighlightEnabled = e.target.checked;
+            document.querySelectorAll('.color-toggle').forEach(el => {
+                el.classList.toggle('active', globalHighlightEnabled);
+            });
+            rebuildModel();
+        });
+
+        // Undo Functionality
+        function performUndo() {
+            if (historyStack.length === 0) return;
+            const lastAction = historyStack.pop();
+            params[lastAction.param] = lastAction.from;
+
+            const slider = document.getElementById(`param-${lastAction.param}`);
+            if (slider) slider.value = lastAction.from;
+            document.getElementById(`val-${lastAction.param}`).textContent = lastAction.from.toFixed(1);
+            document.getElementById(`prev-${lastAction.param}`).style.display = 'none';
+
+            if (historyStack.length === 0) {
+                undoBtn.disabled = true;
+            }
+            rebuildModel();
+        }
+
+        undoBtn.addEventListener('click', performUndo);
+
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+                e.preventDefault();
+                performUndo();
+            }
+        });
+
+        // Direct STL Export
+        document.getElementById('exportStlBtn').addEventListener('click', () => {
+            const exporter = new THREE.STLExporter();
+            const result = exporter.parse(modelGroup, { binary: true });
+            const blob = new Blob([result], { type: 'application/octet-stream' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `louver_tophat_${params.light_outer_diam}mm.stl`;
+            link.click();
+            showToast('STL File Exported!');
+        });
+
+        // Export OpenSCAD Code
+        document.getElementById('exportScadBtn').addEventListener('click', () => {
+            const scadCode = `// Generated Flared Top-Hat & Louver
 $fn = 100;
 
-// --- USER MEASUREMENTS & FIT ADJUSTMENTS ---
-light_outer_diam = ${params.light_outer_diam.toFixed(1)};  // Bezel outer diameter (mm)
-fit_clearance    = ${params.fit_clearance.toFixed(2)};   // Friction fit offset (mm)
-wall_thickness   = ${params.wall_thickness.toFixed(1)};   // Outer wall thickness (mm)
+light_outer_diam   = ${params.light_outer_diam};
+fit_clearance      = ${params.fit_clearance};
+wall_thickness     = ${params.wall_thickness};
+clip_length        = ${params.clip_length};
+num_slots          = ${params.num_slots};
+tophat_length      = ${params.tophat_length};
+tophat_flare_angle = ${params.tophat_flare_angle};
+lip_thickness      = ${params.lip_thickness};
+lip_height         = ${params.lip_height};
+snap_ridge_depth   = ${params.snap_ridge_depth};
+grid_depth         = ${params.grid_depth};
+grid_spacing       = ${params.grid_spacing};
+grid_wall_thick    = ${params.grid_wall_thick};
 
-// --- RETENTION LIP & SNAP FIT ---
-lip_thickness    = ${params.lip_thickness.toFixed(1)};   // Internal stop lip width (mm)
-lip_height       = ${params.lip_height.toFixed(1)};   // Internal stop lip thickness (mm)
-snap_ridge_depth = ${params.snap_ridge_depth.toFixed(2)};   // Internal snap ridge depth (mm)
-clip_length      = ${params.clip_length.toFixed(1)};  // Clip sleeve length (mm)
-num_slots        = ${params.num_slots};     // Number of flex relief slots
-
-// --- TOP-HAT & LOUVER GRID ---
-tophat_length    = ${params.tophat_length.toFixed(1)};  // Lens extension length (mm)
-grid_depth       = ${params.grid_depth.toFixed(1)};  // Depth of honeycomb louvers (mm)
-hex_flat_to_flat = ${params.hex_flat_to_flat.toFixed(1)};   // Continuous hex cell width (mm)
-grid_wall_thick  = ${params.grid_wall_thick.toFixed(1)};   // Hex wall thickness (mm)
-
-// --- COMPUTED VALUES ---
 inner_d = light_outer_diam + fit_clearance;
 outer_d = inner_d + (2 * wall_thickness);
-total_h = clip_length + tophat_length;
+flare_tan = tan(tophat_flare_angle);
+top_outer_d = outer_d + (2 * tophat_length * flare_tan);
 
-// Single Continuous Hexagonal Cell Wall Module
-module hex_ring(s, wall_t, h) {
-    r_in = s / (2 * cos(30));
-    r_out = r_in + (wall_t / cos(30));
-    difference() {
-        cylinder(r = r_out, h = h, $fn = 6, center = true);
-        cylinder(r = r_in, h = h + 2, $fn = 6, center = true);
-    }
-}
-
-// Continuous Honeycomb Array Generator
-module continuous_honeycomb_grid(cell_size, wall_t, bounds_d, depth) {
-    pitch_x = cell_size + wall_t;
-    pitch_y = (cell_size + wall_t) * cos(30);
-    
-    count_x = ceil(bounds_d / pitch_x) + 2;
-    count_y = ceil(bounds_d / pitch_y) + 2;
-    
+module grid_louvers() {
     intersection() {
-        cylinder(d = inner_d, h = depth, center = true);
+        cylinder(d = inner_d, h = grid_depth, center = true);
         union() {
-            for (y = [-count_y : count_y]) {
-                for (x = [-count_x : count_x]) {
-                    offset_x = (abs(y) % 2 == 1) ? pitch_x / 2 : 0;
-                    translate([x * pitch_x + offset_x, y * pitch_y, 0])
-                        hex_ring(cell_size, wall_t, depth);
-                }
+            for (x = [-inner_d/2 : grid_spacing : inner_d/2]) {
+                translate([x, 0, 0]) cube([grid_wall_thick, inner_d, grid_depth], center = true);
+            }
+            for (y = [-inner_d/2 : grid_spacing : inner_d/2]) {
+                translate([0, y, 0]) cube([inner_d, grid_wall_thick, grid_depth], center = true);
             }
         }
     }
@@ -653,172 +799,59 @@ module continuous_honeycomb_grid(cell_size, wall_t, bounds_d, depth) {
 module main_assembly() {
     difference() {
         union() {
-            // Main Outer Cylindrical Shell
-            cylinder(d = outer_d, h = total_h);
-            
-            // Internal Snap Ridge (locks past bezel edge)
+            cylinder(d = outer_d, h = clip_length);
+            translate([0, 0, clip_length])
+                cylinder(d1 = outer_d, d2 = top_outer_d, h = tophat_length);
             if (snap_ridge_depth > 0) {
                 translate([0, 0, 2])
                     cylinder(d1 = inner_d, d2 = inner_d - (snap_ridge_depth * 2), h = 3);
             }
         }
-        
-        // Inner Sleeve Bore
         translate([0, 0, -1])
             cylinder(d = inner_d, h = clip_length + 1);
-            
-        // Tophat Aperture Path (past internal stop lip)
         translate([0, 0, clip_length + lip_height])
-            cylinder(d = inner_d - (lip_thickness * 2), h = tophat_length + 2);
-            
-        // Flex Relief Slots (allows clip fingers to flex and snap)
+            cylinder(d1 = inner_d - (lip_thickness * 2), d2 = (inner_d - (lip_thickness * 2)) + (2 * tophat_length * flare_tan), h = tophat_length + 2);
         if (num_slots > 0) {
             for (a = [0 : (360 / num_slots) : 359]) {
-                rotate([0, 0, a])
-                    translate([-1.2, 0, -1])
-                        cube([2.4, outer_d + 4, clip_length - 2]);
+                rotate([0, 0, a]) translate([-1.2, 0, -1]) cube([2.4, outer_d + 4, clip_length - 2]);
             }
         }
     }
-    
-    // Adjustable Internal Stop Lip
-    if (lip_thickness > 0 && lip_height > 0) {
-        translate([0, 0, clip_length])
-            difference() {
-                cylinder(d = inner_d, h = lip_height);
-                translate([0, 0, -0.5])
-                    cylinder(d = inner_d - (lip_thickness * 2), h = lip_height + 1);
-            }
-    }
-        
-    // Continuous Hexagon Honeycomb Louver Grid
+    translate([0, 0, clip_length])
+        difference() {
+            cylinder(d = inner_d, h = lip_height);
+            translate([0, 0, -0.5]) cylinder(d = inner_d - (lip_thickness * 2), h = lip_height + 1);
+        }
     translate([0, 0, clip_length + lip_height + (grid_depth / 2)])
-        continuous_honeycomb_grid(hex_flat_to_flat, grid_wall_thick, inner_d, grid_depth);
+        grid_louvers();
 }
 
 main_assembly();`;
 
-            document.getElementById('scad-code-output').textContent = scadCode;
-        }
-
-        // Export Binary STL File Directly
-        function exportSTL() {
-            if (!THREE.STLExporter) {
-                showToast("STL Exporter loading... please try again.");
-                return;
-            }
-
-            const exporter = new THREE.STLExporter();
-            const result = exporter.parse(louverMeshGroup, { binary: true });
-            
-            const blob = new Blob([result], { type: 'application/octet-stream' });
+            const blob = new Blob([scadCode], { type: 'text/plain' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `Honeycomb_Louver_${params.light_outer_diam}mm.stl`;
+            link.download = `louver_tophat_${params.light_outer_diam}mm.scad`;
             link.click();
-            URL.revokeObjectURL(link.href);
+            showToast('OpenSCAD File Exported!');
+        });
 
-            showToast("STL model exported successfully!");
+        // Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
         }
 
-        // Helper Toast Notification
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const msg = document.getElementById('toast-msg');
-            msg.textContent = message;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
-
-        // Event Listeners Setup
-        function setupEventListeners() {
-            inputs.forEach(id => {
-                const el = document.getElementById(id);
-                const valDisplay = document.getElementById(`val_${id}`);
-                
-                el.addEventListener('input', (e) => {
-                    const value = parseFloat(e.target.value);
-                    params[id] = value;
-                    if (valDisplay) valDisplay.textContent = value.toFixed(id === 'fit_clearance' || id === 'snap_ridge_depth' || id === 'grid_wall_thick' ? 2 : (id === 'num_slots' ? 0 : 1));
-                    rebuildGeometry();
-                });
-            });
-
-            // Reset Parameters Button
-            document.getElementById('reset-params').addEventListener('click', () => {
-                params.light_outer_diam = 60.0;
-                params.fit_clearance = 0.3;
-                params.wall_thickness = 2.0;
-                params.lip_thickness = 2.0;
-                params.lip_height = 2.0;
-                params.snap_ridge_depth = 0.5;
-                params.clip_length = 18.0;
-                params.tophat_length = 35.0;
-                params.grid_depth = 10.0;
-                params.hex_flat_to_flat = 6.0;
-                params.grid_wall_thick = 0.8;
-                params.num_slots = 4;
-
-                inputs.forEach(id => {
-                    const el = document.getElementById(id);
-                    const valDisplay = document.getElementById(`val_${id}`);
-                    el.value = params[id];
-                    if (valDisplay) valDisplay.textContent = params[id].toFixed(id === 'fit_clearance' || id === 'snap_ridge_depth' || id === 'grid_wall_thick' ? 2 : (id === 'num_slots' ? 0 : 1));
-                });
-
-                rebuildGeometry();
-                showToast("Parameters reset to defaults.");
-            });
-
-            // Camera Reset
-            document.getElementById('view-reset').addEventListener('click', () => {
-                camera.position.set(90, 80, 110);
-                controls.target.set(0, 0, 0);
-                controls.update();
-            });
-
-            // Toggle Wireframe Mode
-            document.getElementById('toggle-wireframe').addEventListener('click', () => {
-                isWireframe = !isWireframe;
-                rebuildGeometry();
-            });
-
-            // Copy SCAD Code
-            document.getElementById('copy-scad').addEventListener('click', () => {
-                const codeText = document.getElementById('scad-code-output').textContent;
-                navigator.clipboard.writeText(codeText).then(() => {
-                    showToast("OpenSCAD code copied to clipboard!");
-                }).catch(() => {
-                    // Fallback
-                    const textArea = document.createElement("textarea");
-                    textArea.value = codeText;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                    showToast("OpenSCAD code copied to clipboard!");
-                });
-            });
-
-            // Export STL Button
-            document.getElementById('export-stl-btn').addEventListener('click', exportSTL);
-
-            // GitHub Jekyll Guide Modal
-            const modal = document.getElementById('jekyll-modal');
-            document.getElementById('jekyll-info-btn').addEventListener('click', () => modal.classList.remove('hidden'));
-            document.getElementById('close-modal').addEventListener('click', () => modal.classList.add('hidden'));
-            document.getElementById('confirm-modal').addEventListener('click', () => modal.classList.add('hidden'));
-        }
-
-        // Initialize App on Window Load
-        window.onload = function() {
-            init3D();
-            setupEventListeners();
-        };
+        rebuildModel();
+        animate();
     </script>
 </body>
 </html>
