@@ -1,6 +1,21 @@
 /* Sitecraft v0.2.0 */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/* Theme tokens: link this file from any page and use var(--sc-bg), var(--sc-text), var(--sc-accent), var(--sc-surface), var(--sc-border), var(--sc-muted), var(--sc-heading-font) … */
+:root{
+  --sc-bg:#575757;
+  --sc-text:#e7d7c5;
+  --sc-accent:#216318;
+  --sc-on-accent:#ffffff;
+  --sc-surface:#61605f;
+  --sc-surface-2:#686664;
+  --sc-border:#77736f;
+  --sc-muted:#a69d94;
+  --sc-accent-soft:#4b5a49;
+  --sc-heading-font:'Raleway',sans-serif;
+  --sc-body-font:'Open Sans',sans-serif;
+  --sc-radius:8px;
+}
 body{font-family:'Open Sans',sans-serif;color:#e7d7c5;background:#575757;margin:0}
 h1,h2,h3,h4,h5,h6{font-family:'Raleway',sans-serif}
 a{color:#216318}
