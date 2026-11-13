@@ -3,20 +3,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 /* Theme tokens: link this file from any page and use var(--sc-bg), var(--sc-text), var(--sc-accent), var(--sc-surface), var(--sc-border), var(--sc-muted), var(--sc-heading-font) … */
 :root{
-  --sc-bg:#575757;
+  --sc-bg:#706151;
   --sc-text:#e7d7c5;
   --sc-accent:#216318;
   --sc-on-accent:#ffffff;
-  --sc-surface:#61605f;
-  --sc-surface-2:#686664;
-  --sc-border:#77736f;
-  --sc-muted:#a69d94;
-  --sc-accent-soft:#4b5a49;
+  --sc-surface:#786959;
+  --sc-surface-2:#7e6f5f;
+  --sc-border:#8a7b6b;
+  --sc-muted:#b1a291;
+  --sc-accent-soft:#5f6144;
   --sc-heading-font:'Raleway',sans-serif;
   --sc-body-font:'Open Sans',sans-serif;
   --sc-radius:8px;
 }
-body{font-family:'Open Sans',sans-serif;color:#e7d7c5;background:#575757;margin:0}
+body{font-family:'Open Sans',sans-serif;color:#e7d7c5;background:#706151;margin:0}
 h1,h2,h3,h4,h5,h6{font-family:'Raleway',sans-serif}
 a{color:#216318}
 .sc-page{position:relative;width:100%;max-width:960px;margin:0 auto}
